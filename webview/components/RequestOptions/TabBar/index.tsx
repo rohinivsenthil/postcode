@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
 import "./styles.css";
-import propTypes from "prop-types";
-import requestOptions from "../../../constants/request-options.json";
+import * as propTypes from "prop-types";
+import * as requestOptions from "../../../constants/request-options.json";
 
 export const TabBar = (props) => {
   const { selected, setSelected } = props;

@@ -2,7 +2,7 @@
 import * as React from "react";
 import "./styles.css";
 import { keyValueTable } from "../../constants/key-value-table";
-import propTypes from "prop-types";
+import * as propTypes from "prop-types";
 
 const KeyValueRow = () => {
   const [key, setKey] = React.useState("");

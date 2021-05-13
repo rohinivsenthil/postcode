@@ -4,7 +4,7 @@ import "./styles.css";
 import { RequestBar } from "../RequestBar";
 import { TabBar as RequestOptionsTab } from "../RequestOptions/TabBar";
 import { TabWindow as RequestOptionsWindow } from "../RequestOptions/TabWindow";
-import requestOptions from "../../constants/request-options.json";
+import * as requestOptions from "../../constants/request-options.json";
 
 export const Request = () => {
   const [selectedOption, setSelectedOption] = React.useState(

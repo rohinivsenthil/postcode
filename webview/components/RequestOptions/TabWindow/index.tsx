@@ -5,7 +5,7 @@ import { Params } from "../Params";
 import { Authorization } from "../Authorization";
 import { Body } from "../Body";
 import { Headers } from "../Headers";
-import propTypes from "prop-types";
+import * as propTypes from "prop-types";
 
 export const TabWindow = (props) => {
   const { selected } = props;
