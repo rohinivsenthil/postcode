@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
 import "./styles.css";
-import { requestOptions } from "../../../constants/request-options";
+import propTypes from "prop-types";
+import requestOptions from "../../../constants/request-options.json";
 
-export const TabBar = () => {
-  const [selected, setSelected] = React.useState(requestOptions[0].value);
+export const TabBar = (props) => {
+  const { selected, setSelected } = props;
   return (
     <div className="request-options">
       {requestOptions.map((option) => (
@@ -22,4 +23,9 @@ export const TabBar = () => {
       ))}
     </div>
   );
+};
+
+TabBar.propTypes = {
+  selected: propTypes.string.isRequired,
+  setSelected: propTypes.func.isRequired,
 };
