@@ -1,0 +1,5 @@
+.request-wrapper {
+  height: 90%;
+  background-color: var(--primary);
+  padding: 16px;
+}

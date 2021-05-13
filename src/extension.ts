@@ -18,6 +18,36 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from Postcode!');
+
+		const panel = vscode.window.createWebviewPanel(
+			'postcode',
+			'Postcode',
+			vscode.ViewColumn.One,
+      { enableScripts: true }
+		);
+
+    // Get path to resource on disk
+    const scriptUri = panel.webview.asWebviewUri(
+      vscode.Uri.joinPath(
+        context.extensionUri,
+        'dist/webview.js',
+      )
+    );
+
+		panel.webview.html = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+		<script src="${scriptUri}"></script>
+  </body>
+</html>
+`;
 	});
 
 	context.subscriptions.push(disposable);

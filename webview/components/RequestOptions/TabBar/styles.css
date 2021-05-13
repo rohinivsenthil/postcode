@@ -1,0 +1,24 @@
+.request-options {
+  display: flex;
+  margin-top: 4px;
+}
+
+.request-option {
+  padding: 12px 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--off-white-text);
+  outline: none;
+  border: 3px solid transparent;
+  border-radius: 0;
+  font-weight: 500;
+}
+.request-option:hover {
+  color: var(--white-text);
+}
+
+.request-option-selected {
+  color: var(--white-text);
+  border-bottom: 3px solid var(--main);
+}
