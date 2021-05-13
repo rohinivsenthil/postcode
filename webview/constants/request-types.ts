@@ -1,30 +1,30 @@
 export const requestTypes = [
   {
-    "name": "GET",
-    "value": "get"
+    name: "GET",
+    value: "get",
   },
   {
-    "name": "POST",
-    "value": "post"
+    name: "POST",
+    value: "post",
   },
   {
-    "name": "PUT",
-    "value": "put"
+    name: "PUT",
+    value: "put",
   },
   {
-    "name": "PATCH",
-    "value": "patch"
+    name: "PATCH",
+    value: "patch",
   },
   {
-    "name": "DELETE",
-    "value": "delete"
+    name: "DELETE",
+    value: "delete",
   },
   {
-    "name": "OPTIONS",
-    "value": "options"
+    name: "OPTIONS",
+    value: "options",
   },
   {
-    "name": "HEAD",
-    "value": "head"
-  }
+    name: "HEAD",
+    value: "head",
+  },
 ];

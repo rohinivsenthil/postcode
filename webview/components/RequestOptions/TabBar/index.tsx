@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
 import "./styles.css";
-import {requestOptions} from "../../../constants/request-options";
+import { requestOptions } from "../../../constants/request-options";
 
 export const TabBar = () => {
   const [selected, setSelected] = React.useState(requestOptions[0].value);

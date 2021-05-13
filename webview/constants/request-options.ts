@@ -1,18 +1,18 @@
-export const requestOptions =[
+export const requestOptions = [
   {
-    "name": "Params",
-    "value": "params"
+    name: "Params",
+    value: "params",
   },
   {
-    "name": "Authorization",
-    "value": "authorization"
+    name: "Authorization",
+    value: "authorization",
   },
   {
-    "name": "Headers",
-    "value": "headers"
+    name: "Headers",
+    value: "headers",
   },
   {
-    "name": "Body",
-    "value": "body"
-  }
+    name: "Body",
+    value: "body",
+  },
 ];

@@ -13,10 +13,10 @@
   border-radius: 0 2px 2px 0;
   background-color: var(--secondary);
 }
-.input-request-url:focus{
+.input-request-url:focus {
   outline: none;
 }
-.input-request-url:hover{
+.input-request-url:hover {
   background-color: var(--input-req-url-hover);
 }
 
@@ -31,7 +31,7 @@
   color: var(--white-text);
   cursor: pointer;
 }
-.select-request-type:hover{
+.select-request-type:hover {
   background-color: var(--input-req-url-hover);
 }
 
