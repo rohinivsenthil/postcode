@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
 import "./styles.css";
-import * as requestTypes from "../../constants/request-types.json";
+import { requestTypes } from "../../constants/request-types";
 
 export const RequestBar = () => {
   return (

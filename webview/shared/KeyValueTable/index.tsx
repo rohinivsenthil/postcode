@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
 import "./styles.css";
 import { keyValueTable } from "../../constants/key-value-table";
 import * as propTypes from "prop-types";
 
-const KeyValueRow = () => {
-  const [key, setKey] = React.useState("");
-  const [value, setValue] = React.useState("");
-  const [description, setDescription] = React.useState("");
+const KeyValueRow = (props) => {
+  const { data } = props;
+  const [key, setKey] = React.useState(data.key);
+  const [value, setValue] = React.useState(data.value);
+  const [description, setDescription] = React.useState(data.desc);
   return (
     <div className="kv-row-wrapper">
       <input
@@ -42,8 +42,7 @@ const KeyValueRow = () => {
 };
 
 export const KeyValueTable = (props) => {
-  const { rows } = props;
-  console.log("key value comp", rows);
+  const { data } = props;
   return (
     <div>
       <div className="kv-table-wrapper">
@@ -53,13 +52,17 @@ export const KeyValueTable = (props) => {
           </div>
         ))}
       </div>
-      {Array.from({ length: rows }, () => (
-        <KeyValueRow />
+      {data.map((item) => (
+        <KeyValueRow key={item.value} data={item} />
       ))}
     </div>
   );
 };
 
 KeyValueTable.propTypes = {
-  rows: propTypes.number.isRequired,
+  data: propTypes.array.isRequired,
+};
+
+KeyValueRow.propTypes = {
+  data: propTypes.object.isRequired,
 };

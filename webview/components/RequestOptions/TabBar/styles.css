@@ -1,18 +1,24 @@
+.request-options-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
 .request-options {
   display: flex;
-  margin-top: 4px;
 }
 
 .request-option {
   padding: 12px 20px;
-  display: inline-block;
+  display: flex;
   cursor: pointer;
-  background-color: var(--primary);
+  background-color: transparent;
   color: var(--off-white-text);
   outline: none;
   border: 3px solid transparent;
   border-radius: 0;
   font-weight: 500;
+  font-size: 10px;
 }
 .request-option:hover {
   color: var(--white-text);
@@ -21,4 +27,25 @@
 .request-option-selected {
   color: var(--white-text);
   border-bottom: 3px solid var(--main);
+}
+
+.request-options-header-length {
+  margin-left: 4px;
+  color: var(--green);
+}
+
+.button-request-code {
+  padding: 12px 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--main);
+  outline: none;
+  border: 3px solid transparent;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 10px;
+}
+.button-request-code:hover {
+  color: var(--main-dark);
 }

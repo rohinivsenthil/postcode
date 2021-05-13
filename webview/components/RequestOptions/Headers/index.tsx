@@ -1,7 +1,26 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 import * as React from "react";
+import "./styles.css";
+import { KeyValueTable } from "../../../shared/KeyValueTable";
+import { defaultTableRow } from "../../../constants/key-value-table";
+import * as propTypes from "prop-types";
 
-export const Headers = () => {
-  return <div>headers</div>;
+export const Headers = (props) => {
+  const { headers, setHeaders } = props;
+  return (
+    <div className="headers-wrapper">
+      <div className="headers-title">Headers</div>
+      <KeyValueTable data={headers} />
+      <button
+        className="headers-add-btn"
+        onClick={() => setHeaders([...headers, defaultTableRow])}
+      >
+        + Add
+      </button>
+    </div>
+  );
+};
+
+Headers.propTypes = {
+  headers: propTypes.array.isRequired,
+  setHeaders: propTypes.func.isRequired,
 };

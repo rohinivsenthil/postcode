@@ -1,14 +1,14 @@
-.params-wrapper {
+.headers-wrapper {
   margin-top: 15px;
 }
 
-.params-title {
+.headers-title {
   color: var(--off-white-text);
   font-size: 10px;
   font-weight: 700;
 }
 
-.params-add-btn {
+.headers-add-btn {
   margin-top: 18px;
   background-color: var(--secondary);
   color: var(--white-text);
@@ -21,6 +21,6 @@
   border: 0;
   cursor: pointer;
 }
-.params-add-btn:hover {
+.headers-add-btn:hover {
   background-color: var(--light-grey);
 }
