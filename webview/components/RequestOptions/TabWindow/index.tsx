@@ -5,7 +5,7 @@ import { Body } from "./tabs/Body";
 import { Headers } from "./tabs/Headers";
 import * as propTypes from "prop-types";
 
-export const TabWindow = (props) => {
+export const RequestOptionsWindow = (props) => {
   const { selected, headers, setHeaders, params, setParams } = props;
   return (
     <div>
@@ -22,7 +22,7 @@ export const TabWindow = (props) => {
   );
 };
 
-TabWindow.propTypes = {
+RequestOptionsWindow.propTypes = {
   selected: propTypes.string.isRequired,
   headers: propTypes.array.isRequired,
   setHeaders: propTypes.func.isRequired,

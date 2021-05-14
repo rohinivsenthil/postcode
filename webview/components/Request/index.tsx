@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./styles.css";
 import { RequestBar } from "../RequestBar";
-import { TabBar as RequestOptionsTab } from "../RequestOptions/TabBar";
-import { TabWindow as RequestOptionsWindow } from "../RequestOptions/TabWindow";
+import { RequestOptionsTab } from "../RequestOptions/TabBar";
+import { RequestOptionsWindow } from "../RequestOptions/TabWindow";
 import { requestOptions } from "../../constants/request-options";
 import { defaultHeaders } from "../../constants/default-headers";
 

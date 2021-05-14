@@ -3,7 +3,7 @@ import "./styles.css";
 import * as propTypes from "prop-types";
 import { requestOptions } from "../../../constants/request-options";
 
-export const TabBar = (props) => {
+export const RequestOptionsTab = (props) => {
   const { selected, setSelected, headers } = props;
   return (
     <div className="request-options-wrapper">
@@ -43,7 +43,7 @@ export const TabBar = (props) => {
   );
 };
 
-TabBar.propTypes = {
+RequestOptionsTab.propTypes = {
   selected: propTypes.string.isRequired,
   setSelected: propTypes.func.isRequired,
   headers: propTypes.array.isRequired,

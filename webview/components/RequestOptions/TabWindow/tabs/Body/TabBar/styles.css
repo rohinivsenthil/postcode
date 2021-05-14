@@ -1,0 +1,29 @@
+.body-options-wrapper {
+  display: flex;
+}
+
+.body-options {
+  display: flex;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-body-option {
+  cursor: pointer;
+  outline: none;
+  border-radius: 0;
+  margin: 0px 8px;
+  background-color: var(--light-grey);
+}
+.radio-body-option:focus {
+  outline: none;
+}
+.radio-body-option:checked {
+  outline: none;
+}
+
+.label-body-option {
+  color: var(--off-white-text);
+  font-size: 10px;
+}
