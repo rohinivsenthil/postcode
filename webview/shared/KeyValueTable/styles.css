@@ -1,7 +1,12 @@
 .kv-table-wrapper {
-  display: flex;
-  justify-content: space-around;
+  border-top: 1px solid var(--light-grey);
+  border-left: 1px solid var(--light-grey);
   margin-top: 15px;
+}
+
+.kv-heading-wrapper,
+.kv-row-wrapper {
+  display: flex;
 }
 
 .kv-table-heading {
@@ -9,19 +14,19 @@
   color: var(--white-text);
   padding: 10px 12px;
   font-weight: 700;
-  border: 1px solid var(--light-grey);
+  border: 0;
+  border-bottom: 1px solid var(--light-grey);
+  border-right: 1px solid var(--light-grey);
   font-size: 8px;
-}
-
-.kv-row-wrapper {
-  display: flex;
 }
 
 .kv-row-input {
   flex: 1;
   color: var(--white-text);
   padding: 10px 12px;
-  border: 1px solid var(--light-grey);
+  border: 0;
+  border-bottom: 1px solid var(--light-grey);
+  border-right: 1px solid var(--light-grey);
   background-color: var(--primary);
   font-size: 10px;
 }

@@ -73,8 +73,8 @@ export const KeyValueTable = (props) => {
   }, [data]);
 
   return (
-    <div>
-      <div className="kv-table-wrapper">
+    <div className="kv-table-wrapper">
+      <div className="kv-heading-wrapper">
         {keyValueTable.map((item) => (
           <div className="kv-table-heading" key={item.heading}>
             {item.heading}
