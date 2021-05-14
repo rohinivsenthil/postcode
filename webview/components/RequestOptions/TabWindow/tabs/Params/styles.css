@@ -7,20 +7,3 @@
   font-size: 10px;
   font-weight: 700;
 }
-
-.params-add-btn {
-  margin-top: 18px;
-  background-color: var(--secondary);
-  color: var(--white-text);
-  padding: 8px 10px;
-  font-weight: bold;
-  font-size: 10px;
-  display: inline-block;
-  outline: none;
-  border-radius: 5%;
-  border: 0;
-  cursor: pointer;
-}
-.params-add-btn:hover {
-  background-color: var(--light-grey);
-}

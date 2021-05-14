@@ -61,6 +61,17 @@ const KeyValueRow = (props) => {
 
 export const KeyValueTable = (props) => {
   const { data, setData } = props;
+
+  React.useEffect(() => {
+    if (
+      data[data.length - 1].key ||
+      data[data.length - 1].value ||
+      data[data.length - 1].desc
+    ) {
+      setData([...data, {}]);
+    }
+  }, [data]);
+
   return (
     <div>
       <div className="kv-table-wrapper">

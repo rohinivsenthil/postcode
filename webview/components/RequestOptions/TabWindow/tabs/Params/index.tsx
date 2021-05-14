@@ -9,12 +9,6 @@ export const Params = (props) => {
     <div className="params-wrapper">
       <div className="params-title">Query Params</div>
       <KeyValueTable data={params} setData={setParams} />
-      <button
-        className="params-add-btn"
-        onClick={() => setParams([...params, {}])}
-      >
-        + Add
-      </button>
     </div>
   );
 };

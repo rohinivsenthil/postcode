@@ -9,12 +9,6 @@ export const Headers = (props) => {
     <div className="headers-wrapper">
       <div className="headers-title">Headers</div>
       <KeyValueTable data={headers} setData={setHeaders} />
-      <button
-        className="headers-add-btn"
-        onClick={() => setHeaders([...headers, {}])}
-      >
-        + Add
-      </button>
     </div>
   );
 };
