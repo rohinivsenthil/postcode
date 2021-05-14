@@ -6,11 +6,11 @@ import { Headers } from "../Headers";
 import * as propTypes from "prop-types";
 
 export const TabWindow = (props) => {
-  const { selected, headers, setHeaders } = props;
+  const { selected, headers, setHeaders, params, setParams } = props;
   return (
     <div>
       {selected === "params" ? (
-        <Params />
+        <Params params={params} setParams={setParams} />
       ) : selected === "authorization" ? (
         <Authorization />
       ) : selected === "body" ? (
@@ -26,4 +26,6 @@ TabWindow.propTypes = {
   selected: propTypes.string.isRequired,
   headers: propTypes.array.isRequired,
   setHeaders: propTypes.func.isRequired,
+  params: propTypes.array.isRequired,
+  setParams: propTypes.func.isRequired,
 };

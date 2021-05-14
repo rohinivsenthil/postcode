@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./styles.css";
 import { KeyValueTable } from "../../../shared/KeyValueTable";
-import { defaultTableRow } from "../../../constants/key-value-table";
 import * as propTypes from "prop-types";
 
 export const Headers = (props) => {
@@ -9,10 +8,10 @@ export const Headers = (props) => {
   return (
     <div className="headers-wrapper">
       <div className="headers-title">Headers</div>
-      <KeyValueTable data={headers} />
+      <KeyValueTable data={headers} setData={setHeaders} />
       <button
         className="headers-add-btn"
-        onClick={() => setHeaders([...headers, defaultTableRow])}
+        onClick={() => setHeaders([...headers, {}])}
       >
         + Add
       </button>

@@ -4,4 +4,4 @@ export const keyValueTable = [
   { heading: "DESCRIPTION", placeholder: "Description", value: "decsription" },
 ];
 
-export const defaultTableRow = { value: "", key: "", desc: "" };
+export const defaultTableRow = { key: "", value: "", desc: "" };

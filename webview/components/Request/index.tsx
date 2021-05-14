@@ -10,6 +10,7 @@ export const Request = () => {
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
+  const [params, setParams] = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   return (
     <div className="request-wrapper">
@@ -23,6 +24,8 @@ export const Request = () => {
         selected={selectedOption}
         headers={headers}
         setHeaders={setHeaders}
+        params={params}
+        setParams={setParams}
       />
     </div>
   );

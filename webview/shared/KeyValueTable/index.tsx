@@ -4,10 +4,7 @@ import { keyValueTable } from "../../constants/key-value-table";
 import * as propTypes from "prop-types";
 
 const KeyValueRow = (props) => {
-  const { data } = props;
-  const [key, setKey] = React.useState(data.key);
-  const [value, setValue] = React.useState(data.value);
-  const [description, setDescription] = React.useState(data.desc);
+  const { id, data, setData } = props;
   return (
     <div className="kv-row-wrapper">
       <input
@@ -15,8 +12,15 @@ const KeyValueRow = (props) => {
         id="tr-input-key"
         name="tr-input-key"
         placeholder="Key"
-        value={key}
-        onChange={(e) => setKey(e.target.value)}
+        autoComplete="off"
+        value={data[id].key || ""}
+        onChange={(e) =>
+          setData([
+            ...data.slice(0, id),
+            { ...data[id], key: e.target.value },
+            ...data.slice(id + 1),
+          ])
+        }
         className="kv-row-input"
       />
       <input
@@ -24,17 +28,31 @@ const KeyValueRow = (props) => {
         id="tr-input-value"
         name="tr-input-value"
         placeholder="Value"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        autoComplete="off"
+        value={data[id].value || ""}
+        onChange={(e) =>
+          setData([
+            ...data.slice(0, id),
+            { ...data[id], value: e.target.value },
+            ...data.slice(id + 1),
+          ])
+        }
         className="kv-row-input"
       />
       <input
         type="text"
         id="tr-input-desc"
         name="tr-input-desc"
+        autoComplete="off"
         placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={data[id].desc || ""}
+        onChange={(e) =>
+          setData([
+            ...data.slice(0, id),
+            { ...data[id], desc: e.target.value },
+            ...data.slice(id + 1),
+          ])
+        }
         className="kv-row-input"
       />
     </div>
@@ -42,7 +60,7 @@ const KeyValueRow = (props) => {
 };
 
 export const KeyValueTable = (props) => {
-  const { data } = props;
+  const { data, setData } = props;
   return (
     <div>
       <div className="kv-table-wrapper">
@@ -52,8 +70,8 @@ export const KeyValueTable = (props) => {
           </div>
         ))}
       </div>
-      {data.map((item) => (
-        <KeyValueRow key={item.value} data={item} />
+      {data.map((item, idx) => (
+        <KeyValueRow key={idx} data={data} setData={setData} id={idx} />
       ))}
     </div>
   );
@@ -61,8 +79,11 @@ export const KeyValueTable = (props) => {
 
 KeyValueTable.propTypes = {
   data: propTypes.array.isRequired,
+  setData: propTypes.func.isRequired,
 };
 
 KeyValueRow.propTypes = {
-  data: propTypes.object.isRequired,
+  id: propTypes.number.isRequired,
+  data: propTypes.array.isRequired,
+  setData: propTypes.func.isRequired,
 };
