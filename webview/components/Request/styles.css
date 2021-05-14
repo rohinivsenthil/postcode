@@ -1,6 +1,11 @@
 .request-wrapper {
-  height: 100%;
-  background-color: var(--primary);
-  padding: 16px;
-  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+.request-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

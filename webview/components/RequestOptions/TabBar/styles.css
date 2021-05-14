@@ -1,7 +1,7 @@
-.request-options-wrapper {
+.request-options-tab-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 4px;
+  padding: 20px 20px 0 20px;
 }
 
 .request-options {
@@ -35,7 +35,6 @@
 }
 
 .button-request-code {
-  padding: 12px 20px;
   display: inline-block;
   cursor: pointer;
   background-color: transparent;

@@ -1,5 +1,7 @@
 .request-bar {
   display: flex;
+  padding: 0 20px;
+  padding-top: 30px;
 }
 
 .input-request-url {

@@ -3,7 +3,7 @@ import "./styles.css";
 import * as propTypes from "prop-types";
 import { bodyTypes } from "../../../../../../constants/body-types";
 
-export const BodyTabBar = (props) => {
+export const ReqBodyTab = (props) => {
   const { selected, setSelected } = props;
   return (
     <div className="body-options-wrapper">
@@ -16,7 +16,7 @@ export const BodyTabBar = (props) => {
             value={option.value}
             onClick={() => setSelected(option.value)}
             className="radio-body-option"
-            checked={selected === option.value ? true : false}
+            defaultChecked={selected === option.value ? true : false}
           />
           <label className="label-body-option" htmlFor={option.value}>
             {option.name}
@@ -27,7 +27,7 @@ export const BodyTabBar = (props) => {
   );
 };
 
-BodyTabBar.propTypes = {
+ReqBodyTab.propTypes = {
   selected: propTypes.string.isRequired,
   setSelected: propTypes.func.isRequired,
 };

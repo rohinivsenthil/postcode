@@ -16,12 +16,6 @@
   margin: 0px 8px;
   background-color: var(--light-grey);
 }
-.radio-body-option:focus {
-  outline: none;
-}
-.radio-body-option:checked {
-  outline: none;
-}
 
 .label-body-option {
   color: var(--off-white-text);

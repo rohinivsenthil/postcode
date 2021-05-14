@@ -6,7 +6,7 @@ import { requestOptions } from "../../../constants/request-options";
 export const RequestOptionsTab = (props) => {
   const { selected, setSelected, headers } = props;
   return (
-    <div className="request-options-wrapper">
+    <div className="request-options-tab-wrapper">
       <div className="request-options">
         {requestOptions.map((option) => (
           <button

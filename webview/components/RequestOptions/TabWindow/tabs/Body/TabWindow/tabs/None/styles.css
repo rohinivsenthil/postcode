@@ -1,0 +1,4 @@
+.none-wrapper {
+  border: 1px solid var(--light-grey);
+  height: 100%;
+}
