@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./styles.css";
-import { KeyValueTable } from "../../../shared/KeyValueTable";
+import { KeyValueTable } from "../../../../../shared/KeyValueTable";
 import * as propTypes from "prop-types";
 
 export const Headers = (props) => {

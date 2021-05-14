@@ -3,5 +3,3 @@ export const keyValueTable = [
   { heading: "VALUE", placeholder: "Value", value: "value" },
   { heading: "DESCRIPTION", placeholder: "Description", value: "decsription" },
 ];
-
-export const defaultTableRow = { key: "", value: "", desc: "" };

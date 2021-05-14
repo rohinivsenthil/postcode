@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Params } from "../Params";
-import { Authorization } from "../Authorization";
-import { Body } from "../Body";
-import { Headers } from "../Headers";
+import { Params } from "./tabs/Params";
+import { Authorization } from "./tabs/Authorization";
+import { Body } from "./tabs/Body";
+import { Headers } from "./tabs/Headers";
 import * as propTypes from "prop-types";
 
 export const TabWindow = (props) => {
