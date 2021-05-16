@@ -7,7 +7,6 @@ export const Headers = (props) => {
   const { headers, setHeaders } = props;
   return (
     <div className="headers-wrapper">
-      <div className="headers-title">Headers</div>
       <KeyValueTable data={headers} setData={setHeaders} />
     </div>
   );

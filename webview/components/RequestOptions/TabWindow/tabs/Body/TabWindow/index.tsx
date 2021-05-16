@@ -11,6 +11,7 @@ export const ReqBodyWindow = (props) => {
   const { selected, body, setBody } = props;
   const [formData, setFormData] = React.useState([{}]);
   const [urlCoded, setUrlCoded] = React.useState([{}]);
+  const [raw, setRaw] = React.useState("");
   return (
     <div className="request-body-window-wrapper">
       {selected === "none" ? (
@@ -20,7 +21,7 @@ export const ReqBodyWindow = (props) => {
       ) : selected === "urlcoded" ? (
         <UrlCoded urlCoded={urlCoded} setUrlCoded={setUrlCoded} />
       ) : selected === "raw" ? (
-        <Raw />
+        <Raw raw={raw} setRaw={setRaw} />
       ) : selected === "binary" ? (
         <Binary />
       ) : null}

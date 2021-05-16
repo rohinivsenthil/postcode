@@ -1,11 +1,10 @@
-.none-wrapper {
+.binary-wrapper {
   border-top: 1px solid var(--light-grey);
   display: flex;
-  justify-content: center;
   margin-top: 15px;
 }
 
-.none-prompt {
+.input-file-upload {
   color: var(--off-white-text);
   font-size: 10px;
   margin-top: 20px;

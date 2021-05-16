@@ -7,7 +7,6 @@ export const Params = (props) => {
   const { params, setParams } = props;
   return (
     <div className="params-wrapper">
-      <div className="params-title">Query Params</div>
       <KeyValueTable data={params} setData={setParams} />
     </div>
   );
