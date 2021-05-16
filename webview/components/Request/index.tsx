@@ -5,7 +5,6 @@ import { RequestOptionsTab } from "../RequestOptions/TabBar";
 import { RequestOptionsWindow } from "../RequestOptions/TabWindow";
 import { requestOptions } from "../../constants/request-options";
 import { defaultHeaders } from "../../constants/default-headers";
-import { defaultReqBody } from "../../constants/default-req-body";
 
 export const Request = () => {
   const [selectedOption, setSelectedOption] = React.useState(
@@ -13,7 +12,8 @@ export const Request = () => {
   );
   const [params, setParams] = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
-  const [body, setBody] = React.useState(defaultReqBody);
+  const [body, setBody] = React.useState("");
+  console.log(body);
   return (
     <div className="request-wrapper">
       <RequestBar />
@@ -29,7 +29,6 @@ export const Request = () => {
           setHeaders={setHeaders}
           params={params}
           setParams={setParams}
-          body={body}
           setBody={setBody}
         />
       </div>

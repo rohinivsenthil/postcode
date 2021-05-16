@@ -8,10 +8,37 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const ReqBodyWindow = (props) => {
-  const { selected, body, setBody } = props;
+  const { selected, setBody } = props;
   const [formData, setFormData] = React.useState([{}]);
   const [urlCoded, setUrlCoded] = React.useState([{}]);
+  const [binary, setBinary] = React.useState(new File([], "none"));
   const [raw, setRaw] = React.useState("");
+
+  React.useEffect(() => {
+    if (selected === "none") {
+      setBody("");
+    } else if (selected === "form-data") {
+      const data = new URLSearchParams();
+      formData.forEach((item: { key?: string; value?: string }) => {
+        data.append(item.key || "", item.value || "");
+      });
+      setBody(data.toString());
+    } else if (selected === "urlcoded") {
+      const data = new URLSearchParams();
+      urlCoded.forEach((item: { key?: string; value?: string }) => {
+        data.append(item.key || "", item.value || "");
+      });
+      setBody(data.toString());
+    } else if (selected === "raw") {
+      setBody(raw);
+    } else if (selected === "binary") {
+      const setBinaryBody = async () => {
+        setBody(await binary.text());
+      };
+      setBinaryBody();
+    }
+  }, [formData, urlCoded, raw, binary, selected]);
+
   return (
     <div className="request-body-window-wrapper">
       {selected === "none" ? (
@@ -23,7 +50,7 @@ export const ReqBodyWindow = (props) => {
       ) : selected === "raw" ? (
         <Raw raw={raw} setRaw={setRaw} />
       ) : selected === "binary" ? (
-        <Binary />
+        <Binary binary={binary} setBinary={setBinary} />
       ) : null}
     </div>
   );
@@ -31,6 +58,5 @@ export const ReqBodyWindow = (props) => {
 
 ReqBodyWindow.propTypes = {
   selected: propTypes.string.isRequired,
-  body: propTypes.array.isRequired,
   setBody: propTypes.func.isRequired,
 };

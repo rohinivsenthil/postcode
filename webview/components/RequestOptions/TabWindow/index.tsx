@@ -7,8 +7,7 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const RequestOptionsWindow = (props) => {
-  const { selected, headers, setHeaders, params, setParams, body, setBody } =
-    props;
+  const { selected, headers, setHeaders, params, setParams, setBody } = props;
   return (
     <div className="request-options-window-wrapper">
       {selected === "params" ? (
@@ -16,7 +15,7 @@ export const RequestOptionsWindow = (props) => {
       ) : selected === "authorization" ? (
         <Authorization />
       ) : selected === "body" ? (
-        <Body body={body} setBody={setBody} />
+        <Body setBody={setBody} />
       ) : selected === "headers" ? (
         <Headers headers={headers} setHeaders={setHeaders} />
       ) : null}
@@ -30,6 +29,5 @@ RequestOptionsWindow.propTypes = {
   setHeaders: propTypes.func.isRequired,
   params: propTypes.array.isRequired,
   setParams: propTypes.func.isRequired,
-  body: propTypes.array.isRequired,
   setBody: propTypes.func.isRequired,
 };
