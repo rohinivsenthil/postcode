@@ -3,20 +3,19 @@ import "./styles.css";
 import { NoAuth } from "./tabs/NoAuth";
 import { BearerToken } from "./tabs/BearerToken";
 import { BasicAuth } from "./tabs/BasicAuth";
-import { ApiKey } from "./tabs/ApiKey";
 import { authTypes } from "../../../../../constants/auth-types";
+import * as propTypes from "prop-types";
 
-export const Authorization = () => {
-  // move to parent to preserve state
-  const [selected, setSelected] = React.useState(authTypes[0].value);
+export const Authorization = (props) => {
+  const { auth, setAuth } = props;
   return (
     <div className="req-auth-wrapper">
       <div className="auth-type">
         <div className="label-auth-type">Authorization Type: </div>
         <select
-          onChange={(e) => setSelected(e.target.value)}
+          onChange={(e) => setAuth({ ...auth, selected: e.target.value })}
           className="select-auth-type"
-          value={selected}
+          value={auth.selected}
         >
           {authTypes.map((type) => (
             <option key={type.value} value={type.value}>
@@ -26,16 +25,19 @@ export const Authorization = () => {
         </select>
       </div>
       <div className="req-auth-type-window">
-        {selected === "no-auth" ? (
+        {auth.selected === "no-auth" ? (
           <NoAuth />
-        ) : selected === "bearer-token" ? (
-          <BearerToken />
-        ) : selected === "basic-auth" ? (
-          <BasicAuth />
-        ) : selected === "api-key" ? (
-          <ApiKey />
+        ) : auth.selected === "bearer-token" ? (
+          <BearerToken auth={auth} setAuth={setAuth} />
+        ) : auth.selected === "basic-auth" ? (
+          <BasicAuth auth={auth} setAuth={setAuth} />
         ) : null}
       </div>
     </div>
   );
+};
+
+Authorization.propTypes = {
+  auth: propTypes.object.isRequired,
+  setAuth: propTypes.func.isRequired,
 };

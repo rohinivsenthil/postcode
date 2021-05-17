@@ -14,7 +14,7 @@
   border-left: solid 1px var(--light-grey);
   border-radius: 0 2px 2px 0;
   background-color: var(--secondary);
-  font-size: 10px;
+  font-size: var(--default-font-size);
 }
 .input-request-url:focus {
   outline: none;
@@ -33,7 +33,7 @@
   background-color: var(--secondary);
   color: var(--white-text);
   cursor: pointer;
-  font-size: 10px;
+  font-size: var(--default-font-size);
 }
 .select-request-type:hover {
   background-color: var(--input-req-url-hover);
@@ -53,7 +53,7 @@
   border-radius: 5%;
   border: 0;
   cursor: pointer;
-  font-size: 10px;
+  font-size: var(--default-font-size);
 }
 .button-request-send:hover {
   background-color: var(--btn-request-hover);

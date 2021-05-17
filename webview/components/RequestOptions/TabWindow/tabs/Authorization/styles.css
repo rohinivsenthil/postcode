@@ -8,7 +8,7 @@
 }
 
 .label-auth-type {
-  font-size: 10px;
+  font-size: var(--default-font-size);
   color: var(--white-text);
   padding-right: 12px;
 }
@@ -23,7 +23,7 @@
   background-color: transparent;
   color: var(--off-white-text);
   cursor: pointer;
-  font-size: 10px;
+  font-size: var(--default-font-size);
 }
 .select-auth-type:hover {
   color: var(--white-text);

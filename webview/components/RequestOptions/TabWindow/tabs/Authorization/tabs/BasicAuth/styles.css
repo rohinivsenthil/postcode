@@ -1,18 +1,18 @@
-.bearer-token-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.basic-auth-input-group {
   padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.label-bearer-token {
+.label-basic-auth {
   font-size: var(--default-font-size);
   color: var(--white-text);
   padding-right: 20px;
 }
 
-.input-bearer-token {
-  width: 60%;
+.input-basic-auth {
+  width: 50%;
   padding: 13px 20px;
   color: var(--white-text);
   display: inline-block;
@@ -23,9 +23,9 @@
   background-color: var(--secondary);
   font-size: var(--default-font-size);
 }
-.input-bearer-token:focus {
+.input-basic-auth:focus {
   outline: none;
 }
-.input-bearer-token:hover {
+.input-basic-auth:hover {
   background-color: var(--input-req-url-hover);
 }

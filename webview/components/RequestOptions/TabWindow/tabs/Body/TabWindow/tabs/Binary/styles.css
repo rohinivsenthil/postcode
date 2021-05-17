@@ -6,6 +6,6 @@
 
 .input-file-upload {
   color: var(--off-white-text);
-  font-size: 10px;
+  font-size: var(--default-font-size);
   margin-top: 20px;
 }

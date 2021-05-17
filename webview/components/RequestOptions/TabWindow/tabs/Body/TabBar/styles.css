@@ -26,5 +26,5 @@
 
 .label-body-option {
   color: var(--off-white-text);
-  font-size: 10px;
+  font-size: var(--default-font-size);
 }

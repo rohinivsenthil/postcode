@@ -18,6 +18,7 @@ body {
   --main: #f26c3a;
   --main-dark: #ef4f15;
   --green: #259c47;
+  --default-font-size: 11px;
 }
 
 html, body, #root, .App {

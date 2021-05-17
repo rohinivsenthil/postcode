@@ -102,7 +102,10 @@ const KeyValueRow = (props) => {
         <div className="trash-icon-wrapper">
           <FaTrashAlt
             className="trash-icon"
-            onClick={() => console.log("hello")}
+            onClick={() =>
+              data.length !== 1 &&
+              setData(data.filter((item, idx) => idx != id))
+            }
           />
         </div>
       </div>

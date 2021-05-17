@@ -11,8 +11,4 @@ export const authTypes = [
     name: "Basic Auth",
     value: "basic-auth",
   },
-  {
-    name: "Api Key",
-    value: "api-key",
-  },
 ];

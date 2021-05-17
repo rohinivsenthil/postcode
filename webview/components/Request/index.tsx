@@ -6,6 +6,7 @@ import { RequestOptionsWindow } from "../RequestOptions/TabWindow";
 import { requestOptions } from "../../constants/request-options";
 import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
+import { authTypes } from "../../constants/auth-types";
 
 export const Request = () => {
   const [selectedOption, setSelectedOption] = React.useState(
@@ -15,6 +16,7 @@ export const Request = () => {
   const [params, setParams] = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
+  const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
   console.log(body);
   return (
     <div className="request-wrapper">
@@ -32,6 +34,8 @@ export const Request = () => {
           params={params}
           setParams={setParams}
           setBody={setBody}
+          auth={auth}
+          setAuth={setAuth}
         />
       </div>
     </div>
