@@ -1,8 +1,10 @@
 import * as React from "react";
 import "./styles.css";
 import { requestTypes } from "../../constants/request-types";
+import * as propTypes from "prop-types";
 
-export const RequestBar = () => {
+export const RequestBar = (props) => {
+  const { setReqType } = props;
   return (
     <div className="request-bar">
       {/** request type dropdown */}
@@ -10,6 +12,7 @@ export const RequestBar = () => {
         name="request-type"
         id="request-type"
         className="select-request-type"
+        onChange={(e) => setReqType(e.target.value)}
       >
         {requestTypes.map((type) => (
           <option value={type.value} key={type.value}>
@@ -35,4 +38,8 @@ export const RequestBar = () => {
       </button>
     </div>
   );
+};
+
+RequestBar.propTypes = {
+  setReqType: propTypes.func.isRequired,
 };

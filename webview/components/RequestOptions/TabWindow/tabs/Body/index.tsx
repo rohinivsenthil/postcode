@@ -7,6 +7,7 @@ import "./styles.css";
 
 export const Body = (props) => {
   const { setBody } = props;
+  // move to parent to preserve state
   const [selected, setSelected] = React.useState(bodyTypes[0].value);
   return (
     <div className="request-body-wrapper">
