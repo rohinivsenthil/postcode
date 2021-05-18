@@ -11,7 +11,7 @@ export const ReqBodyWindow = (props) => {
   const { selected, setBody } = props;
   const [formData, setFormData] = React.useState([{}]);
   const [urlCoded, setUrlCoded] = React.useState([{}]);
-  const [binary, setBinary] = React.useState(new File([], "none"));
+  const [binary, setBinary] = React.useState(new File([], "No file chosen"));
   const [raw, setRaw] = React.useState("");
 
   React.useEffect(() => {

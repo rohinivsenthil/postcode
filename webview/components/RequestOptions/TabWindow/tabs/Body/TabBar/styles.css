@@ -15,7 +15,6 @@
   outline: none;
   border-radius: 0;
   margin: 0px 8px;
-  background-color: var(--light-grey);
 }
 .radio-body-option:checked {
   outline: none;
@@ -25,6 +24,6 @@
 }
 
 .label-body-option {
-  color: var(--off-white-text);
+  color: var(--default-text-light);
   font-size: var(--default-font-size);
 }

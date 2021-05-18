@@ -9,3 +9,10 @@
   flex-direction: column;
   flex: 1;
 }
+
+.response-wrapper {
+  /* display: flex;
+  flex-direction: column;
+  flex: 1; */
+  /* border: 1px solid var(--border); */
+}

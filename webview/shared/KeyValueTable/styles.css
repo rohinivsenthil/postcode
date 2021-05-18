@@ -1,6 +1,6 @@
 .kv-table-wrapper {
-  border-top: 1px solid var(--light-grey);
-  border-left: 1px solid var(--light-grey);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   margin-top: 15px;
 }
 
@@ -11,53 +11,53 @@
 
 .kv-table-heading {
   flex: 1;
-  color: var(--white-text);
+  color: var(--default-text);
   padding: 10px 12px;
   font-weight: 700;
   border: 0;
-  border-bottom: 1px solid var(--light-grey);
-  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
   font-size: 8px;
 }
 
 .kv-row-input {
   flex: 1;
-  color: var(--white-text);
+  color: var(--default-text);
   padding: 10px 0px 10px 12px;
   border: 0;
-  border-bottom: 1px solid var(--light-grey);
-  border-right: 1px solid var(--light-grey);
-  background-color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background-color: var(--background);
   font-size: var(--default-font-size);
 }
 .kv-row-input:focus {
   outline: none;
-  background-color: var(--light-grey-highlight);
+  background-color: var(--input-field-focus);
 }
 
 .kv-row-iwc-wrapper{
   flex: 1;  
   padding-left: 12px;
   display: flex;
-  border-bottom: 1px solid var(--light-grey);
-  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 .kv-row-iwc {
   flex: 1;
   border: 0;
   padding: 10px 12px;
-  color: var(--white-text);
-  background-color: var(--primary);
+  color: var(--default-text);
+  background-color: var(--background);
   font-size: var(--default-font-size);
 }
 .kv-row-iwc:focus {
   outline: none;
-  background-color: var(--light-grey-highlight);
+  background-color: var(--input-field-focus);
 }
 
 .kv-row-input-unchecked {
-  color: var(--unchecked);
+  color: var(--input-field-unchecked);
 }
 
 .checkbox-wrapper {
@@ -68,7 +68,7 @@
 }
 
 .trash-icon {
-  color: var(--off-white-text);
+  color: var(--default-text-light);
   cursor: pointer;
 }
 
@@ -76,21 +76,21 @@
   flex: 1;  
   padding-right: 12px;
   display: flex;
-  border-bottom: 1px solid var(--light-grey);
-  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 .kv-row-iwt {
   flex: 1;
   border: 0;
   padding: 10px 12px;
-  color: var(--white-text);
-  background-color: var(--primary);
+  color: var(--default-text);
+  background-color: var(--background);
   font-size: var(--default-font-size);
 }
 .kv-row-iwt:focus {
   outline: none;
-  background-color: var(--light-grey-highlight);
+  background-color: var(--input-field-focus);
 }
 
 .trash-icon-wrapper {

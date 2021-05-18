@@ -14,7 +14,7 @@
   display: flex;
   cursor: pointer;
   background-color: transparent;
-  color: var(--off-white-text);
+  color: var(--default-text-light);
   outline: none;
   border: 3px solid transparent;
   border-radius: 0;
@@ -22,24 +22,24 @@
   font-size: var(--default-font-size);
 }
 .request-option:hover {
-  color: var(--white-text);
+  color: var(--default-text);
 }
 
 .request-option-selected {
-  color: var(--white-text);
-  border-bottom: 3px solid var(--main);
+  color: var(--default-text);
+  border-bottom: 3px solid var(--primary);
 }
 
 .request-options-header-length {
   margin-left: 4px;
-  color: var(--green);
+  color: var(--tab-info);
 }
 
 .button-request-code {
   display: inline-block;
   cursor: pointer;
   background-color: transparent;
-  color: var(--main);
+  color: var(--primary);
   outline: none;
   border: 3px solid transparent;
   border-radius: 0;
@@ -47,5 +47,5 @@
   font-size: 12px;
 }
 .button-request-code:hover {
-  color: var(--main-dark);
+  color: var(--primary-dark);
 }

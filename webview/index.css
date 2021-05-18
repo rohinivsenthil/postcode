@@ -5,19 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --primary: #282828;
-  --secondary: #404040;
-  --light-grey: #464646;
-  --unchecked: #808080;
-  --light-grey-highlight: #303030;
-  --btn-request: #0b7bed;
-  --input-req-url-hover: #3a3a3a;
-  --white-text: #fff;
-  --off-white-text: #bdbdbd;
-  --btn-request-hover: #2890f8;
-  --main: #f26c3a;
-  --main-dark: #ef4f15;
-  --green: #259c47;
+  --primary: #f26c3a;
+  --primary-dark: #ef4f15;
+  --background: #282828;
+  --input-field: #404040;
+  --input-field-focus: #303030;
+  --input-field-hover: #3a3a3a;
+  --input-field-unchecked: #808080;
+  --default-text: #fff;
+  --default-text-light: #bdbdbd;
+  --border: #464646;
+  --send-button: #0b7bed;
+  --send-button-hover: #2890f8;
+  --tab-info: #259c47;
   --default-font-size: 11px;
 }
 

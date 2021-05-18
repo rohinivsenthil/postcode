@@ -1,11 +1,24 @@
 .binary-wrapper {
-  border-top: 1px solid var(--light-grey);
+  border-top: 1px solid var(--border);
   display: flex;
   margin-top: 15px;
+  color: var(--default-text-light);
+  font-size: var(--default-font-size);
+}
+
+.input-file-wrapper {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .input-file-upload {
-  color: var(--off-white-text);
-  font-size: var(--default-font-size);
-  margin-top: 20px;
+  display: none;
+}
+
+.label-file-upload {
+  padding: 6px;
+  cursor: pointer;
+  background-color: var(--input-field);
+  margin-right: 10px;
 }

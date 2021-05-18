@@ -17,7 +17,6 @@ export const Request = () => {
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
   const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
-  console.log(body);
   return (
     <div className="request-wrapper">
       <RequestBar setReqType={setReqType} />
@@ -38,6 +37,7 @@ export const Request = () => {
           setAuth={setAuth}
         />
       </div>
+      <div className="response-wrapper"></div>
     </div>
   );
 };

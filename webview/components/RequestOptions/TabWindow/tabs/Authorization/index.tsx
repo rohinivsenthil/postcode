@@ -8,6 +8,7 @@ import * as propTypes from "prop-types";
 
 export const Authorization = (props) => {
   const { auth, setAuth } = props;
+  // move to parent to preserve state
   return (
     <div className="req-auth-wrapper">
       <div className="auth-type">

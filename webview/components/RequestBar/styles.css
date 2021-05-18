@@ -7,20 +7,20 @@
 .input-request-url {
   flex: 2;
   padding: 13px 20px;
-  color: var(--white-text);
+  color: var(--default-text);
   display: inline-block;
   outline: none;
   border: 0;
-  border-left: solid 1px var(--light-grey);
+  border-left: solid 1px var(--border);
   border-radius: 0 2px 2px 0;
-  background-color: var(--secondary);
+  background-color: var(--input-field);
   font-size: var(--default-font-size);
 }
 .input-request-url:focus {
   outline: none;
 }
 .input-request-url:hover {
-  background-color: var(--input-req-url-hover);
+  background-color: var(--input-field-hover);
 }
 
 .select-request-type {
@@ -30,21 +30,21 @@
   outline: none;
   border: 0;
   border-radius: 2px 0 0 2px;
-  background-color: var(--secondary);
-  color: var(--white-text);
+  background-color: var(--input-field);
+  color: var(--default-text);
   cursor: pointer;
   font-size: var(--default-font-size);
 }
 .select-request-type:hover {
-  background-color: var(--input-req-url-hover);
+  background-color: var(--input-field-hover);
 }
 .select-request-type:focus {
   outline: none;
 }
 
 .button-request-send {
-  background-color: var(--btn-request);
-  color: var(--white-text);
+  background-color: var(--send-button);
+  color: var(--default-text);
   font-weight: bold;
   padding: 13px 20px;
   margin: 0px 12px;
@@ -56,5 +56,5 @@
   font-size: var(--default-font-size);
 }
 .button-request-send:hover {
-  background-color: var(--btn-request-hover);
+  background-color: var(--send-button-hover);
 }

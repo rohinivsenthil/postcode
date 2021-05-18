@@ -1,12 +1,12 @@
 .none-wrapper {
-  border-top: 1px solid var(--light-grey);
+  border-top: 1px solid var(--border);
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
 
 .none-prompt {
-  color: var(--off-white-text);
+  color: var(--default-text-light);
   font-size: var(--default-font-size);
   margin-top: 20px;
 }

@@ -7,17 +7,23 @@ export const Binary = (props) => {
 
   return (
     <div className="binary-wrapper">
-      <input
-        type="file"
-        id="myFile"
-        name="filename"
-        className="input-file-upload"
-        onChange={(e) => {
-          if (e.target.files.length) {
-            setBinary(e.target.files[0]);
-          }
-        }}
-      ></input>
+      <div className="input-file-wrapper">
+        <input
+          type="file"
+          id="myFile"
+          name="filename"
+          className="input-file-upload"
+          onChange={(e) => {
+            if (e.target.files.length) {
+              setBinary(e.target.files[0]);
+            }
+          }}
+        ></input>
+        <label className="label-file-upload" htmlFor="myFile">
+          Select file
+        </label>
+        <div>{binary.name}</div>
+      </div>
     </div>
   );
 };
