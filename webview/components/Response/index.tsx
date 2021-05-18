@@ -3,6 +3,7 @@ import * as propTypes from "prop-types";
 import Editor from "@monaco-editor/react";
 import "./styles.css";
 import { responseViews } from "../../constants/response-views";
+import { supportedLangs } from "../../constants/supported-langs";
 
 export const Response = (props) => {
   const { response } = props;
@@ -17,7 +18,13 @@ export const Response = (props) => {
               </button>
             ))}
           </div>
-          <div>Dropdown</div>
+          <select className="select-res-lang">
+            {supportedLangs.map((type) => (
+              <option key={type.value} value={type.value}>
+                {type.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="response-status">
           <div>Status: {`${response.status} ${response.statusText}`}</div>

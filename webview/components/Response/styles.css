@@ -6,6 +6,7 @@
 
 .response-header {
     margin: 10px 0;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,3 +37,24 @@
 .button-response-view:focus {
     outline: none;
 }
+
+.select-res-lang {
+    margin-left: 10px;
+    padding: 4px;
+    display: inline-block;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background-color: transparent;
+    color: var(--default-text-light);
+    cursor: pointer;
+    font-size: var(--default-font-size);
+  }
+  .select-res-lang:hover {
+    color: var(--default-text);
+  }
+  .select-res-lang:focus {
+    outline: none;
+  }
+  

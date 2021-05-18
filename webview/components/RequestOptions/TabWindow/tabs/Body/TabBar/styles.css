@@ -1,5 +1,6 @@
 .body-options-wrapper {
   display: flex;
+  align-items: center;
 }
 
 .body-options {
@@ -26,4 +27,24 @@
 .label-body-option {
   color: var(--default-text-light);
   font-size: var(--default-font-size);
+}
+
+.select-raw-lang {
+  padding: 4px;
+  margin-left: 5px;
+  display: inline-block;
+  font-weight: 600;
+  outline: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background-color: transparent;
+  color: var(--default-text-light);
+  cursor: pointer;
+  font-size: var(--default-font-size);
+}
+.select-raw-lang:hover {
+  color: var(--default-text);
+}
+.select-raw-lang:focus {
+  outline: none;
 }
