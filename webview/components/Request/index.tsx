@@ -1,9 +1,11 @@
 import * as React from "react";
+import * as propTypes from "prop-types";
 import "./styles.css";
 import vscode from "../../vscode";
 import { RequestBar } from "../RequestBar";
 import { RequestOptionsTab } from "../RequestOptions/TabBar";
 import { RequestOptionsWindow } from "../RequestOptions/TabWindow";
+import { Response } from "../Response";
 import { requestOptions } from "../../constants/request-options";
 import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
@@ -13,7 +15,8 @@ const sendRequest = (reqType, requestUrl, params, headers, body, auth) => {
   vscode.postMessage({ reqType, requestUrl, params, headers, body, auth });
 };
 
-export const Request = () => {
+export const Request = (props) => {
+  const { response } = props;
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
@@ -50,7 +53,13 @@ export const Request = () => {
           setAuth={setAuth}
         />
       </div>
-      <div className="response-wrapper"></div>
+      <div className="response-wrapper">
+        <Response response={response} />
+      </div>
     </div>
   );
+};
+
+Request.propTypes = {
+  response: propTypes.any.isRequired,
 };

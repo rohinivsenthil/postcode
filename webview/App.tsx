@@ -11,11 +11,9 @@ const App = () => {
     });
   }, []);
 
-  console.log(response);
-
   return (
     <div className="App">
-      <Request />
+      <Request response={response} />
     </div>
   );
 };

@@ -11,8 +11,7 @@
 }
 
 .response-wrapper {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  flex: 1; */
-  /* border: 1px solid var(--border); */
+  flex: 1;
 }

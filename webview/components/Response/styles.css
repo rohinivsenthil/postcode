@@ -1,0 +1,5 @@
+.response-window {
+    border: 1px solid var(--border);
+    flex: 1;
+    padding: 5px 20px 10px 20px;
+}
