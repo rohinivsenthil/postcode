@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
+import axios from "axios";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -27,7 +28,6 @@ export function activate(context: vscode.ExtensionContext) {
         { enableScripts: true }
       );
 
-      // Get path to resource on disk
       const scriptUri = panel.webview.asWebviewUri(
         vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
       );
@@ -44,8 +44,29 @@ export function activate(context: vscode.ExtensionContext) {
     <div id="root"></div>
 		<script src="${scriptUri}"></script>
   </body>
-</html>
-`;
+</html>`;
+
+      panel.webview.onDidReceiveMessage(
+        ({ reqType, requestUrl, params, headers, body, auth }) => {
+          const urlParams = new URLSearchParams(
+            params
+              .filter(({ selected }) => selected)
+              .map(({ key, value }) => [key || "", value || ""])
+          );
+
+          axios({
+            method: reqType,
+            url: requestUrl,
+            params: urlParams,
+            data: body,
+            validateStatus: () => true,
+          }).then(resp => panel.webview.postMessage({
+            data: resp.data,
+            status: resp.status,
+            statusText: resp.statusText,
+          }));
+        }
+      );
     }
   );
 
