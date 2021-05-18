@@ -21,7 +21,10 @@ body {
   --default-font-size: 11px;
 }
 
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
 }
 

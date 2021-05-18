@@ -4,7 +4,7 @@ import { requestTypes } from "../../constants/request-types";
 import * as propTypes from "prop-types";
 
 export const RequestBar = (props) => {
-  const { setReqType } = props;
+  const { requestUrl, setRequestUrl, sendRequest, setReqType } = props;
   return (
     <div className="request-bar">
       {/** request type dropdown */}
@@ -27,12 +27,15 @@ export const RequestBar = (props) => {
         name="request-url"
         placeholder="Enter request URL"
         className="input-request-url"
+        value={requestUrl}
+        onChange={(e) => setRequestUrl(e.target.value)}
       />
       {/** request send button*/}
       <button
         name="request-send"
         id="request-send"
         className="button-request-send"
+        onClick={sendRequest}
       >
         Send
       </button>
@@ -41,5 +44,8 @@ export const RequestBar = (props) => {
 };
 
 RequestBar.propTypes = {
+  requestUrl: propTypes.string.isRequired,
+  setRequestUrl: propTypes.func.isRequired,
+  sendRequest: propTypes.func.isRequired,
   setReqType: propTypes.func.isRequired,
 };

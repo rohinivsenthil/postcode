@@ -35,8 +35,8 @@
   background-color: var(--input-field-focus);
 }
 
-.kv-row-iwc-wrapper{
-  flex: 1;  
+.kv-row-iwc-wrapper {
+  flex: 1;
   padding-left: 12px;
   display: flex;
   border-bottom: 1px solid var(--border);
@@ -72,8 +72,8 @@
   cursor: pointer;
 }
 
-.kv-row-iwt-wrapper{
-  flex: 1;  
+.kv-row-iwt-wrapper {
+  flex: 1;
   padding-right: 12px;
   display: flex;
   border-bottom: 1px solid var(--border);

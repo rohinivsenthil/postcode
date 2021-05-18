@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./styles.css";
+import vscode from "../../vscode";
 import { RequestBar } from "../RequestBar";
 import { RequestOptionsTab } from "../RequestOptions/TabBar";
 import { RequestOptionsWindow } from "../RequestOptions/TabWindow";
@@ -8,10 +9,15 @@ import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
 import { authTypes } from "../../constants/auth-types";
 
+const sendRequest = (reqType, requestUrl, params, headers, body, auth) => {
+  vscode.postMessage({ reqType, requestUrl, params, headers, body, auth });
+};
+
 export const Request = () => {
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
+  const [requestUrl, setRequestUrl] = React.useState("");
   const [reqType, setReqType] = React.useState(requestTypes[0].value);
   const [params, setParams] = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
@@ -19,7 +25,14 @@ export const Request = () => {
   const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
   return (
     <div className="request-wrapper">
-      <RequestBar setReqType={setReqType} />
+      <RequestBar
+        requestUrl={requestUrl}
+        setRequestUrl={setRequestUrl}
+        setReqType={setReqType}
+        sendRequest={() =>
+          sendRequest(reqType, requestUrl, params, headers, body, auth)
+        }
+      />
       <div className="request-options-wrapper">
         <RequestOptionsTab
           selected={selectedOption}

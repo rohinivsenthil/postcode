@@ -13,7 +13,7 @@ const KeyValueRow = (props) => {
           <input
             type="checkbox"
             className="input-checkbox"
-            checked={data[id].checked}
+            checked={data[id].checked || false}
             onChange={(e) =>
               setData([
                 ...data.slice(0, id),

@@ -3,12 +3,12 @@
 "use strict";
 
 const path = require("path");
+const postcssNormalize = require("postcss-normalize");
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
 );
 
-/**@type {import('webpack').Configuration}*/
 const baseConfig = (webpackEnv) => {
   const isEnvDevelopment = webpackEnv === "development";
   const isEnvProduction = webpackEnv === "production";
@@ -83,11 +83,7 @@ const baseConfig = (webpackEnv) => {
   };
 };
 
-/**@type {import('webpack').Configuration}*/
 const extensionConfig = (webpackEnv) => {
-  const isEnvDevelopment = webpackEnv === "development";
-  const isEnvProduction = webpackEnv === "production";
-
   return {
     ...baseConfig(webpackEnv),
     target: "node",
@@ -101,11 +97,7 @@ const extensionConfig = (webpackEnv) => {
   };
 };
 
-/**@type {import('webpack').Configuration}*/
 const webviewConfig = (webpackEnv) => {
-  const isEnvDevelopment = webpackEnv === "development";
-  const isEnvProduction = webpackEnv === "production";
-
   return {
     ...baseConfig(webpackEnv),
     entry: "./webview/index.tsx",
