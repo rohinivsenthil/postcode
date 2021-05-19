@@ -27,12 +27,11 @@
   border: 0;
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
-  background-color: var(--background);
+  background-color: transparent;
   font-size: var(--default-font-size);
 }
 .kv-row-input:focus {
   outline: none;
-  background-color: var(--input-field-focus);
 }
 
 .kv-row-iwc-wrapper {
@@ -48,12 +47,11 @@
   border: 0;
   padding: 10px 12px;
   color: var(--default-text);
-  background-color: var(--background);
+  background-color: transparent;
   font-size: var(--default-font-size);
 }
 .kv-row-iwc:focus {
   outline: none;
-  background-color: var(--input-field-focus);
 }
 
 .kv-row-input-unchecked {
@@ -85,12 +83,11 @@
   border: 0;
   padding: 10px 12px;
   color: var(--default-text);
-  background-color: var(--background);
+  background-color: transparent;
   font-size: var(--default-font-size);
 }
 .kv-row-iwt:focus {
   outline: none;
-  background-color: var(--input-field-focus);
 }
 
 .trash-icon-wrapper {

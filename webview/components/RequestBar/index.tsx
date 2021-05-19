@@ -7,7 +7,6 @@ export const RequestBar = (props) => {
   const { requestUrl, setRequestUrl, sendRequest, setReqType } = props;
   return (
     <div className="request-bar">
-      {/** request type dropdown */}
       <select
         name="request-type"
         id="request-type"
@@ -20,7 +19,6 @@ export const RequestBar = (props) => {
           </option>
         ))}
       </select>
-      {/** request URL text box */}
       <input
         type="text"
         id="request-url"
@@ -30,7 +28,6 @@ export const RequestBar = (props) => {
         value={requestUrl}
         onChange={(e) => setRequestUrl(e.target.value)}
       />
-      {/** request send button*/}
       <button
         name="request-send"
         id="request-send"
