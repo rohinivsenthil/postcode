@@ -1,6 +1,6 @@
 .kv-table-wrapper {
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  border-top: var(--default-border-size) solid var(--border);
+  border-left: var(--default-border-size) solid var(--border);
   margin-top: 15px;
 }
 
@@ -15,9 +15,9 @@
   padding: 10px 12px;
   font-weight: 700;
   border: 0;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  font-size: 8px;
+  border-bottom: var(--default-border-size) solid var(--border);
+  border-right: var(--default-border-size) solid var(--border);
+  font-size: var(--small-font-size);
 }
 
 .kv-row-input {
@@ -25,8 +25,8 @@
   color: var(--default-text);
   padding: 10px 0px 10px 12px;
   border: 0;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border-bottom: var(--default-border-size) solid var(--border);
+  border-right: var(--default-border-size) solid var(--border);
   background-color: transparent;
   font-size: var(--default-font-size);
 }
@@ -38,8 +38,8 @@
   flex: 1;
   padding-left: 12px;
   display: flex;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border-bottom: var(--default-border-size) solid var(--border);
+  border-right: var(--default-border-size) solid var(--border);
 }
 
 .kv-row-iwc {
@@ -74,8 +74,8 @@
   flex: 1;
   padding-right: 12px;
   display: flex;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border-bottom: var(--default-border-size) solid var(--border);
+  border-right: var(--default-border-size) solid var(--border);
 }
 
 .kv-row-iwt {

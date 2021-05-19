@@ -1,5 +1,5 @@
 .response-window {
-    border-top: 1px solid var(--border);
+    border-top: var(--default-border-size) solid var(--border);
     flex: 1;
     padding: 5px 20px 10px 20px;
 }
@@ -19,6 +19,13 @@
 
 .response-status {
     font-size: var(--default-font-size);
+    display: flex;
+    align-items: center;
+}
+
+.text-response-status {
+    color: var(--tab-info);
+    margin-left: 5px;
 }
 
 .button-response-view {
@@ -38,18 +45,22 @@
     outline: none;
 }
 
+.button-response-view-selected {
+    color: var(--default-text);
+}
+
 .select-res-lang {
     margin-left: 10px;
     padding: 4px;
     display: inline-block;
     font-weight: 600;
     outline: none;
-    border: 1px solid var(--border);
+    border: var(--default-border-size) solid var(--border);
     border-radius: 2px;
     background-color: transparent;
     color: var(--default-text-light);
     cursor: pointer;
-    font-size: var(--default-font-size);
+    font-size: var(--small-font-size);
   }
   .select-res-lang:hover {
     color: var(--default-text);

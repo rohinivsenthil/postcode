@@ -18,7 +18,7 @@
   display: inline-block;
   font-weight: 600;
   outline: none;
-  border: 1px solid var(--border);
+  border: var(--default-border-size) solid var(--border);
   border-radius: 2px;
   background-color: transparent;
   color: var(--default-text-light);
@@ -33,6 +33,6 @@
 }
 
 .req-auth-type-window {
-  border-top: 1px solid var(--border);
+  border-top: var(--default-border-size) solid var(--border);
   margin-top: 15px;
 }

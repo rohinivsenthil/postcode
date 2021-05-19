@@ -60,11 +60,13 @@ export function activate(context: vscode.ExtensionContext) {
             params: urlParams,
             data: body,
             validateStatus: () => true,
-          }).then(resp => panel.webview.postMessage({
-            data: resp.data,
-            status: resp.status,
-            statusText: resp.statusText,
-          }));
+          }).then((resp) =>
+            panel.webview.postMessage({
+              data: resp.data,
+              status: resp.status,
+              statusText: resp.statusText,
+            })
+          );
         }
       );
     }

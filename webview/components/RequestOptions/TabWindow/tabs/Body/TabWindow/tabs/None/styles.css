@@ -1,5 +1,5 @@
 .none-wrapper {
-  border-top: 1px solid var(--border);
+  border-top: var(--default-border-size) solid var(--border);
   display: flex;
   justify-content: center;
   margin-top: 15px;

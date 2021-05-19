@@ -35,12 +35,12 @@
   display: inline-block;
   font-weight: 600;
   outline: none;
-  border: 1px solid var(--border);
+  border: var(--default-border-size) solid var(--border);
   border-radius: 2px;
   background-color: transparent;
   color: var(--default-text-light);
   cursor: pointer;
-  font-size: var(--default-font-size);
+  font-size: var(--small-font-size);
 }
 .select-raw-lang:hover {
   color: var(--default-text);
