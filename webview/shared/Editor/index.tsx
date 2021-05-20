@@ -2,34 +2,6 @@ import * as React from "react";
 import * as monaco from "monaco-editor";
 import * as propTypes from "prop-types";
 
-// @ts-ignore
-self.MonacoEnvironment = {
-  getWorkerUrl: function (_moduleId: any, label: string) {
-    if (label === "json") {
-      return `data:text/javascript;charset=utf-8,${encodeURIComponent(
-        //@ts-ignore
-        `importScripts('${distUri}/json.worker.js');`
-      )}`;
-    }
-    if (label === "css") {
-      return `data:text/javascript;charset=utf-8,${encodeURIComponent(
-        //@ts-ignore
-        `importScripts('${distUri}/css.worker.js');`
-      )}`;
-    }
-    if (label === "html" || label === "xml") {
-      return `data:text/javascript;charset=utf-8,${encodeURIComponent(
-        //@ts-ignore
-        `importScripts('${distUri}/html.worker.js');`
-      )}`;
-    }
-    return `data:text/javascript;charset=utf-8,${encodeURIComponent(
-      //@ts-ignore
-      `importScripts('${distUri}/editor.worker.js');`
-    )}`;
-  },
-};
-
 export const Editor = (props) => {
   const { value, language, onChange, readOnly, className } = props;
 
@@ -38,34 +10,32 @@ export const Editor = (props) => {
 
   React.useEffect(() => {
     if (divEl.current) {
-      setEditor(
-        monaco.editor.create(divEl.current, {
-          minimap: { enabled: false },
-          scrollBeyondLastLine: false,
-          theme: "vs-dark",
-          value,
-          language,
-          readOnly,
-        })
-      );
-    }
+      const tmpEditor = monaco.editor.create(divEl.current, {
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        theme: "vs-dark",
+        value,
+        language,
+        readOnly,
+      });
 
-    return () => {
-      editor.dispose();
-    };
-  }, []);
-
-  React.useEffect(() => {
-    if (editor) {
       window.addEventListener("resize", () => {
-        editor.layout();
+        tmpEditor.layout();
       });
 
-      editor.onDidChangeModelContent(() => {
-        onChange(editor.getValue());
-      });
+      if (onChange) {
+        tmpEditor.onDidChangeModelContent(() => {
+          onChange(tmpEditor.getValue());
+        });
+      }
+
+      setEditor(tmpEditor);
+
+      return () => {
+        tmpEditor.dispose();
+      };
     }
-  }, [editor]);
+  }, []);
 
   React.useEffect(() => {
     if (editor && editor.getValue() !== value) {

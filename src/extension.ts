@@ -28,8 +28,8 @@ export function activate(context: vscode.ExtensionContext) {
         { enableScripts: true }
       );
 
-      const distUri = panel.webview.asWebviewUri(
-        vscode.Uri.joinPath(context.extensionUri, "dist")
+      const scriptUri = panel.webview.asWebviewUri(
+        vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
       );
 
       panel.webview.html = `<!DOCTYPE html>
@@ -42,8 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script>const distUri = "${distUri}"</script>
-		<script src="${distUri}/webview.js"></script>
+		<script src="${scriptUri}"></script>
   </body>
 </html>`;
 

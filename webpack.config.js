@@ -3,6 +3,7 @@
 "use strict";
 
 const path = require("path");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
 
 const imageInlineSizeLimit = parseInt(
@@ -100,18 +101,16 @@ const extensionConfig = (webpackEnv) => {
 const webviewConfig = (webpackEnv) => {
   return {
     ...baseConfig(webpackEnv),
-    entry: {
-      webview: "./webview/index.tsx",
-      "editor.worker": "monaco-editor/esm/vs/editor/editor.worker.js",
-      "json.worker": "monaco-editor/esm/vs/language/json/json.worker",
-      "css.worker": "monaco-editor/esm/vs/language/css/css.worker",
-      "html.worker": "monaco-editor/esm/vs/language/html/html.worker",
-    },
+    entry: "./webview/index.tsx",
     output: {
-      globalObject: "self",
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].js",
+      filename: "webview.js",
     },
+    plugins: [
+      new MonacoWebpackPlugin({
+        languages: ["html", "xml", "json"],
+      }),
+    ],
   };
 };
 
