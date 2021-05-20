@@ -12,7 +12,7 @@ body {
   --input-field-focus: var(--vscode-dropdown-background);
   --input-field-hover: var(--vscode-dropdown-background);
   --input-field-unchecked: #808080;
-  --default-text: var(--vscode-foreground);;
+  --default-text: var(--vscode-foreground);
   --default-text-light: var(--vscode-descriptionForeground);
   --border: var(--vscode-descriptionForeground);
   --send-button: var(--vscode-button-background);

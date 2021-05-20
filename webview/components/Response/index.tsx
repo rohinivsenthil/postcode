@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as propTypes from "prop-types";
-import Editor from "@monaco-editor/react";
+import { Editor } from "../../shared/Editor";
 import "./styles.css";
 import { responseViews } from "../../constants/response-views";
 import { supportedLangs } from "../../constants/supported-langs";
@@ -44,15 +44,11 @@ export const Response = (props) => {
           </div>
         </div>
         <Editor
-          height="70%"
-          language="JSON"
-          theme="vs-dark"
-          value={
-            typeof response.data === "object"
-              ? JSON.stringify(response.data, null, 2)
-              : response.data
-          }
-        ></Editor>
+          className="response-editor"
+          value={response.data || ""}
+          language="json"
+          readOnly={true}
+        />
       </div>
     );
   }

@@ -1,19 +1,18 @@
 import * as React from "react";
-import Editor from "@monaco-editor/react";
-import "./styles.css";
 import * as propTypes from "prop-types";
+import { Editor } from "../../../../../../../../shared/Editor";
+import "./styles.css";
 
 export const Raw = (props) => {
   const { raw, setRaw } = props;
   return (
     <div className="raw-wrapper">
       <Editor
-        height="100%"
-        // defaultLanguage="javascript"
-        theme="vs-dark"
+        className="raw-editor"
         value={raw}
-        onChange={(value) => setRaw(value)}
-      ></Editor>
+        language="json"
+        onChange={setRaw}
+      />
     </div>
   );
 };

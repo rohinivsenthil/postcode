@@ -7,7 +7,9 @@ const App = () => {
 
   React.useEffect(() => {
     window.addEventListener("message", (event) => {
-      setResponse(event.data);
+      if (event.data.type === "response") {
+        setResponse(event.data);
+      }
     });
   }, []);
 
