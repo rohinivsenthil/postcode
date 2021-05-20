@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
       // The code you place here will be executed every time your command is executed
 
       // Display a message box to the user
-      vscode.window.showInformationMessage("Hello World from Postcode!");
+      vscode.window.showInformationMessage("Welcome to Postcode!");
 
       const panel = vscode.window.createWebviewPanel(
         "postcode",
@@ -48,25 +48,38 @@ export function activate(context: vscode.ExtensionContext) {
 
       panel.webview.onDidReceiveMessage(
         ({ reqType, requestUrl, params, headers, body, auth }) => {
-          const urlParams = new URLSearchParams(
-            params
-              .filter(({ selected }) => selected)
-              .map(({ key, value }) => [key || "", value || ""])
-          );
+          if (requestUrl) {
+            const urlParams = new URLSearchParams(
+              params
+                .filter(({ selected }) => selected)
+                .map(({ key, value }) => [key || "", value || ""])
+            );
 
-          axios({
-            method: reqType,
-            url: requestUrl,
-            params: urlParams,
-            data: body,
-            validateStatus: () => true,
-          }).then((resp) =>
-            panel.webview.postMessage({
-              data: resp.data,
-              status: resp.status,
-              statusText: resp.statusText,
+            axios({
+              method: reqType,
+              url: requestUrl,
+              params: urlParams,
+              data: body,
+              validateStatus: () => true,
             })
-          );
+              .then((resp) =>
+                panel.webview.postMessage({
+                  data: resp.data,
+                  status: resp.status,
+                  statusText: resp.statusText,
+                })
+              )
+              .catch((err) => {
+                panel.webview.postMessage({
+                  error: err,
+                });
+                vscode.window.showInformationMessage(
+                  "Error: Could not send request"
+                );
+              });
+          } else {
+            vscode.window.showInformationMessage("Request URL is empty");
+          }
         }
       );
     }
