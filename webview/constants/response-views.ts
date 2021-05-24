@@ -7,8 +7,4 @@ export const responseViews = [
     name: "Raw",
     value: "raw",
   },
-  {
-    name: "Preview",
-    value: "preview",
-  },
 ];
