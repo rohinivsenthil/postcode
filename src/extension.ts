@@ -47,18 +47,11 @@ export function activate(context: vscode.ExtensionContext) {
 </html>`;
 
       panel.webview.onDidReceiveMessage(
-        ({ reqType, requestUrl, params, headers, body, auth }) => {
+        ({ reqType, requestUrl, headers, body, auth }) => {
           if (requestUrl) {
-            const urlParams = new URLSearchParams(
-              params
-                .filter(({ selected }) => selected)
-                .map(({ key, value }) => [key || "", value || ""])
-            );
-
             axios({
               method: reqType,
               url: requestUrl,
-              params: urlParams,
               data: body,
               transformResponse: [(data) => data],
               responseType: "text",

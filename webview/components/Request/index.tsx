@@ -11,8 +11,8 @@ import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
 import { authTypes } from "../../constants/auth-types";
 
-const sendRequest = (reqType, requestUrl, params, headers, body, auth) => {
-  vscode.postMessage({ reqType, requestUrl, params, headers, body, auth });
+const sendRequest = (reqType, requestUrl, headers, body, auth) => {
+  vscode.postMessage({ reqType, requestUrl, headers, body, auth });
 };
 
 export const Request = (props) => {
@@ -26,6 +26,22 @@ export const Request = (props) => {
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
   const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
+
+  React.useEffect(() => {
+    let index = requestUrl.indexOf("?");
+    index = index == -1 ? requestUrl.length : index;
+
+    const searchParams = new URLSearchParams(
+      params
+        .filter(({ checked }) => checked)
+        .map(({ key, value }) => [key || "", value || ""])
+    ).toString();
+
+    setRequestUrl(
+      requestUrl.slice(0, index) + (searchParams ? `?${searchParams}` : "")
+    );
+  }, [params]);
+
   return (
     <div className="request-wrapper">
       <RequestBar
@@ -33,7 +49,7 @@ export const Request = (props) => {
         setRequestUrl={setRequestUrl}
         setReqType={setReqType}
         sendRequest={() =>
-          sendRequest(reqType, requestUrl, params, headers, body, auth)
+          sendRequest(reqType, requestUrl, headers, body, auth)
         }
       />
       <div className="request-options-wrapper">
