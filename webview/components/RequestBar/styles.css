@@ -43,7 +43,7 @@
 
 .button-request-send {
   background-color: var(--send-button);
-  color: var(--default-text);
+  color: #fff;
   font-weight: bold;
   padding: 13px 20px;
   margin: 0 0 0 12px;

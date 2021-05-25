@@ -8,13 +8,13 @@ export const ErrorResponse = (props) => {
   return (
     <div className="error-response-wrapper">
       <div>Could not send request</div>
+      <div className="error-message">{`Error: ${response.error.message}`}</div>
       <img
         src={packageIcon}
         height="30%"
         width="30%"
         className="img-error-response"
       />
-      <div className="error-message">{`Error: ${response.error.message}`}</div>
     </div>
   );
 };
