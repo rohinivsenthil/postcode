@@ -19,6 +19,7 @@ body {
   --send-button-hover: var(--vscode-button-hoverBackground);
   --tab-info: #259c47;
   --logo-color: #626262;
+  --error-message: #502927;
   --default-font-size: 11px;
   --small-font-size: 8px;
   --default-border-size: 0.1px;

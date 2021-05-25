@@ -1,0 +1,19 @@
+.error-response-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--default-font-size);
+}
+
+.img-error-response {
+  margin: 20px;
+}
+
+.error-message {
+  padding: 10px;
+  opacity: 90%;
+  background-color: var(--error-message);
+  border: var(--default-border-size) solid var(--error-message);
+  border-radius: 10px;
+}

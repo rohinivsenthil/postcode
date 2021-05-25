@@ -67,6 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
               )
               .catch((err) => {
                 panel.webview.postMessage({
+                  type: "response",
                   error: err,
                 });
                 vscode.window.showInformationMessage(

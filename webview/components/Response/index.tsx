@@ -5,6 +5,7 @@ import "./styles.css";
 import { responseViews } from "../../constants/response-views";
 import { supportedLangs } from "../../constants/supported-langs";
 import { InitialResponse } from "./tabs/InitialResponse";
+import { ErrorResponse } from "./tabs/ErrorResponse";
 
 export const Response = (props) => {
   const { response } = props;
@@ -14,7 +15,7 @@ export const Response = (props) => {
   if (response.initial) {
     return <InitialResponse />;
   } else if (response.error) {
-    return <div>Error: {response.error.message}</div>;
+    return <ErrorResponse response={response} />;
   } else {
     return (
       <div className="response-window">
