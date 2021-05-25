@@ -45,7 +45,8 @@ export const Editor = (props) => {
 
   React.useEffect(() => {
     if (editor) {
-      editor.updateOptions({ language });
+      const model = editor.getModel();
+      monaco.editor.setModelLanguage(model, language);
     }
   }, [language, editor]);
 

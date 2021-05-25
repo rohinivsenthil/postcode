@@ -8,6 +8,7 @@ import { supportedLangs } from "../../constants/supported-langs";
 export const Response = (props) => {
   const { response } = props;
   const [view, setView] = React.useState(responseViews[0].value);
+  const [language, setLanguage] = React.useState(supportedLangs[0].value);
   if (response.error) {
     return <div>Error: {response.error.message}</div>;
   } else {
@@ -30,13 +31,19 @@ export const Response = (props) => {
                 </button>
               ))}
             </div>
-            <select className="select-res-lang">
-              {supportedLangs.map((type) => (
-                <option key={type.value} value={type.value}>
-                  {type.name}
-                </option>
-              ))}
-            </select>
+            {view === "pretty" && (
+              <select
+                onChange={(e) => setLanguage(e.target.value)}
+                className="select-res-lang"
+                value={language}
+              >
+                {supportedLangs.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.name}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
           <div className="response-status">
             <div>Status:</div>
@@ -46,7 +53,7 @@ export const Response = (props) => {
         <Editor
           className="response-editor"
           value={response.data || ""}
-          language="json"
+          language={view === "raw" ? "text" : language}
           readOnly={true}
         />
       </div>

@@ -1,18 +1,18 @@
 export const supportedLangs = [
   {
     name: "HTML",
-    value: "HTML",
+    value: "html",
   },
   {
     name: "JSON",
-    value: "JSON",
+    value: "json",
   },
   {
     name: "XML",
-    value: "XML",
+    value: "xml",
   },
   {
     name: "Text",
-    value: "Text",
+    value: "text",
   },
 ];
