@@ -4,12 +4,16 @@ import { Editor } from "../../shared/Editor";
 import "./styles.css";
 import { responseViews } from "../../constants/response-views";
 import { supportedLangs } from "../../constants/supported-langs";
+import { InitialResponse } from "./tabs/InitialResponse";
 
 export const Response = (props) => {
   const { response } = props;
   const [view, setView] = React.useState(responseViews[0].value);
   const [language, setLanguage] = React.useState(supportedLangs[0].value);
-  if (response.error) {
+
+  if (response.initial) {
+    return <InitialResponse />;
+  } else if (response.error) {
     return <div>Error: {response.error.message}</div>;
   } else {
     return (

@@ -1,0 +1,12 @@
+.initial-response-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--logo-color);
+  font-size: var(--default-font-size);
+}
+
+.img-initial-response {
+  margin: 20px;
+}

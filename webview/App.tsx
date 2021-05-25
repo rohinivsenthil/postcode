@@ -3,7 +3,9 @@ import "./App.css";
 import { Request } from "./components/Request";
 
 const App = () => {
-  const [response, setResponse] = React.useState({});
+  const [response, setResponse] = React.useState({
+    initial: "true",
+  });
 
   React.useEffect(() => {
     window.addEventListener("message", (event) => {
