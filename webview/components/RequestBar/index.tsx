@@ -40,7 +40,9 @@ export const RequestBar = (props) => {
         className="button-request-send"
         onClick={() => {
           sendRequest();
-          setLoadingResponse(true);
+          if (requestUrl !== "") {
+            setLoadingResponse(true);
+          }
         }}
       >
         Send
