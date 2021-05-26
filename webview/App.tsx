@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./App.css";
-import { Request } from "./components/Request";
+import { Postcode } from "./pages/Postcode";
 
 const App = () => {
   const [response, setResponse] = React.useState({
@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Request
+      <Postcode
         response={response}
         loadingResponse={loadingResponse}
         setLoadingResponse={setLoadingResponse}
