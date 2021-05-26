@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:postcode.helloWorld"
+    "onCommand:postcode.createRequest"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "postcode.helloWorld",
-        "title": "Hello World"
+        "command": "postcode.createRequest",
+        "title": "Postcode: Create Request"
       }
     ]
   },
