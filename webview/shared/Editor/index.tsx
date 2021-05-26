@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as monaco from "monaco-editor";
 import * as propTypes from "prop-types";
+import "./styles.css";
 
 export const Editor = (props) => {
   const { value, language, onChange, readOnly, className } = props;
@@ -50,7 +51,7 @@ export const Editor = (props) => {
     }
   }, [language, editor]);
 
-  return <div className={className} ref={divEl}></div>;
+  return <div className={`editor ${className}`} ref={divEl}></div>;
 };
 
 Editor.propTypes = {
