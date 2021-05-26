@@ -4,13 +4,13 @@ import { Editor } from "../../../../../../../../shared/Editor";
 import "./styles.css";
 
 export const Raw = (props) => {
-  const { raw, setRaw } = props;
+  const { raw, setRaw, language } = props;
   return (
     <div className="raw-wrapper">
       <Editor
         className="raw-editor"
         value={raw}
-        language="json"
+        language={language}
         onChange={setRaw}
       />
     </div>
@@ -20,4 +20,5 @@ export const Raw = (props) => {
 Raw.propTypes = {
   raw: propTypes.string.isRequired,
   setRaw: propTypes.func.isRequired,
+  language: propTypes.string.isRequired,
 };

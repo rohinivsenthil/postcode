@@ -4,15 +4,26 @@ import { ReqBodyWindow } from "./TabWindow";
 import { bodyTypes } from "../../../../../constants/body-types";
 import * as propTypes from "prop-types";
 import "./styles.css";
+import { supportedLangs } from "../../../../../constants/supported-langs";
 
 export const Body = (props) => {
   const { setBody } = props;
   // move to parent to preserve state
   const [selected, setSelected] = React.useState(bodyTypes[0].value);
+  const [language, setLanguage] = React.useState(supportedLangs[0].value);
   return (
     <div className="request-body-wrapper">
-      <ReqBodyTab selected={selected} setSelected={setSelected} />
-      <ReqBodyWindow selected={selected} setBody={setBody} />
+      <ReqBodyTab
+        selected={selected}
+        setSelected={setSelected}
+        language={language}
+        setLanguage={setLanguage}
+      />
+      <ReqBodyWindow
+        selected={selected}
+        setBody={setBody}
+        language={language}
+      />
     </div>
   );
 };

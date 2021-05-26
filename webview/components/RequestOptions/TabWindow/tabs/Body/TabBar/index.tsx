@@ -5,7 +5,7 @@ import { bodyTypes } from "../../../../../../constants/body-types";
 import { supportedLangs } from "../../../../../../constants/supported-langs";
 
 export const ReqBodyTab = (props) => {
-  const { selected, setSelected } = props;
+  const { selected, setSelected, language, setLanguage } = props;
   return (
     <div className="body-options-wrapper">
       {bodyTypes.map((option) => (
@@ -25,7 +25,11 @@ export const ReqBodyTab = (props) => {
         </div>
       ))}
       {selected === "raw" ? (
-        <select className="select-raw-lang">
+        <select
+          className="select-raw-lang"
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
           {supportedLangs.map((type) => (
             <option key={type.value} value={type.value}>
               {type.name}
@@ -40,4 +44,6 @@ export const ReqBodyTab = (props) => {
 ReqBodyTab.propTypes = {
   selected: propTypes.string.isRequired,
   setSelected: propTypes.func.isRequired,
+  language: propTypes.string.isRequired,
+  setLanguage: propTypes.func.isRequired,
 };

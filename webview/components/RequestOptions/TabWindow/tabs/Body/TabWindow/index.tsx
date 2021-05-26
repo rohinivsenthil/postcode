@@ -8,7 +8,7 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const ReqBodyWindow = (props) => {
-  const { selected, setBody } = props;
+  const { selected, setBody, language } = props;
   const [formData, setFormData] = React.useState([{}]);
   const [urlCoded, setUrlCoded] = React.useState([{}]);
   const [binary, setBinary] = React.useState(new File([], "No file chosen"));
@@ -48,7 +48,7 @@ export const ReqBodyWindow = (props) => {
       ) : selected === "urlcoded" ? (
         <UrlCoded urlCoded={urlCoded} setUrlCoded={setUrlCoded} />
       ) : selected === "raw" ? (
-        <Raw raw={raw} setRaw={setRaw} />
+        <Raw raw={raw} setRaw={setRaw} language={language} />
       ) : selected === "binary" ? (
         <Binary binary={binary} setBinary={setBinary} />
       ) : null}
@@ -59,4 +59,5 @@ export const ReqBodyWindow = (props) => {
 ReqBodyWindow.propTypes = {
   selected: propTypes.string.isRequired,
   setBody: propTypes.func.isRequired,
+  language: propTypes.string.isRequired,
 };
