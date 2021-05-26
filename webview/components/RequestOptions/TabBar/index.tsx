@@ -32,13 +32,13 @@ export const RequestOptionsTab = (props) => {
           </button>
         ))}
       </div>
-      <button
+      {/* <button
         id="request-code"
         name="request-code"
         className="button-request-code"
       >
         Code
-      </button>
+      </button> */}
     </div>
   );
 };
