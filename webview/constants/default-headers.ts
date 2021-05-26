@@ -11,7 +11,7 @@ export const defaultHeaders = [
   },
   {
     key: "Accept-Encoding",
-    value: "gzip, deflate, br",
+    value: "gzip, deflate",
     checked: true,
   },
   {
