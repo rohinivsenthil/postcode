@@ -19,7 +19,24 @@
         "command": "postcode.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "postcode",
+          "title": "Postcode",
+          "icon": "webview/icons/package.svg"
+        }
+      ]
+    },
+    "views": {
+      "postcode": [
+        {
+          "id": "main",
+          "name": "Main"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
@@ -34,6 +51,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",

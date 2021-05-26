@@ -34,6 +34,13 @@ const baseConfig = (webpackEnv) => {
               },
             },
             {
+              test: /\.svg$/,
+              use: [
+                require.resolve("@svgr/webpack"),
+                require.resolve("url-loader"),
+              ],
+            },
+            {
               test: /\.tsx?$/,
               exclude: /node_modules/,
               loader: require.resolve("ts-loader"),

@@ -3,10 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--logo-color);
+  color: var(--default-text-light);
   font-size: var(--default-font-size);
 }
 
 .img-initial-response {
   margin: 20px;
+  fill: var(--logo-color);
+  width: 40%;
+  height: 40%;
 }
