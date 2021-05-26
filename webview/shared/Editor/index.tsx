@@ -51,7 +51,7 @@ export const Editor = (props) => {
     }
   }, [language, editor]);
 
-  return <div className={`editor ${className}`} ref={divEl}></div>;
+  return <div className={className} ref={divEl}></div>;
 };
 
 Editor.propTypes = {
