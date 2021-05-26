@@ -32,8 +32,8 @@
     "views": {
       "postcode": [
         {
-          "id": "main",
-          "name": "Main"
+          "id": "request",
+          "name": "Request"
         }
       ]
     }
