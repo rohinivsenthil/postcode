@@ -6,13 +6,16 @@ import { responseViews } from "../../constants/response-views";
 import { supportedLangs } from "../../constants/supported-langs";
 import { InitialResponse } from "./tabs/InitialResponse";
 import { ErrorResponse } from "./tabs/ErrorResponse";
+import { Loader } from "../../shared/Loader";
 
 export const Response = (props) => {
-  const { response } = props;
+  const { response, loadingResponse } = props;
   const [view, setView] = React.useState(responseViews[0].value);
   const [language, setLanguage] = React.useState(supportedLangs[0].value);
 
-  if (response.initial) {
+  if (loadingResponse) {
+    return <Loader />;
+  } else if (response.initial) {
     return <InitialResponse />;
   } else if (response.error) {
     return <ErrorResponse response={response} />;
@@ -68,4 +71,5 @@ export const Response = (props) => {
 
 Response.propTypes = {
   response: propTypes.object.isRequired,
+  loadingResponse: propTypes.bool.isRequired,
 };

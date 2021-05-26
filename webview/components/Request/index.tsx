@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import * as propTypes from "prop-types";
 import "./styles.css";
@@ -16,13 +17,13 @@ const sendRequest = (reqType, requestUrl, headers, body, auth) => {
 };
 
 export const Request = (props) => {
-  const { response } = props;
+  const { response, loadingResponse, setLoadingResponse } = props;
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
   const [requestUrl, setRequestUrl] = React.useState("");
   const [reqType, setReqType] = React.useState(requestTypes[0].value);
-  const [params, setParams] = React.useState([{}]);
+  const [params, setParams]: any = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
   const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
@@ -45,6 +46,7 @@ export const Request = (props) => {
   return (
     <div className="request-wrapper">
       <RequestBar
+        setLoadingResponse={setLoadingResponse}
         requestUrl={requestUrl}
         setRequestUrl={setRequestUrl}
         setReqType={setReqType}
@@ -70,7 +72,7 @@ export const Request = (props) => {
         />
       </div>
       <div className="response-wrapper">
-        <Response response={response} />
+        <Response response={response} loadingResponse={loadingResponse} />
       </div>
     </div>
   );
@@ -78,4 +80,6 @@ export const Request = (props) => {
 
 Request.propTypes = {
   response: propTypes.any.isRequired,
+  loadingResponse: propTypes.bool.isRequired,
+  setLoadingResponse: propTypes.func.isRequired,
 };
