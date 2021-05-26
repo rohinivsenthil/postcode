@@ -49,10 +49,18 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.onDidReceiveMessage(
         ({ reqType, requestUrl, headers, body, auth }) => {
           if (requestUrl) {
+            const headersObj = {};
+            headers.forEach(({ key, value, checked }) => {
+              if (checked) {
+                headersObj[key || ""] = value || "";
+              }
+            });
+
             axios({
               method: reqType,
               url: requestUrl,
               data: body,
+              headers: headersObj,
               transformResponse: [(data) => data],
               responseType: "text",
               validateStatus: () => true,
