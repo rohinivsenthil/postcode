@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./styles.css";
-import packageIcon from "../../icons/package.svg";
+import { ReactComponent as PackageIcon } from "../../icons/package.svg";
 import * as propTypes from "prop-types";
 
 export const ErrorResponse = (props) => {
@@ -9,12 +9,7 @@ export const ErrorResponse = (props) => {
     <div className="error-response-wrapper">
       <div>Could not send request</div>
       <div className="error-message">{`Error: ${response.error.message}`}</div>
-      <img
-        src={packageIcon}
-        height="30%"
-        width="30%"
-        className="img-error-response"
-      />
+      <PackageIcon className="img-error-response" />
     </div>
   );
 };

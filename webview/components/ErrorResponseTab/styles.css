@@ -4,11 +4,16 @@
   justify-content: center;
   align-items: center;
   font-size: var(--default-font-size);
+  border-top: var(--default-border-size) solid var(--border);
 }
 
 .img-error-response {
   margin: 15px;
+  fill: var(--logo-color);
+  width: 30%;
+  height: 30%;
 }
+
 
 .error-message {
   margin: 10px;
