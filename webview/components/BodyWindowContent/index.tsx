@@ -8,11 +8,19 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const ReqBodyWindow = (props) => {
-  const { selected, setBody, language } = props;
-  const [formData, setFormData] = React.useState([{}]);
-  const [urlCoded, setUrlCoded] = React.useState([{}]);
-  const [binary, setBinary] = React.useState(new File([], "No file chosen"));
-  const [raw, setRaw] = React.useState("");
+  const {
+    selected,
+    setBody,
+    language,
+    formData,
+    setFormData,
+    urlCoded,
+    setUrlCoded,
+    binary,
+    setBinary,
+    raw,
+    setRaw,
+  } = props;
 
   React.useEffect(() => {
     if (selected === "none") {
@@ -60,4 +68,12 @@ ReqBodyWindow.propTypes = {
   selected: propTypes.string.isRequired,
   setBody: propTypes.func.isRequired,
   language: propTypes.string.isRequired,
+  formData: propTypes.any.isRequired,
+  setFormData: propTypes.any.isRequired,
+  urlCoded: propTypes.any.isRequired,
+  setUrlCoded: propTypes.any.isRequired,
+  binary: propTypes.any.isRequired,
+  setBinary: propTypes.any.isRequired,
+  raw: propTypes.any.isRequired,
+  setRaw: propTypes.any.isRequired,
 };

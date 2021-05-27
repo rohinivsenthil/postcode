@@ -1,28 +1,46 @@
 import * as React from "react";
 import { ReqBodyTab } from "../BodyWindowBar";
 import { ReqBodyWindow } from "../BodyWindowContent";
-import { bodyTypes } from "../../constants/body-types";
 import * as propTypes from "prop-types";
 import "./styles.css";
-import { supportedLangs } from "../../constants/supported-langs";
 
 export const Body = (props) => {
-  const { setBody } = props;
-  // move to parent to preserve state
-  const [selected, setSelected] = React.useState(bodyTypes[0].value);
-  const [language, setLanguage] = React.useState(supportedLangs[0].value);
+  const {
+    setBody,
+    formData,
+    setFormData,
+    urlCoded,
+    setUrlCoded,
+    binary,
+    setBinary,
+    raw,
+    setRaw,
+    selectedBodyType,
+    setSelectedBodyType,
+    rawLanguage,
+    setRawLanguage,
+  } = props;
+
   return (
     <div className="request-body-wrapper">
       <ReqBodyTab
-        selected={selected}
-        setSelected={setSelected}
-        language={language}
-        setLanguage={setLanguage}
+        selected={selectedBodyType}
+        setSelected={setSelectedBodyType}
+        language={rawLanguage}
+        setLanguage={setRawLanguage}
       />
       <ReqBodyWindow
-        selected={selected}
+        selected={selectedBodyType}
         setBody={setBody}
-        language={language}
+        language={rawLanguage}
+        formData={formData}
+        setFormData={setFormData}
+        urlCoded={urlCoded}
+        setUrlCoded={setUrlCoded}
+        binary={binary}
+        setBinary={setBinary}
+        raw={raw}
+        setRaw={setRaw}
       />
     </div>
   );
@@ -30,4 +48,16 @@ export const Body = (props) => {
 
 Body.propTypes = {
   setBody: propTypes.func.isRequired,
+  formData: propTypes.any.isRequired,
+  setFormData: propTypes.any.isRequired,
+  urlCoded: propTypes.any.isRequired,
+  setUrlCoded: propTypes.any.isRequired,
+  binary: propTypes.any.isRequired,
+  setBinary: propTypes.any.isRequired,
+  raw: propTypes.any.isRequired,
+  setRaw: propTypes.any.isRequired,
+  selectedBodyType: propTypes.any.isRequired,
+  setSelectedBodyType: propTypes.any.isRequired,
+  rawLanguage: propTypes.any.isRequired,
+  setRawLanguage: propTypes.any.isRequired,
 };

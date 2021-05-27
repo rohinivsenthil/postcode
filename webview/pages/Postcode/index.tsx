@@ -11,6 +11,8 @@ import { requestOptions } from "../../constants/request-options";
 import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
 import { authTypes } from "../../constants/auth-types";
+import { supportedLangs } from "../../constants/supported-langs";
+import { bodyTypes } from "../../constants/body-types";
 
 const sendRequest = (reqType, requestUrl, headers, body, auth) => {
   vscode.postMessage({ reqType, requestUrl, headers, body, auth });
@@ -26,7 +28,15 @@ export const Postcode = (props) => {
   const [params, setParams]: any = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
+  const [formData, setFormData] = React.useState([{}]);
+  const [urlCoded, setUrlCoded] = React.useState([{}]);
+  const [binary, setBinary] = React.useState(new File([], "No file chosen"));
+  const [raw, setRaw] = React.useState("");
   const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
+  const [selectedBodyType, setSelectedBodyType] = React.useState(
+    bodyTypes[0].value
+  );
+  const [rawLanguage, setRawLanguage] = React.useState(supportedLangs[0].value);
 
   React.useEffect(() => {
     let index = requestUrl.indexOf("?");
@@ -69,6 +79,18 @@ export const Postcode = (props) => {
           setBody={setBody}
           auth={auth}
           setAuth={setAuth}
+          formData={formData}
+          setFormData={setFormData}
+          urlCoded={urlCoded}
+          setUrlCoded={setUrlCoded}
+          binary={binary}
+          setBinary={setBinary}
+          raw={raw}
+          setRaw={setRaw}
+          selectedBodyType={selectedBodyType}
+          setSelectedBodyType={setSelectedBodyType}
+          rawLanguage={rawLanguage}
+          setRawLanguage={setRawLanguage}
         />
       </div>
       <div className="response-wrapper">
