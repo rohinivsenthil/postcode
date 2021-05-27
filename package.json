@@ -32,11 +32,17 @@
     "views": {
       "postcode": [
         {
-          "id": "request",
+          "id": "postcode.request",
           "name": "Request"
         }
       ]
-    }
+    },
+    "viewsWelcome": [
+      {
+        "view": "postcode.request",
+        "contents": "[Create Request](command:postcode.createRequest)"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
