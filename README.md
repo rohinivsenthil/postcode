@@ -1,71 +1,53 @@
-# postcode README
+# Postcode
 
-This is the README for your extension "postcode". After writing up a brief description, we recommend including the following sections.
+Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](https://marketplace.visualstudio.com/VSCode) that can be used to create and test simple and complex HTTP/s requests, as well as view responses.
 
-## Features
+**Latest Release: 1.0.0**
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Quick start
 
-For example if there is an image subfolder under your extension project workspace:
+**Step 1.** Install the Postcode extension for Visual Studio Code  
+**Step 2.** Click on the Postcode icon in the side panel OR run the following command **Postcode: Create Request**  
+**Step 3** Create or test your HTTP/s requests and hit Send to see the responses 
 
-\!\[feature X\]\(images/feature-x.png\)
+## Commands
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+| Command | Description |
+|---|---|
+| Postcode: Create Request | Opens a new Postcode tab to create and test requests |
 
-## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Issues, feature requests, and contributions
 
-## Extension Settings
+### Issues 
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- If you come across a problem with the extension, please file an [issue](https://github.com/rohinivsenthil/postcode/issues/new)
+- For list of known issues, please check the [issues tab](https://github.com/rohinivsenthil/postcode/issues/new)
 
-For example:
+### Feature requests
 
-This extension contributes the following settings:
+- Find planned features for future releases marked as [feature](https://github.com/rohinivsenthil/postcode/issues?q=is%3Aissue+is%3Aopen+label%3Afeature) under issues tab.
+- For new feature requests, please file an [issue](https://github.com/rohinivsenthil/postcode/issues/new)
 
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
+### Contributions
 
-## Known Issues
+Contributions are always welcome! 
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+#### Running the extension locally for development
 
-## Release Notes
+1. Clone the repository and install dependencies by running `yarn install`
+2. Press `F5` to open a new window with your extension loaded.
+3. Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Postcode: Create Request`.
 
-Users appreciate release notes as you update your extension.
+#### Folder structure
 
-### 1.0.0
+- **`package.json`** - this is the manifest file in which you declare your extension and command. The plugin registers a command and defines its title and command name. With this information VS Code can show the command in the command palette.
+- **`webview`**: folder where you will find entire React code 
+- **`src/extension.ts`**: this is the main file where you will provide the implementation of your command. The file exports one function, `activate`, which is called the very first time your extension is activated (in this case by executing the command). Inside the `activate` function we call `registerCommand`. We pass the function containing the implementation of the command as the second parameter to `registerCommand`.
 
-Initial release of ...
+#### Making changes
 
-### 1.0.1
+- You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
+- You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
 
-Fixed issue #.
 
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
