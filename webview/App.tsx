@@ -3,9 +3,7 @@ import "./App.css";
 import { Postcode } from "./pages/Postcode";
 
 const App = () => {
-  const [response, setResponse] = React.useState({
-    initial: "true",
-  });
+  const [response, setResponse] = React.useState({ initial: "true" });
   const [loadingResponse, setLoadingResponse] = React.useState(false);
 
   React.useEffect(() => {
@@ -21,6 +19,7 @@ const App = () => {
     <div className="App">
       <Postcode
         response={response}
+        setResponse={setResponse}
         loadingResponse={loadingResponse}
         setLoadingResponse={setLoadingResponse}
       />

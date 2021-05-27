@@ -19,7 +19,7 @@ const sendRequest = (reqType, requestUrl, headers, body, auth) => {
 };
 
 export const Postcode = (props) => {
-  const { response, loadingResponse, setLoadingResponse } = props;
+  const { response, setResponse, loadingResponse, setLoadingResponse } = props;
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
@@ -37,6 +37,66 @@ export const Postcode = (props) => {
     bodyTypes[0].value
   );
   const [rawLanguage, setRawLanguage] = React.useState(supportedLangs[0].value);
+
+  /** 
+   * temporarily using retainContextWhenHidden to retain state when hidden
+   * TODO: refactor with vscode.getState and vscode.setState
+  */
+  // const [initial, setIntial] = React.useState(false);
+
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     const prevState = vscode.getState();
+  //     if (prevState) {
+  //       setResponse(prevState.response);
+  //       setSelectedOption(prevState.selectedOption);
+  //       setRequestUrl(prevState.requestUrl);
+  //       setReqType(prevState.reqType);
+  //       setParams(prevState.params);
+  //       setHeaders(prevState.headers);
+  //       setBody(prevState.body);
+  //       setFormData(prevState.formData);
+  //       setUrlCoded(prevState.urlCoded);
+  //       setRaw(prevState.raw);
+  //       setSelectedBodyType(prevState.selectedBodyType);
+  //       setRawLanguage(prevState.rawLanguage);
+  //     }
+  //     setIntial(true);
+  //   }, 0);
+  // }, []);
+
+  // React.useEffect(() => {
+  //   if (initial) {
+  //     vscode.setState({
+  //       response,
+  //       selectedOption,
+  //       requestUrl,
+  //       reqType,
+  //       params,
+  //       headers,
+  //       body,
+  //       formData,
+  //       urlCoded,
+  //       raw,
+  //       selectedBodyType,
+  //       rawLanguage,
+  //     });
+  //   }
+  // }, [
+  //   response,
+  //   selectedOption,
+  //   requestUrl,
+  //   reqType,
+  //   params,
+  //   headers,
+  //   body,
+  //   formData,
+  //   urlCoded,
+  //   raw,
+  //   selectedBodyType,
+  //   rawLanguage,
+  //   initial,
+  // ]);
 
   React.useEffect(() => {
     let index = requestUrl.indexOf("?");
@@ -102,6 +162,7 @@ export const Postcode = (props) => {
 
 Postcode.propTypes = {
   response: propTypes.any.isRequired,
+  setResponse: propTypes.func.isRequired,
   loadingResponse: propTypes.bool.isRequired,
   setLoadingResponse: propTypes.func.isRequired,
 };

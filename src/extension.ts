@@ -25,12 +25,15 @@ export function activate(context: vscode.ExtensionContext) {
         "postcode",
         "Postcode",
         vscode.ViewColumn.One,
-        { enableScripts: true }
+        { enableScripts: true, retainContextWhenHidden: true }
       );
 
       const scriptUri = panel.webview.asWebviewUri(
         vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
       );
+
+      const iconUri = vscode.Uri.joinPath(context.extensionUri, "icons/icon.png");
+      panel.iconPath = iconUri;
 
       panel.webview.html = `<!DOCTYPE html>
 <html lang="en">
