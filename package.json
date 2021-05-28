@@ -5,6 +5,7 @@
   "icon": "icons/icon.png",
   "description": "An API client to test and create HTTP/s requests",
   "version": "1.0.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rohinivsenthil/postcode/issues"
   },
