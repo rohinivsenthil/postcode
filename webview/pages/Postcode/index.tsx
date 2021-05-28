@@ -38,10 +38,10 @@ export const Postcode = (props) => {
   );
   const [rawLanguage, setRawLanguage] = React.useState(supportedLangs[0].value);
 
-  /** 
+  /**
    * temporarily using retainContextWhenHidden to retain state when hidden
    * TODO: refactor with vscode.getState and vscode.setState
-  */
+   */
   // const [initial, setIntial] = React.useState(false);
 
   // React.useEffect(() => {

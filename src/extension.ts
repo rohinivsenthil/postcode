@@ -32,7 +32,10 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
       );
 
-      const iconUri = vscode.Uri.joinPath(context.extensionUri, "icons/icon.png");
+      const iconUri = vscode.Uri.joinPath(
+        context.extensionUri,
+        "icons/icon.png"
+      );
       panel.iconPath = iconUri;
 
       panel.webview.html = `<!DOCTYPE html>

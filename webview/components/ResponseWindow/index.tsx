@@ -62,7 +62,8 @@ export const Response = (props) => {
           className="response-editor"
           value={response.data || ""}
           language={view === "raw" ? "text" : language}
-          readOnly={true}
+          readOnly
+          format
         />
       </div>
     );

@@ -4,7 +4,7 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const Editor = (props) => {
-  const { value, language, onChange, readOnly, className } = props;
+  const { value, language, onChange, readOnly, className, format } = props;
 
   const divEl = React.useRef<HTMLDivElement>(null);
   const [editor, setEditor] = React.useState(undefined);
@@ -39,17 +39,26 @@ export const Editor = (props) => {
   }, []);
 
   React.useEffect(() => {
-    if (editor && editor.getValue() !== value) {
-      editor.setValue(value);
-    }
-  }, [value, editor]);
-
-  React.useEffect(() => {
     if (editor) {
+      if (editor.getValue() !== value) {
+        editor.setValue(value);
+      }
+
       const model = editor.getModel();
       monaco.editor.setModelLanguage(model, language);
+      if (format) {
+        editor.updateOptions({ readOnly: false });
+        setTimeout(() => {
+          editor
+            .getAction("editor.action.formatDocument")
+            .run()
+            .then(() => {
+              editor.updateOptions({ readOnly });
+            });
+        }, 300);
+      }
     }
-  }, [language, editor]);
+  }, [value, language, editor, format]);
 
   return <div className={className} ref={divEl}></div>;
 };
@@ -60,4 +69,5 @@ Editor.propTypes = {
   onChange: propTypes.func,
   className: propTypes.string,
   readOnly: propTypes.bool,
+  format: propTypes.bool,
 };
