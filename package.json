@@ -1,11 +1,16 @@
 {
   "name": "postcode",
+  "publisher": "rohinivsenthil",
   "displayName": "Postcode",
   "icon": "icons/icon.png",
-  "description": "An API client that makes it easy for developers to create and test simple and complex HTTP/s requests (REST/GraphQL), as well as read their responses",
-  "version": "0.0.1",
+  "description": "An API client to test and create HTTP/s requests",
+  "version": "1.0.0",
   "bugs": {
     "url": "https://github.com/rohinivsenthil/postcode/issues"
+  },
+  "author": {
+    "name": "Rohini Senthil",
+    "email": "rohinivsenthil@gmail.com"
   },
   "repository": {
     "type": "git",
