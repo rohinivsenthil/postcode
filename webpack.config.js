@@ -4,7 +4,6 @@
 
 const path = require("path");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
-const postcssNormalize = require("postcss-normalize");
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
@@ -54,24 +53,6 @@ const baseConfig = (webpackEnv) => {
                   options: {
                     importLoaders: 1,
                     sourceMap: isEnvProduction || isEnvDevelopment,
-                  },
-                },
-                {
-                  loader: require.resolve("postcss-loader"),
-                  options: {
-                    postcssOptions: {
-                      // Necessary for external CSS imports to work
-                      // https://github.com/facebook/create-react-app/issues/2677
-                      ident: "postcss",
-                      plugins: () => [
-                        require("postcss-flexbugs-fixes"),
-                        require("postcss-preset-env")({
-                          autoprefixer: { flexbox: "no-2009" },
-                          stage: 3,
-                        }),
-                        postcssNormalize(),
-                      ],
-                    },
                   },
                 },
               ],
