@@ -53,9 +53,34 @@ export function activate(context: vscode.ExtensionContext) {
 </html>`;
 
       panel.webview.onDidReceiveMessage(
-        ({ reqType, requestUrl, headers, body, auth }) => {
+        ({
+          reqType,
+          requestUrl,
+          headers,
+          body,
+          auth,
+          selectedBodyType,
+          rawLanguage,
+        }) => {
           if (requestUrl) {
             const headersObj = {};
+
+            if (selectedBodyType === "form-data") {
+              headersObj["Content-Type"] = "multipart/form-data";
+            } else if (selectedBodyType === "urlcoded") {
+              headersObj["Content-Type"] = "application/x-www-form-urlencoded";
+            } else if (selectedBodyType === "raw" && rawLanguage === "json") {
+              headersObj["Content-Type"] = "application/json";
+            } else if (selectedBodyType === "raw" && rawLanguage === "html") {
+              headersObj["Content-Type"] = "text/html";
+            } else if (selectedBodyType === "raw" && rawLanguage === "xml") {
+              headersObj["Content-Type"] = "text/xml";
+            } else if (selectedBodyType === "raw" && rawLanguage === "text") {
+              headersObj["Content-Type"] = "text/plain";
+            } else if (selectedBodyType === "binary") {
+              headersObj["Content-Type"] = "application/octet-stream";
+            }
+
             headers.forEach(({ key, value, checked }) => {
               if (checked) {
                 headersObj[key || ""] = value || "";

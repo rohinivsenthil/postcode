@@ -14,10 +14,6 @@ import { authTypes } from "../../constants/auth-types";
 import { supportedLangs } from "../../constants/supported-langs";
 import { bodyTypes } from "../../constants/body-types";
 
-const sendRequest = (reqType, requestUrl, headers, body, auth) => {
-  vscode.postMessage({ reqType, requestUrl, headers, body, auth });
-};
-
 export const Postcode = (props) => {
   const { response, setResponse, loadingResponse, setLoadingResponse } = props;
   const [selectedOption, setSelectedOption] = React.useState(
@@ -121,7 +117,15 @@ export const Postcode = (props) => {
         setRequestUrl={setRequestUrl}
         setReqType={setReqType}
         sendRequest={() =>
-          sendRequest(reqType, requestUrl, headers, body, auth)
+          vscode.postMessage({
+            reqType,
+            requestUrl,
+            headers,
+            body,
+            auth,
+            selectedBodyType,
+            rawLanguage,
+          })
         }
       />
       <div className="request-options-wrapper">
