@@ -1,8 +1,16 @@
-# Postcode
+<h1 align="center">Postcode</h1>
+<div align="center">
+  <strong> API client for VS code 📦</strong>
+</div>
+<br />
 
 Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](https://marketplace.visualstudio.com/VSCode) that can be used to create and test simple and complex HTTP/s requests, as well as view responses.
 
-**Latest Release: 1.0.0**
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/42040329/119858888-81177400-bf32-11eb-8023-14273ef32b91.gif"/>
+  <br />
+  <sup>Latest Release: 1.0.0</sup>
+</div>
 
 ## Quick start
 
