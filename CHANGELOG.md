@@ -6,7 +6,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## 1.1.0
 
--  Support formating of responses based on language
+- Support formating of responses based on language
 
 ## 1.0.0
 

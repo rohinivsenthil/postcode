@@ -12,7 +12,16 @@ export const RequestBar = (props) => {
     setLoadingResponse,
   } = props;
   return (
-    <div className="request-bar">
+    <form
+      className="request-bar"
+      onSubmit={(e) => {
+        sendRequest();
+        if (requestUrl !== "") {
+          setLoadingResponse(true);
+        }
+        e.preventDefault();
+      }}
+    >
       <select
         name="request-type"
         id="request-type"
@@ -37,17 +46,12 @@ export const RequestBar = (props) => {
       <button
         name="request-send"
         id="request-send"
+        type="submit"
         className="button-request-send"
-        onClick={() => {
-          sendRequest();
-          if (requestUrl !== "") {
-            setLoadingResponse(true);
-          }
-        }}
       >
         Send
       </button>
-    </div>
+    </form>
   );
 };
 
