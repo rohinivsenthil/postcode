@@ -9,8 +9,11 @@
 }
 
 .img-initial-response {
-  margin: 20px;
   fill: var(--logo-color);
   width: 30%;
   height: 30%;
+}
+
+.initial-text {
+  padding: 10px;
 }
