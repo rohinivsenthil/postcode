@@ -56,3 +56,7 @@ Contributions are always welcome!
 
 - You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
 - You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
+
+## Related
+
+Read the [launch blog](https://rohinivsenthil.medium.com/postcode-vs-code-extension-alternative-to-postman-384816d4cf07) post on Medium.
