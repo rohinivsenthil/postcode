@@ -10,3 +10,9 @@
   cursor: pointer;
   font-size: var(--default-font-size);
 }
+.request-method-selector:hover {
+  background-color: var(--input-field-hover);
+}
+.request-method-selector:focus {
+  outline: none;
+}
