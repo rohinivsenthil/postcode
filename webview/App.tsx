@@ -19,7 +19,6 @@ const App = () => {
     <div className="App">
       <Postcode
         response={response}
-        setResponse={setResponse}
         loadingResponse={loadingResponse}
         setLoadingResponse={setLoadingResponse}
       />
