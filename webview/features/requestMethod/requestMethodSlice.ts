@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../../redux/store";
 
 export const requestMethods = [
   { name: "GET", value: "get" },

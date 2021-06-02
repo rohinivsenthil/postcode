@@ -11,7 +11,7 @@ import { requestOptions } from "../../constants/request-options";
 import { defaultHeaders } from "../../constants/default-headers";
 import { supportedLangs } from "../../constants/supported-langs";
 import { bodyTypes } from "../../constants/body-types";
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 import { selectRequestAuth } from "../../features/requestAuth/requestAuthSlice";
 

@@ -3,7 +3,7 @@ import "./styles.css";
 import { NoAuth } from "../NoAuth";
 import { BearerToken } from "../BearerToken";
 import { BasicAuth } from "../BasicAuth";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   requestAuthTypes,
   requestAuthTypeUpdated,
