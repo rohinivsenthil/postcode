@@ -1,24 +1,29 @@
 import * as React from "react";
-import * as propTypes from "prop-types";
-import { Editor } from "../../shared/Editor";
+import { Editor } from "../../../shared/Editor";
 import "./styles.css";
-import { responseViews } from "../../constants/response-views";
-import { supportedLangs } from "../../constants/supported-langs";
-import { InitialResponse } from "../InitialResponseTab";
-import { ErrorResponse } from "../ErrorResponseTab";
-import { Loader } from "../../shared/Loader";
+import { responseViews } from "../../../constants/response-views";
+import { supportedLangs } from "../../../constants/supported-langs";
+import { Default } from "../Default";
+import { ErrorResponse } from "../ErrorResponse";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectResponse } from "../responseSlice";
 
-export const Response = (props) => {
-  const { response, loadingResponse } = props;
+export const Response = () => {
+  const response = useAppSelector(selectResponse);
   const [view, setView] = React.useState(responseViews[0].value);
   const [language, setLanguage] = React.useState(supportedLangs[0].value);
 
-  if (loadingResponse) {
-    return <Loader />;
+  if (response.loading) {
+    return (
+      <div className="loader-wrapper">
+        <div>Sending request ...</div>
+        <div className="loader" />
+      </div>
+    );
   } else if (response.initial) {
-    return <InitialResponse />;
+    return <Default />;
   } else if (response.error) {
-    return <ErrorResponse response={response} />;
+    return <ErrorResponse />;
   } else {
     return (
       <div className="response-window">
@@ -68,9 +73,4 @@ export const Response = (props) => {
       </div>
     );
   }
-};
-
-Response.propTypes = {
-  response: propTypes.object.isRequired,
-  loadingResponse: propTypes.bool.isRequired,
 };

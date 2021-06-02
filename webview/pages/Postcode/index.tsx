@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
-import * as propTypes from "prop-types";
 import "./styles.css";
 import vscode from "../../vscode";
 import { RequestBar } from "../../components/RequestBar";
 import { RequestOptionsTab } from "../../components/RequestOptionsBar";
 import { RequestOptionsWindow } from "../../components/RequestOptionsWindow";
-import { Response } from "../../components/ResponseWindow";
+import { Response } from "../../features/response/Response";
 import { requestOptions } from "../../constants/request-options";
 import { defaultHeaders } from "../../constants/default-headers";
 import { supportedLangs } from "../../constants/supported-langs";
@@ -15,8 +14,7 @@ import { useAppSelector } from "../../redux/hooks";
 import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 import { selectRequestAuth } from "../../features/requestAuth/requestAuthSlice";
 
-export const Postcode = (props) => {
-  const { response, loadingResponse, setLoadingResponse } = props;
+export const Postcode = () => {
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
@@ -54,7 +52,6 @@ export const Postcode = (props) => {
   return (
     <div className="request-wrapper">
       <RequestBar
-        setLoadingResponse={setLoadingResponse}
         requestUrl={requestUrl}
         setRequestUrl={setRequestUrl}
         sendRequest={() =>
@@ -97,14 +94,8 @@ export const Postcode = (props) => {
         />
       </div>
       <div className="response-wrapper">
-        <Response response={response} loadingResponse={loadingResponse} />
+        <Response />
       </div>
     </div>
   );
-};
-
-Postcode.propTypes = {
-  response: propTypes.any.isRequired,
-  loadingResponse: propTypes.bool.isRequired,
-  setLoadingResponse: propTypes.func.isRequired,
 };

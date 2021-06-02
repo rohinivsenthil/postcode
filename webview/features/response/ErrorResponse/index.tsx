@@ -1,10 +1,11 @@
 import * as React from "react";
 import "./styles.css";
-import { ReactComponent as PackageIcon } from "../../icons/package.svg";
-import * as propTypes from "prop-types";
+import { ReactComponent as PackageIcon } from "../../../icons/package.svg";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectResponse } from "../responseSlice";
 
-export const ErrorResponse = (props) => {
-  const { response } = props;
+export const ErrorResponse = () => {
+  const response = useAppSelector(selectResponse);
   return (
     <div className="error-response-wrapper">
       <div>Could not send request</div>
@@ -12,8 +13,4 @@ export const ErrorResponse = (props) => {
       <PackageIcon className="img-error-response" />
     </div>
   );
-};
-
-ErrorResponse.propTypes = {
-  response: propTypes.object.isRequired,
 };

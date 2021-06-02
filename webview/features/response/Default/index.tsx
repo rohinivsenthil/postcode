@@ -1,11 +1,11 @@
 import * as React from "react";
 import "./styles.css";
-import { ReactComponent as PackageIcon } from "../../icons/package.svg";
+import { ReactComponent as PackageIcon } from "../../../icons/package.svg";
 
-export const InitialResponse = () => {
+export const Default = () => {
   return (
     <div className="initial-response-wrapper">
-      <div>Hit Send to get a response</div>
+      <div className="initial-text">Hit Send to get a response</div>
       <PackageIcon className="img-initial-response" />
     </div>
   );

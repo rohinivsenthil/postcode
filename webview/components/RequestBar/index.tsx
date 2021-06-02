@@ -2,16 +2,19 @@ import * as React from "react";
 import "./styles.css";
 import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
 import * as propTypes from "prop-types";
+import { useAppDispatch } from "../../redux/hooks";
+import { responseLoadingStarted } from "../../features/response/responseSlice";
 
 export const RequestBar = (props) => {
-  const { requestUrl, setRequestUrl, sendRequest, setLoadingResponse } = props;
+  const { requestUrl, setRequestUrl, sendRequest } = props;
+  const dispatch = useAppDispatch();
   return (
     <form
       className="request-bar"
       onSubmit={(e) => {
         sendRequest();
         if (requestUrl !== "") {
-          setLoadingResponse(true);
+          dispatch(responseLoadingStarted());
         }
         e.preventDefault();
       }}
@@ -42,5 +45,4 @@ RequestBar.propTypes = {
   requestUrl: propTypes.string.isRequired,
   setRequestUrl: propTypes.func.isRequired,
   sendRequest: propTypes.func.isRequired,
-  setLoadingResponse: propTypes.func.isRequired,
 };
