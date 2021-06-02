@@ -1,16 +1,10 @@
 import * as React from "react";
 import "./styles.css";
-import { requestTypes } from "../../constants/request-types";
+import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
 import * as propTypes from "prop-types";
 
 export const RequestBar = (props) => {
-  const {
-    requestUrl,
-    setRequestUrl,
-    sendRequest,
-    setReqType,
-    setLoadingResponse,
-  } = props;
+  const { requestUrl, setRequestUrl, sendRequest, setLoadingResponse } = props;
   return (
     <form
       className="request-bar"
@@ -22,18 +16,7 @@ export const RequestBar = (props) => {
         e.preventDefault();
       }}
     >
-      <select
-        name="request-type"
-        id="request-type"
-        className="select-request-type"
-        onChange={(e) => setReqType(e.target.value)}
-      >
-        {requestTypes.map((type) => (
-          <option value={type.value} key={type.value}>
-            {type.name}
-          </option>
-        ))}
-      </select>
+      <RequestMethodSelector />
       <input
         type="text"
         id="request-url"
@@ -59,6 +42,5 @@ RequestBar.propTypes = {
   requestUrl: propTypes.string.isRequired,
   setRequestUrl: propTypes.func.isRequired,
   sendRequest: propTypes.func.isRequired,
-  setReqType: propTypes.func.isRequired,
   setLoadingResponse: propTypes.func.isRequired,
 };

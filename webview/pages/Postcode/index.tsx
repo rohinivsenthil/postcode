@@ -8,19 +8,21 @@ import { RequestOptionsTab } from "../../components/RequestOptionsBar";
 import { RequestOptionsWindow } from "../../components/RequestOptionsWindow";
 import { Response } from "../../components/ResponseWindow";
 import { requestOptions } from "../../constants/request-options";
-import { requestTypes } from "../../constants/request-types";
 import { defaultHeaders } from "../../constants/default-headers";
 import { authTypes } from "../../constants/auth-types";
 import { supportedLangs } from "../../constants/supported-langs";
 import { bodyTypes } from "../../constants/body-types";
+import { useAppSelector } from "../../app/hooks";
+import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 
 export const Postcode = (props) => {
   const { response, setResponse, loadingResponse, setLoadingResponse } = props;
   const [selectedOption, setSelectedOption] = React.useState(
     requestOptions[0].value
   );
+
+  const reqType = useAppSelector(selectRequestMethod);
   const [requestUrl, setRequestUrl] = React.useState("");
-  const [reqType, setReqType] = React.useState(requestTypes[0].value);
   const [params, setParams]: any = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
@@ -115,7 +117,6 @@ export const Postcode = (props) => {
         setLoadingResponse={setLoadingResponse}
         requestUrl={requestUrl}
         setRequestUrl={setRequestUrl}
-        setReqType={setReqType}
         sendRequest={() =>
           vscode.postMessage({
             reqType,

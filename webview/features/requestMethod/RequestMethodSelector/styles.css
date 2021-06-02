@@ -1,0 +1,12 @@
+.request-method-selector {
+  padding: 12px 20px;
+  display: inline-block;
+  font-weight: 600;
+  outline: none;
+  border: 0;
+  border-radius: 2px 0 0 2px;
+  background-color: var(--input-field);
+  color: var(--default-text);
+  cursor: pointer;
+  font-size: var(--default-font-size);
+}
