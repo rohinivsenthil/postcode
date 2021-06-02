@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Params } from "../ParamsWindow";
-import { Authorization } from "../AuthorizationWindow";
+import { RequestAuth } from "../../features/requestAuth/RequestAuth";
 import { Body } from "../BodyWindow";
 import { Headers } from "../HeadersWindow";
 import * as propTypes from "prop-types";
@@ -14,8 +14,6 @@ export const RequestOptionsWindow = (props) => {
     params,
     setParams,
     setBody,
-    auth,
-    setAuth,
     formData,
     setFormData,
     urlCoded,
@@ -34,7 +32,7 @@ export const RequestOptionsWindow = (props) => {
       {selected === "params" ? (
         <Params params={params} setParams={setParams} />
       ) : selected === "authorization" ? (
-        <Authorization auth={auth} setAuth={setAuth} />
+        <RequestAuth />
       ) : selected === "body" ? (
         <Body
           setBody={setBody}
@@ -65,8 +63,6 @@ RequestOptionsWindow.propTypes = {
   params: propTypes.array.isRequired,
   setParams: propTypes.func.isRequired,
   setBody: propTypes.func.isRequired,
-  auth: propTypes.object.isRequired,
-  setAuth: propTypes.func.isRequired,
   formData: propTypes.any.isRequired,
   setFormData: propTypes.any.isRequired,
   urlCoded: propTypes.any.isRequired,

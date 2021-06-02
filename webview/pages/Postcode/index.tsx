@@ -9,11 +9,11 @@ import { RequestOptionsWindow } from "../../components/RequestOptionsWindow";
 import { Response } from "../../components/ResponseWindow";
 import { requestOptions } from "../../constants/request-options";
 import { defaultHeaders } from "../../constants/default-headers";
-import { authTypes } from "../../constants/auth-types";
 import { supportedLangs } from "../../constants/supported-langs";
 import { bodyTypes } from "../../constants/body-types";
 import { useAppSelector } from "../../app/hooks";
 import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
+import { selectRequestAuth } from "../../features/requestAuth/requestAuthSlice";
 
 export const Postcode = (props) => {
   const { response, setResponse, loadingResponse, setLoadingResponse } = props;
@@ -22,6 +22,7 @@ export const Postcode = (props) => {
   );
 
   const reqType = useAppSelector(selectRequestMethod);
+  const auth = useAppSelector(selectRequestAuth);
   const [requestUrl, setRequestUrl] = React.useState("");
   const [params, setParams]: any = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
@@ -30,7 +31,6 @@ export const Postcode = (props) => {
   const [urlCoded, setUrlCoded] = React.useState([{}]);
   const [binary, setBinary] = React.useState(new File([], "No file chosen"));
   const [raw, setRaw] = React.useState("");
-  const [auth, setAuth] = React.useState({ selected: authTypes[0].value });
   const [selectedBodyType, setSelectedBodyType] = React.useState(
     bodyTypes[0].value
   );
@@ -142,8 +142,6 @@ export const Postcode = (props) => {
           params={params}
           setParams={setParams}
           setBody={setBody}
-          auth={auth}
-          setAuth={setAuth}
           formData={formData}
           setFormData={setFormData}
           urlCoded={urlCoded}

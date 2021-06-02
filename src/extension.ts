@@ -87,8 +87,8 @@ export function activate(context: vscode.ExtensionContext) {
               }
             });
 
-            if (auth.selected === "bearer-token") {
-              headersObj["Authorization"] = `Bearer ${auth.token}`;
+            if (auth.type === "bearer") {
+              headersObj["Authorization"] = `Bearer ${auth.bearer.token}`;
             }
 
             axios({
@@ -96,10 +96,7 @@ export function activate(context: vscode.ExtensionContext) {
               url: requestUrl,
               data: body,
               headers: headersObj,
-              auth:
-                auth.selected === "basic-auth"
-                  ? { username: auth.username, password: auth.password }
-                  : undefined,
+              auth: auth.type === "basic" ? auth.basic : undefined,
               transformResponse: [(data) => data],
               responseType: "text",
               validateStatus: () => true,
