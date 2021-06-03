@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./styles.css";
 import * as propTypes from "prop-types";
-import { bodyTypes } from "../../constants/body-types";
-import { supportedLangs } from "../../constants/supported-langs";
+import { bodyTypes } from "../../../constants/body-types";
+import { supportedLangs } from "../../../constants/supported-langs";
 
 export const ReqBodyTab = (props) => {
   const { selected, setSelected, language, setLanguage } = props;

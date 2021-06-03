@@ -1,0 +1,17 @@
+.input-request-url {
+  flex: 2;
+  padding: 13px 20px;
+  color: var(--default-text);
+  display: inline-block;
+  outline: none;
+  border: 0;
+  border-radius: 0 2px 2px 0;
+  background-color: var(--input-field);
+  font-size: var(--default-font-size);
+}
+.input-request-url:focus {
+  outline: none;
+}
+.input-request-url:hover {
+  background-color: var(--input-field-hover);
+}

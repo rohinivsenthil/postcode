@@ -1,25 +1,14 @@
 import * as React from "react";
-import { Params } from "../ParamsWindow";
+import { RequestQueryParams } from "../../features/requestUrl/RequestQueryParams";
 import { RequestAuth } from "../../features/requestAuth/RequestAuth";
-import { Body } from "../BodyWindow";
-import { Headers } from "../HeadersWindow";
+import { Body } from "../../features/requestBody/RequestBody";
+import { Headers } from "../../features/requestHeader/HeadersWindow";
 import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const RequestOptionsWindow = (props) => {
   const {
     selected,
-    headers,
-    setHeaders,
-    params,
-    setParams,
-    setBody,
-    formData,
-    setFormData,
-    urlCoded,
-    setUrlCoded,
-    binary,
-    setBinary,
     raw,
     setRaw,
     selectedBodyType,
@@ -30,18 +19,11 @@ export const RequestOptionsWindow = (props) => {
   return (
     <div className="request-options-window-wrapper">
       {selected === "params" ? (
-        <Params params={params} setParams={setParams} />
+        <RequestQueryParams />
       ) : selected === "authorization" ? (
         <RequestAuth />
       ) : selected === "body" ? (
         <Body
-          setBody={setBody}
-          formData={formData}
-          setFormData={setFormData}
-          urlCoded={urlCoded}
-          setUrlCoded={setUrlCoded}
-          binary={binary}
-          setBinary={setBinary}
           raw={raw}
           setRaw={setRaw}
           selectedBodyType={selectedBodyType}
@@ -50,7 +32,7 @@ export const RequestOptionsWindow = (props) => {
           setRawLanguage={setRawLanguage}
         />
       ) : selected === "headers" ? (
-        <Headers headers={headers} setHeaders={setHeaders} />
+        <Headers />
       ) : null}
     </div>
   );
@@ -58,17 +40,6 @@ export const RequestOptionsWindow = (props) => {
 
 RequestOptionsWindow.propTypes = {
   selected: propTypes.string.isRequired,
-  headers: propTypes.array.isRequired,
-  setHeaders: propTypes.func.isRequired,
-  params: propTypes.array.isRequired,
-  setParams: propTypes.func.isRequired,
-  setBody: propTypes.func.isRequired,
-  formData: propTypes.any.isRequired,
-  setFormData: propTypes.any.isRequired,
-  urlCoded: propTypes.any.isRequired,
-  setUrlCoded: propTypes.any.isRequired,
-  binary: propTypes.any.isRequired,
-  setBinary: propTypes.any.isRequired,
   raw: propTypes.any.isRequired,
   setRaw: propTypes.any.isRequired,
   selectedBodyType: propTypes.any.isRequired,

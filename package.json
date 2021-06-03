@@ -102,10 +102,14 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
+    "buffer": "^6.0.3",
     "monaco-editor": "^0.24.0",
+    "path-browserify": "^1.0.1",
+    "postman-collection": "^3.6.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-redux": "^7.2.4"
+    "react-redux": "^7.2.4",
+    "url": "^0.11.0"
   }
 }

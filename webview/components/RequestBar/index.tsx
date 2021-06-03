@@ -1,9 +1,10 @@
 import * as React from "react";
-import "./styles.css";
-import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
 import * as propTypes from "prop-types";
+import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
 import { useAppDispatch } from "../../redux/hooks";
 import { responseLoadingStarted } from "../../features/response/responseSlice";
+import { RequestUrl } from "../../features/requestUrl/RequestUrl";
+import "./styles.css";
 
 export const RequestBar = (props) => {
   const { requestUrl, setRequestUrl, sendRequest } = props;
@@ -20,15 +21,7 @@ export const RequestBar = (props) => {
       }}
     >
       <RequestMethodSelector />
-      <input
-        type="text"
-        id="request-url"
-        name="request-url"
-        placeholder="Enter request URL"
-        className="input-request-url"
-        value={requestUrl}
-        onChange={(e) => setRequestUrl(e.target.value)}
-      />
+      <RequestUrl />
       <button
         name="request-send"
         id="request-send"

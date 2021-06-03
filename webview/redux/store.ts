@@ -1,12 +1,18 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import requestMethodReducer from "../features/requestMethod/requestMethodSlice";
 import requestAuthReducer from "../features/requestAuth/requestAuthSlice";
+import requestBodyReducer from "../features/requestBody/requestBodySlice";
+import requestHeaderReducer from "../features/requestHeader/requestHeaderSlice";
+import requestMethodReducer from "../features/requestMethod/requestMethodSlice";
+import requestUrlReducer from "../features/requestUrl/requestUrlSlice";
 import responseReducer from "../features/response/responseSlice";
 
 export const store = configureStore({
   reducer: {
-    requestMethod: requestMethodReducer,
     requestAuth: requestAuthReducer,
+    requestBody: requestBodyReducer,
+    requestHeader: requestHeaderReducer,
+    requestMethod: requestMethodReducer,
+    requestUrl: requestUrlReducer,
     response: responseReducer,
   },
 });

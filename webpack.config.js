@@ -3,6 +3,7 @@
 "use strict";
 
 const path = require("path");
+const webpack = require("webpack");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 const imageInlineSizeLimit = parseInt(
@@ -19,7 +20,14 @@ const baseConfig = (webpackEnv) => {
     devtool: isEnvProduction
       ? "source-map"
       : isEnvDevelopment && "eval-cheap-module-source-map",
-    resolve: { extensions: [".ts", ".tsx", ".js"] },
+    resolve: {
+      fallback: {
+        buffer: require.resolve("buffer"),
+        path: require.resolve("path-browserify"),
+        url: require.resolve("url"),
+      },
+      extensions: [".ts", ".tsx", ".js"],
+    },
     module: {
       rules: [
         {
@@ -97,6 +105,9 @@ const webviewConfig = (webpackEnv) => {
     plugins: [
       new MonacoWebpackPlugin({
         languages: ["html", "xml", "json"],
+      }),
+      new webpack.ProvidePlugin({
+        Buffer: ["buffer", "Buffer"],
       }),
     ],
   };

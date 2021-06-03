@@ -22,32 +22,13 @@ export const Postcode = () => {
   const reqType = useAppSelector(selectRequestMethod);
   const auth = useAppSelector(selectRequestAuth);
   const [requestUrl, setRequestUrl] = React.useState("");
-  const [params, setParams]: any = React.useState([{}]);
   const [headers, setHeaders] = React.useState(defaultHeaders);
   const [body, setBody] = React.useState("");
-  const [formData, setFormData] = React.useState([{}]);
-  const [urlCoded, setUrlCoded] = React.useState([{}]);
-  const [binary, setBinary] = React.useState(new File([], "No file chosen"));
   const [raw, setRaw] = React.useState("");
   const [selectedBodyType, setSelectedBodyType] = React.useState(
     bodyTypes[0].value
   );
   const [rawLanguage, setRawLanguage] = React.useState(supportedLangs[0].value);
-
-  React.useEffect(() => {
-    let index = requestUrl.indexOf("?");
-    index = index == -1 ? requestUrl.length : index;
-
-    const searchParams = new URLSearchParams(
-      params
-        .filter(({ checked }) => checked)
-        .map(({ key, value }) => [key || "", value || ""])
-    ).toString();
-
-    setRequestUrl(
-      requestUrl.slice(0, index) + (searchParams ? `?${searchParams}` : "")
-    );
-  }, [params]);
 
   return (
     <div className="request-wrapper">
@@ -74,17 +55,6 @@ export const Postcode = () => {
         />
         <RequestOptionsWindow
           selected={selectedOption}
-          headers={headers}
-          setHeaders={setHeaders}
-          params={params}
-          setParams={setParams}
-          setBody={setBody}
-          formData={formData}
-          setFormData={setFormData}
-          urlCoded={urlCoded}
-          setUrlCoded={setUrlCoded}
-          binary={binary}
-          setBinary={setBinary}
           raw={raw}
           setRaw={setRaw}
           selectedBodyType={selectedBodyType}

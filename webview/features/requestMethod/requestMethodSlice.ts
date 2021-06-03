@@ -11,25 +11,20 @@ export const requestMethods = [
   { name: "HEAD", value: "head" },
 ];
 
-export interface RequestMethodState {
-  value: string;
-}
-
-const initialState: RequestMethodState = { value: "get" };
+const initialState: string = "get";
 
 const requestMethodSlice = createSlice({
   name: "requestMethod",
   initialState,
   reducers: {
     requestMethodUpdated(state, action: PayloadAction<string>) {
-      state.value = action.payload;
+      return action.payload;
     },
   },
 });
 
 export const { requestMethodUpdated } = requestMethodSlice.actions;
 
-export const selectRequestMethod = (state: RootState) =>
-  state.requestMethod.value;
+export const selectRequestMethod = (state: RootState) => state.requestMethod;
 
 export default requestMethodSlice.reducer;
