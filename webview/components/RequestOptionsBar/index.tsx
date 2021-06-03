@@ -2,9 +2,13 @@ import * as React from "react";
 import "./styles.css";
 import * as propTypes from "prop-types";
 import { requestOptions } from "../../constants/request-options";
+import { useAppSelector } from "../../redux/hooks";
+import { selectRequestHeaders } from "../../features/requestHeader/requestHeaderSlice";
 
 export const RequestOptionsTab = (props) => {
-  const { selected, setSelected, headers } = props;
+  const { selected, setSelected } = props;
+  const header = useAppSelector(selectRequestHeaders);
+
   return (
     <div className="request-options-tab-wrapper">
       <div className="request-options">
@@ -23,8 +27,9 @@ export const RequestOptionsTab = (props) => {
               <div className="request-options-header-length">
                 (
                 {
-                  headers.filter(({ key, value, desc }) => key || value || desc)
-                    .length
+                  header.filter(
+                    ({ key, value, description }) => key || value || description
+                  ).length
                 }
                 )
               </div>
@@ -46,5 +51,4 @@ export const RequestOptionsTab = (props) => {
 RequestOptionsTab.propTypes = {
   selected: propTypes.string.isRequired,
   setSelected: propTypes.func.isRequired,
-  headers: propTypes.array.isRequired,
 };

@@ -30,7 +30,9 @@ export const Body = () => {
               type="radio"
               id={value}
               value={value}
-              onClick={() => dispatch(requestBodyModeUpdated(value))}
+              onChange={(e) =>
+                e.target.checked && dispatch(requestBodyModeUpdated(value))
+              }
               className="radio-body-option"
               checked={bodyMode === value ? true : false}
             />
