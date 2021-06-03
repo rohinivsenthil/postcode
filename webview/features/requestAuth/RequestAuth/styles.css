@@ -20,7 +20,7 @@
   outline: none;
   border: var(--default-border-size) solid var(--border);
   border-radius: 2px;
-  background-color: transparent;
+  background-color: var(--background);
   color: var(--default-text-light);
   cursor: pointer;
   font-size: var(--default-font-size);
