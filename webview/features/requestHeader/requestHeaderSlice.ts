@@ -8,7 +8,32 @@ interface Header {
   disabled: boolean;
 }
 
-const initialState: Header[] = [];
+const initialState: Header[] = [
+  {
+    key: "Cache-Control",
+    value: "no-cache",
+    description: "",
+    disabled: false,
+  },
+  {
+    key: "Accept",
+    value: "*/*",
+    description: "",
+    disabled: false,
+  },
+  {
+    key: "Accept-Encoding",
+    value: "gzip, deflate",
+    description: "",
+    disabled: false,
+  },
+  {
+    key: "Connection",
+    value: "keep-alive",
+    description: "",
+    disabled: false,
+  },
+];
 
 const requestHeaderSlice = createSlice({
   name: "requestHeader",

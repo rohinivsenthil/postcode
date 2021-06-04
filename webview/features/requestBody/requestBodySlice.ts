@@ -93,6 +93,7 @@ export const {
   requestBodyUrlEncodedItemUpdated,
 } = requestBodySlice.actions;
 
+export const selectRequestBody = (state: RootState) => state.requestBody;
 export const selectRequestBodyMode = (state: RootState) =>
   state.requestBody.mode || "none";
 export const selectRequestBodyRaw = (state: RootState) => state.requestBody.raw;

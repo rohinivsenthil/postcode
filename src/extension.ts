@@ -53,74 +53,88 @@ export function activate(context: vscode.ExtensionContext) {
 </html>`;
 
       panel.webview.onDidReceiveMessage(
-        ({
-          reqType,
-          requestUrl,
-          headers,
-          body,
-          auth,
-          selectedBodyType,
-          rawLanguage,
-        }) => {
-          if (requestUrl) {
-            const headersObj = {};
+        ({ method, url, headers, body, auth }) => {
+          if (!url) {
+            panel.webview.postMessage({
+              type: "response",
+              error: { message: "Request URL is empty" },
+            });
+            vscode.window.showInformationMessage("Request URL is empty");
+            return;
+          }
 
-            if (selectedBodyType === "form-data") {
-              headersObj["Content-Type"] = "multipart/form-data";
-            } else if (selectedBodyType === "urlcoded") {
-              headersObj["Content-Type"] = "application/x-www-form-urlencoded";
-            } else if (selectedBodyType === "raw" && rawLanguage === "json") {
-              headersObj["Content-Type"] = "application/json";
-            } else if (selectedBodyType === "raw" && rawLanguage === "html") {
-              headersObj["Content-Type"] = "text/html";
-            } else if (selectedBodyType === "raw" && rawLanguage === "xml") {
-              headersObj["Content-Type"] = "text/xml";
-            } else if (selectedBodyType === "raw" && rawLanguage === "text") {
-              headersObj["Content-Type"] = "text/plain";
-            } else if (selectedBodyType === "binary") {
-              headersObj["Content-Type"] = "application/octet-stream";
+          const headersObj = {};
+
+          if (auth.type === "bearer") {
+            headersObj["Authorization"] = `Bearer ${auth.bearer.token}`;
+          }
+
+          headers.forEach(({ key, value, disabled }) => {
+            if (!disabled) {
+              headersObj[key] = value;
             }
+          });
 
-            headers.forEach(({ key, value, checked }) => {
-              if (checked) {
-                headersObj[key || ""] = value || "";
+          let data = "";
+          if (body.mode === "form-data") {
+            const dataObj = new URLSearchParams();
+            body.formdata.forEach(({ key, value, disabled }) => {
+              if (!disabled) {
+                dataObj.append(key, value);
               }
             });
-
-            if (auth.type === "bearer") {
-              headersObj["Authorization"] = `Bearer ${auth.bearer.token}`;
-            }
-
-            axios({
-              method: reqType,
-              url: requestUrl,
-              data: body,
-              headers: headersObj,
-              auth: auth.type === "basic" ? auth.basic : undefined,
-              transformResponse: [(data) => data],
-              responseType: "text",
-              validateStatus: () => true,
-            })
-              .then((resp) =>
-                panel.webview.postMessage({
-                  type: "response",
-                  data: resp.data,
-                  status: resp.status,
-                  statusText: resp.statusText,
-                })
-              )
-              .catch((err) => {
-                panel.webview.postMessage({
-                  type: "response",
-                  error: err,
-                });
-                vscode.window.showInformationMessage(
-                  "Error: Could not send request"
-                );
-              });
-          } else {
-            vscode.window.showInformationMessage("Request URL is empty");
+            data = dataObj.toString();
+            headersObj["Content-Type"] = "multipart/form-data";
+          } else if (body.mode === "x-www-form-urlencoded") {
+            const dataObj = new URLSearchParams();
+            body.urlencoded.forEach(({ key, value, disabled }) => {
+              if (!disabled) {
+                dataObj.append(key, value);
+              }
+            });
+            data = dataObj.toString();
+            headersObj["Content-Type"] = "application/x-www-form-urlencoded";
+          } else if (body.mode === "raw") {
+            data = body.raw;
+            headersObj["Content-Type"] = {
+              json: "application/json",
+              html: "text/html",
+              xml: "text/xml",
+              text: "text/plain",
+            }[body.options.raw.language];
+          } else if (body.mode === "binary") {
+            data = body.fileData;
+            headersObj["Content-Type"] = "application/octet-stream";
           }
+
+          axios({
+            method,
+            url,
+            baseURL: "",
+            data: data,
+            headers: headersObj,
+            auth: auth.type === "basic-auth" ? auth.basic : undefined,
+            transformResponse: [(data) => data],
+            responseType: "text",
+            validateStatus: () => true,
+          })
+            .then((resp) =>
+              panel.webview.postMessage({
+                type: "response",
+                data: resp.data,
+                status: resp.status,
+                statusText: resp.statusText,
+              })
+            )
+            .catch((err) => {
+              panel.webview.postMessage({
+                type: "response",
+                error: err,
+              });
+              vscode.window.showInformationMessage(
+                "Error: Could not send request"
+              );
+            });
         }
       );
     }
