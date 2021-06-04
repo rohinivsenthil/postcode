@@ -21,8 +21,9 @@
     "vscode": "^1.56.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
+  "keywords": ["api-client", "postman", "REST", "graphql", "http"],
   "activationEvents": [
     "onCommand:postcode.createRequest"
   ],
