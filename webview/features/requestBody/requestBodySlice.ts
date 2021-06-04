@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/store";
 
@@ -7,6 +8,7 @@ export const requestBodyModes = [
   { name: "x-www-form-urlencoded", value: "x-www-form-urlencoded" },
   { name: "raw", value: "raw" },
   { name: "binary", value: "binary" },
+  { name: "GraphQL", value: "graphql" },
 ];
 
 export const requestBodyRawLanguages = [
@@ -25,6 +27,7 @@ export interface RequestBodyState {
   formdata: { key: string; value: string; description: string }[];
   urlencoded: { key: string; value: string; description: string }[];
   options: any;
+  graphql: { query: string; variables: string };
 }
 
 const initialState: RequestBodyState = {
@@ -35,6 +38,7 @@ const initialState: RequestBodyState = {
   formdata: [],
   urlencoded: [],
   options: { raw: { language: "json" } },
+  graphql: { query: "", variables: "" },
 };
 
 const requestBodySlice = createSlice({
@@ -69,6 +73,12 @@ const requestBodySlice = createSlice({
       state.file = action.payload.name;
       state.fileData = action.payload.data;
     },
+    requestBodyGraphqlQueryUpdated(state, action: PayloadAction<string>) {
+      state.graphql.query = action.payload;
+    },
+    requestBodyGraphqlVariablesUpdated(state, action: PayloadAction<string>) {
+      state.graphql.variables = action.payload;
+    },
     requestBodyModeUpdated(state, action: PayloadAction<string>) {
       if (action.payload === "none") {
         state.mode = undefined;
@@ -91,6 +101,8 @@ export const {
   requestBodyUrlEncodedItemAdded,
   requestBodyUrlEncodedItemDeleted,
   requestBodyUrlEncodedItemUpdated,
+  requestBodyGraphqlQueryUpdated,
+  requestBodyGraphqlVariablesUpdated,
 } = requestBodySlice.actions;
 
 export const selectRequestBody = (state: RootState) => state.requestBody;
@@ -107,5 +119,9 @@ export const selectRequestBodyFormData = (state: RootState) =>
   state.requestBody.formdata;
 export const selectRequestBodyUrlEncoded = (state: RootState) =>
   state.requestBody.urlencoded;
+export const selectRequestBodyGraphqlQuery = (state: RootState) =>
+  state.requestBody.graphql.query;
+export const selectRequestBodyGraphqlVariables = (state: RootState) =>
+  state.requestBody.graphql.variables;
 
 export default requestBodySlice.reducer;

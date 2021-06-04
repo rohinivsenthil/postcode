@@ -1,0 +1,23 @@
+.gql-wrapper {
+  display: flex;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.gql-section {
+  height: 95%;
+  padding: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gql-section-heading {
+  font-size: var(--default-font-size);
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+.gql-editor {
+  height: 90%;
+}

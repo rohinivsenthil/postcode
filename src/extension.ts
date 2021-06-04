@@ -105,6 +105,12 @@ export function activate(context: vscode.ExtensionContext) {
           } else if (body.mode === "binary") {
             data = body.fileData;
             headersObj["Content-Type"] = "application/octet-stream";
+          } else if (body.mode === "graphql") {
+            data = JSON.stringify({
+              query: body.graphql.query,
+              variables: body.graphql.variables,
+            });
+            headersObj["Content-Type"] = "application/json";
           }
 
           axios({
