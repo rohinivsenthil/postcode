@@ -1,154 +1,138 @@
 import * as React from "react";
-import "./styles.css";
-import { keyValueTable } from "../../constants/key-value-table";
 import * as propTypes from "prop-types";
 import { FaTrashAlt } from "react-icons/fa";
+import "./styles.css";
 
-const KeyValueRow = (props) => {
-  const { id, data, setData } = props;
+export const KeyValueRow = (props) => {
+  const {
+    itemKey,
+    itemValue,
+    itemDescription,
+    itemDisabled,
+    actions,
+    onDelete,
+    onChange,
+  } = props;
+
   return (
-    <div className="kv-row-wrapper">
-      <div className="kv-row-iwc-wrapper">
-        <div className="checkbox-wrapper">
+    <tr className={itemDisabled ? "kv-disabled" : null}>
+      <td className="kv-action-cell">
+        {actions && (
           <input
             type="checkbox"
-            className="input-checkbox"
-            checked={data[id].checked || false}
+            checked={!itemDisabled}
             onChange={(e) =>
-              setData([
-                ...data.slice(0, id),
-                { ...data[id], checked: e.currentTarget.checked },
-                ...data.slice(id + 1),
-              ])
+              onChange({
+                key: itemKey,
+                value: itemValue,
+                description: itemDescription,
+                disabled: !e.target.checked,
+              })
             }
           />
-        </div>
+        )}
+      </td>
+      <td>
         <input
-          type="text"
-          id="tr-input-key"
-          name="tr-input-key"
+          className="kv-input"
           placeholder="Key"
-          autoComplete="off"
-          value={data[id].key || ""}
+          value={itemKey}
           onChange={(e) =>
-            setData([
-              ...data.slice(0, id),
-              {
-                ...data[id],
-                key: e.target.value,
-                checked:
-                  data[id].checked === undefined ? true : data[id].checked,
-              },
-              ...data.slice(id + 1),
-            ])
-          }
-          className={
-            data[id].checked === false
-              ? "kv-row-iwc kv-row-input-unchecked"
-              : "kv-row-iwc"
+            onChange({
+              key: e.target.value,
+              value: itemValue,
+              description: itemDescription,
+              disabled: itemDisabled,
+            })
           }
         />
-      </div>
-      <input
-        type="text"
-        id="tr-input-value"
-        name="tr-input-value"
-        placeholder="Value"
-        autoComplete="off"
-        value={data[id].value || ""}
-        onChange={(e) =>
-          setData([
-            ...data.slice(0, id),
-            {
-              ...data[id],
-              value: e.target.value,
-              checked: data[id].checked === undefined ? true : data[id].checked,
-            },
-            ...data.slice(id + 1),
-          ])
-        }
-        className={
-          data[id].checked === false
-            ? "kv-row-input kv-row-input-unchecked"
-            : "kv-row-input"
-        }
-      />
-      <div className="kv-row-iwt-wrapper">
+      </td>
+      <td>
         <input
-          type="text"
-          id="tr-input-desc"
-          name="tr-input-desc"
-          autoComplete="off"
-          placeholder="Description"
-          value={data[id].desc || ""}
+          className="kv-input"
+          placeholder="Value"
+          value={itemValue}
           onChange={(e) =>
-            setData([
-              ...data.slice(0, id),
-              {
-                ...data[id],
-                desc: e.target.value,
-                checked:
-                  data[id].checked === undefined ? true : data[id].checked,
-              },
-              ...data.slice(id + 1),
-            ])
-          }
-          className={
-            data[id].checked === false
-              ? "kv-row-iwt kv-row-input-unchecked"
-              : "kv-row-iwt"
+            onChange({
+              key: itemKey,
+              value: e.target.value,
+              description: itemDescription,
+              disabled: itemDisabled,
+            })
           }
         />
-        <div className="trash-icon-wrapper">
-          <FaTrashAlt
-            className="trash-icon"
-            onClick={() =>
-              data.length !== 1 &&
-              setData(data.filter((item, idx) => idx != id))
-            }
-          />
-        </div>
-      </div>
-    </div>
+      </td>
+      <td>
+        <input
+          className="kv-input"
+          placeholder="Description"
+          value={itemDescription}
+          onChange={(e) =>
+            onChange({
+              key: itemKey,
+              value: itemValue,
+              description: e.target.value,
+              disabled: itemDisabled,
+            })
+          }
+        />
+      </td>
+      <td className="kv-action-cell">
+        {actions && (
+          <FaTrashAlt className="kv-delete-button" onClick={onDelete} />
+        )}
+      </td>
+    </tr>
   );
 };
 
 export const KeyValueTable = (props) => {
-  const { data, setData } = props;
-
-  React.useEffect(() => {
-    if (
-      data[data.length - 1].key ||
-      data[data.length - 1].value ||
-      data[data.length - 1].desc
-    ) {
-      setData([...data, {}]);
-    }
-  }, [data]);
+  const { data, onRowUpdate, onRowAdd, onRowDelete } = props;
 
   return (
-    <div className="kv-table-wrapper">
-      <div className="kv-heading-wrapper">
-        {keyValueTable.map((item) => (
-          <div className="kv-table-heading" key={item.heading}>
-            {item.heading}
-          </div>
+    <table className="kv-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th className="kv-heading-cell">KEY</th>
+          <th className="kv-heading-cell">VALUE</th>
+          <th className="kv-heading-cell">DESCRIPTION</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {[...data, {}].map(({ key, value, description, disabled }, idx) => (
+          <KeyValueRow
+            itemKey={key || ""}
+            itemValue={value || ""}
+            itemDescription={description || ""}
+            itemDisabled={disabled || false}
+            onDelete={() => onRowDelete(idx)}
+            onChange={(item) =>
+              idx === data.length ? onRowAdd(item) : onRowUpdate(idx, item)
+            }
+            key={idx}
+            actions={idx !== data.length}
+          />
         ))}
-      </div>
-      {data.map((item, idx) => (
-        <KeyValueRow key={idx} data={data} setData={setData} id={idx} />
-      ))}
-    </div>
+      </tbody>
+    </table>
   );
 };
 
 KeyValueTable.propTypes = {
   data: propTypes.array.isRequired,
-  setData: propTypes.func.isRequired,
+  onRowDelete: propTypes.func.isRequired,
+  onRowAdd: propTypes.func.isRequired,
+  onRowUpdate: propTypes.func.isRequired,
 };
 
 KeyValueRow.propTypes = {
-  id: propTypes.number.isRequired,
-  data: propTypes.array.isRequired,
-  setData: propTypes.func.isRequired,
+  itemKey: propTypes.string.isRequired,
+  itemValue: propTypes.string.isRequired,
+  itemDescription: propTypes.string.isRequired,
+  itemDisabled: propTypes.bool.isRequired,
+  actions: propTypes.bool.isRequired,
+  onChange: propTypes.func.isRequired,
+  onDelete: propTypes.func.isRequired,
 };

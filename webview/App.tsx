@@ -1,28 +1,23 @@
 import * as React from "react";
 import "./App.css";
+import { responseUpdated } from "./features/response/responseSlice";
 import { Postcode } from "./pages/Postcode";
+import { useAppDispatch } from "./redux/hooks";
 
 const App = () => {
-  const [response, setResponse] = React.useState({ initial: "true" });
-  const [loadingResponse, setLoadingResponse] = React.useState(false);
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     window.addEventListener("message", (event) => {
       if (event.data.type === "response") {
-        setLoadingResponse(false);
-        setResponse(event.data);
+        dispatch(responseUpdated(event.data));
       }
     });
   }, []);
 
   return (
     <div className="App">
-      <Postcode
-        response={response}
-        setResponse={setResponse}
-        loadingResponse={loadingResponse}
-        setLoadingResponse={setLoadingResponse}
-      />
+      <Postcode />
     </div>
   );
 };

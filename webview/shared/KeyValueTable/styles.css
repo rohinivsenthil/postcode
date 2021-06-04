@@ -1,108 +1,47 @@
-.kv-table-wrapper {
-  border-top: var(--default-border-size) solid var(--border);
-  border-left: var(--default-border-size) solid var(--border);
-  margin-top: 15px;
+.kv-table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.kv-heading-wrapper,
-.kv-row-wrapper {
-  display: flex;
+.kv-table,
+td,
+th {
+  border: var(--default-border-size) solid var(--border);
 }
 
-.kv-table-heading {
-  flex: 1;
+th,
+.kv-input {
   color: var(--default-text);
   padding: 10px 12px;
+}
+
+th {
+  text-align: left;
   font-weight: 700;
-  border: 0;
-  border-bottom: var(--default-border-size) solid var(--border);
-  border-right: var(--default-border-size) solid var(--border);
   font-size: var(--small-font-size);
 }
 
-.kv-row-input {
-  flex: 1;
-  color: var(--default-text);
-  padding: 10px 0px 10px 12px;
+.kv-action-cell {
+  text-align: center;
+  width: 30px;
+}
+
+.kv-input {
+  box-sizing: border-box;
+  width: 100%;
   border: 0;
-  border-bottom: var(--default-border-size) solid var(--border);
-  border-right: var(--default-border-size) solid var(--border);
   background-color: transparent;
   font-size: var(--default-font-size);
 }
-.kv-row-input:focus {
+
+.kv-input:focus {
   outline: none;
 }
 
-.kv-row-iwc-wrapper {
-  flex: 1;
-  padding-left: 12px;
-  display: flex;
-  border-bottom: var(--default-border-size) solid var(--border);
-  border-right: var(--default-border-size) solid var(--border);
-}
-
-.kv-row-iwc {
-  flex: 1;
-  border: 0;
-  padding: 10px 12px;
-  color: var(--default-text);
-  background-color: transparent;
-  font-size: var(--default-font-size);
-}
-.kv-row-iwc:focus {
-  outline: none;
-}
-
-.kv-row-input-unchecked {
+.kv-disabled .kv-input {
   color: var(--input-field-unchecked);
 }
 
-.checkbox-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-right: 12px;
-}
-
-.trash-icon {
-  color: var(--default-text-light);
+.kv-delete-button {
   cursor: pointer;
-}
-
-.kv-row-iwt-wrapper {
-  flex: 1;
-  padding-right: 12px;
-  display: flex;
-  border-bottom: var(--default-border-size) solid var(--border);
-  border-right: var(--default-border-size) solid var(--border);
-}
-
-.kv-row-iwt {
-  flex: 1;
-  border: 0;
-  padding: 10px 12px;
-  color: var(--default-text);
-  background-color: transparent;
-  font-size: var(--default-font-size);
-}
-.kv-row-iwt:focus {
-  outline: none;
-}
-
-.trash-icon-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 12px;
-}
-
-.input-checkbox {
-  outline: none;
-}
-.input-checkbox:checked {
-  outline: none;
-}
-.input-checkbox:focus {
-  outline: none;
 }

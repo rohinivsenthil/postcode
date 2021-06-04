@@ -1,48 +1,42 @@
 import * as React from "react";
+import vscode from "../../vscode";
+import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
+import { RequestUrl } from "../../features/requestUrl/RequestUrl";
+import { responseLoadingStarted } from "../../features/response/responseSlice";
+import { selectRequestAuth } from "../../features/requestAuth/requestAuthSlice";
+import { selectRequestBody } from "../../features/requestBody/requestBodySlice";
+import { selectRequestHeaders } from "../../features/requestHeader/requestHeaderSlice";
+import { selectRequestUrl } from "../../features/requestUrl/requestUrlSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import "./styles.css";
-import { requestTypes } from "../../constants/request-types";
-import * as propTypes from "prop-types";
+import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 
-export const RequestBar = (props) => {
-  const {
-    requestUrl,
-    setRequestUrl,
-    sendRequest,
-    setReqType,
-    setLoadingResponse,
-  } = props;
+export const RequestBar = () => {
+  const dispatch = useAppDispatch();
+
+  const requestMethod = useAppSelector(selectRequestMethod);
+  const requestHeaders = useAppSelector(selectRequestHeaders);
+  const requestBody = useAppSelector(selectRequestBody);
+  const requestUrl = useAppSelector(selectRequestUrl);
+  const requestAuth = useAppSelector(selectRequestAuth);
+
   return (
     <form
       className="request-bar"
       onSubmit={(e) => {
-        sendRequest();
-        if (requestUrl !== "") {
-          setLoadingResponse(true);
-        }
+        dispatch(responseLoadingStarted());
+        vscode.postMessage({
+          method: requestMethod,
+          auth: requestAuth,
+          body: requestBody,
+          headers: requestHeaders,
+          url: requestUrl,
+        });
         e.preventDefault();
       }}
     >
-      <select
-        name="request-type"
-        id="request-type"
-        className="select-request-type"
-        onChange={(e) => setReqType(e.target.value)}
-      >
-        {requestTypes.map((type) => (
-          <option value={type.value} key={type.value}>
-            {type.name}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        id="request-url"
-        name="request-url"
-        placeholder="Enter request URL"
-        className="input-request-url"
-        value={requestUrl}
-        onChange={(e) => setRequestUrl(e.target.value)}
-      />
+      <RequestMethodSelector />
+      <RequestUrl />
       <button
         name="request-send"
         id="request-send"
@@ -53,12 +47,4 @@ export const RequestBar = (props) => {
       </button>
     </form>
   );
-};
-
-RequestBar.propTypes = {
-  requestUrl: propTypes.string.isRequired,
-  setRequestUrl: propTypes.func.isRequired,
-  sendRequest: propTypes.func.isRequired,
-  setReqType: propTypes.func.isRequired,
-  setLoadingResponse: propTypes.func.isRequired,
 };
