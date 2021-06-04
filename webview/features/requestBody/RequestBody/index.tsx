@@ -4,6 +4,7 @@ import { FormData } from "../FormData";
 import { None } from "../NoBody";
 import { Raw } from "../Raw";
 import { UrlEncoded } from "../UrlEncoded";
+import { GraphQL } from "../GraphQL";
 import {
   requestBodyModes,
   requestBodyRawLanguages,
@@ -68,6 +69,8 @@ export const Body = () => {
           <Raw />
         ) : bodyMode === "binary" ? (
           <Binary />
+        ) : bodyMode === "graphql" ? (
+          <GraphQL />
         ) : null}
       </div>
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 //@ts-check
 
 "use strict";
@@ -104,7 +105,7 @@ const webviewConfig = (webpackEnv) => {
     },
     plugins: [
       new MonacoWebpackPlugin({
-        languages: ["html", "xml", "json"],
+        languages: ["html", "xml", "json", "graphql"],
       }),
       new webpack.ProvidePlugin({
         Buffer: ["buffer", "Buffer"],
