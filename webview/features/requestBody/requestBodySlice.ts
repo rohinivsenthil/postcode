@@ -85,6 +85,7 @@ const requestBodySlice = createSlice({
         state.disabled = true;
       } else {
         state.mode = action.payload;
+        state.disabled = false;
       }
     },
   },

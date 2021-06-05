@@ -7,9 +7,9 @@ import { selectRequestAuth } from "../../features/requestAuth/requestAuthSlice";
 import { selectRequestBody } from "../../features/requestBody/requestBodySlice";
 import { selectRequestHeaders } from "../../features/requestHeader/requestHeaderSlice";
 import { selectRequestUrl } from "../../features/requestUrl/requestUrlSlice";
+import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import "./styles.css";
-import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
 
 export const RequestBar = () => {
   const dispatch = useAppDispatch();

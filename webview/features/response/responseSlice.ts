@@ -17,9 +17,11 @@ const responseSlice = createSlice({
   initialState,
   reducers: {
     responseUpdated(state, action: PayloadAction<ResponseState>) {
-      Object.assign(state, action.payload);
-      state.initial = false;
-      state.loading = false;
+      return {
+        ...action.payload,
+        initial: false,
+        loading: false,
+      };
     },
     responseLoadingStarted(state) {
       state.loading = true;
