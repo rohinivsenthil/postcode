@@ -1,41 +1,39 @@
 .code-gen-wrapper {
   height: 100%;
-  margin-top: 15px;
-  display: flex;
-}
-
-.code-lang-wrapper {
-  height: 100%;
-  padding: 0 10px 0 0;
-}
-
-.code-lang {
   display: flex;
   flex-direction: column;
-  height: 200px;
-  overflow: scroll;
-  border: var(--default-border-size) solid var(--border);
+}
+
+.code-gen-options {
+  display: flex;
+  align-items: center;
 }
 
 .code-display {
-  height: 90%;
-  flex: 1;
+  height: 95%;
+  border-top: var(--default-border-size) solid var(--border);
+  margin-top: 15px;
 }
 
 .code-gen-editor {
   height: 100%;
 }
 
-.option-button {
-  text-align: start;
-  color: var(--default-text-light);
-  font-size: var(--default-font-size);
-  padding: 5px;
-  cursor: pointer;
-  border: 0;
+.select-code-option {
+  padding: 4px;
+  display: inline-block;
+  font-weight: 600;
   outline: none;
-  background-color: transparent;
+  border: var(--default-border-size) solid var(--border);
+  border-radius: 2px;
+  background-color: var(--background);
+  color: var(--default-text-light);
+  cursor: pointer;
+  font-size: var(--default-font-size);
 }
-.option-button:hover {
-  background-color: var(--input-field);
+.select-code-option:hover {
+  color: var(--default-text);
+}
+.select-code-option:focus {
+  outline: none;
 }
