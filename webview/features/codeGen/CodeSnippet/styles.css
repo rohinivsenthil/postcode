@@ -21,6 +21,7 @@
 
 .select-code-option {
   padding: 4px;
+  margin-right: 8px;
   display: inline-block;
   font-weight: 600;
   outline: none;

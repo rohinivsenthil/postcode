@@ -32,14 +32,21 @@ const codeGenSlice = createSlice({
   name: "codeGenOptions",
   initialState,
   reducers: {
-    codeGenOptionsUpdated(state, action: PayloadAction<codeGenOptionState>) {
-      return action.payload;
+    codeGenLanguageUpdated(state, action: PayloadAction<string>) {
+      state.language = action.payload;
+    },
+    codeGenVariantUpdated(state, action: PayloadAction<string>) {
+      state.variant = action.payload;
     },
   },
 });
 
-export const { codeGenOptionsUpdated } = codeGenSlice.actions;
+export const { codeGenLanguageUpdated, codeGenVariantUpdated } =
+  codeGenSlice.actions;
 
-export const selectGodeGenOptions = (state: RootState) => state.codeGenOptions;
+export const selectCodeGenLanguage = (state: RootState) =>
+  state.codeGenOptions.language;
+export const selectCodeGenVariant = (state: RootState) =>
+  state.codeGenOptions.variant;
 
 export default codeGenSlice.reducer;

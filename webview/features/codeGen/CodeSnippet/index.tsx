@@ -1,27 +1,48 @@
 import * as React from "react";
 import "./styles.css";
 import { Editor } from "../../../shared/Editor";
-import { codeGenOptions } from "../codeGenSlice";
+import {
+  codeGenLanguageUpdated,
+  codeGenOptions,
+  codeGenVariantUpdated,
+  selectCodeGenLanguage,
+  selectCodeGenVariant,
+} from "../codeGenSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 export const CodeSnippet = () => {
   const [code, setCode] = React.useState("");
+
+  const language = useAppSelector(selectCodeGenLanguage);
+  const variant = useAppSelector(selectCodeGenVariant);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="code-gen-wrapper">
       <div className="code-gen-option">
         <select
-          // onChange={(e) => dispatch(requestAuthTypeUpdated(e.target.value))}
+          onChange={(e) => dispatch(codeGenLanguageUpdated(e.target.value))}
           className="select-code-option"
-          // value={requestAuthType}
+          value={language}
         >
-          {codeGenOptions.flatMap(({ language, variants }) =>
-            variants.map((variant) => (
-              // eslint-disable-next-line react/jsx-key
-              <option value={`${language} - ${variant}`}>
-                {`${language} - ${variant}`}
+          {codeGenOptions.map(({ language }) => (
+            <option key={language} value={language}>
+              {language}
+            </option>
+          ))}
+        </select>
+        <select
+          onChange={(e) => dispatch(codeGenVariantUpdated(e.target.value))}
+          className="select-code-option"
+          value={variant}
+        >
+          {codeGenOptions
+            .filter(({ language: lang }) => lang === language)[0]
+            .variants.map((variant) => (
+              <option key={variant} value={variant}>
+                {variant}
               </option>
-            ))
-          )}
+            ))}
         </select>
       </div>
       <div className="code-display">
