@@ -11,7 +11,7 @@ export const requestMethods = [
   { name: "HEAD", value: "head" },
 ];
 
-const initialState: string = "get";
+const initialState = "get";
 
 const requestMethodSlice = createSlice({
   name: "requestMethod",

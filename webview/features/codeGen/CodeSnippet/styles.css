@@ -1,0 +1,41 @@
+.code-gen-wrapper {
+  height: 100%;
+  margin-top: 15px;
+  display: flex;
+}
+
+.code-lang-wrapper {
+  height: 100%;
+  padding: 0 10px 0 0;
+}
+
+.code-lang {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  overflow: scroll;
+  border: var(--default-border-size) solid var(--border);
+}
+
+.code-display {
+  height: 90%;
+  flex: 1;
+}
+
+.code-gen-editor {
+  height: 100%;
+}
+
+.option-button {
+  text-align: start;
+  color: var(--default-text-light);
+  font-size: var(--default-font-size);
+  padding: 5px;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+.option-button:hover {
+  background-color: var(--input-field);
+}

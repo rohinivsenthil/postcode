@@ -4,7 +4,7 @@
     "target": "es6",
     "outDir": "out",
     "jsx": "react",
-    "lib": ["es6", "dom"],
+    "lib": ["es2019", "dom"],
     "sourceMap": true,
     "rootDir": ".",
     "resolveJsonModule": true,

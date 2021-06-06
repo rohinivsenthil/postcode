@@ -54,7 +54,7 @@ const requestUrlSlice = createSlice({
     requestQueryParamDeleted(state, action: PayloadAction<number>) {
       state.query.splice(action.payload, 1);
     },
-    requestUrlVariableUpdated(state, action: PayloadAction<Variable>) {},
+    // requestUrlVariableUpdated(state, action: PayloadAction<Variable>) {},
   },
 });
 
@@ -63,7 +63,7 @@ export const {
   requestQueryParamAdded,
   requestQueryParamUpdated,
   requestQueryParamDeleted,
-  requestUrlVariableUpdated,
+  // requestUrlVariableUpdated,
 } = requestUrlSlice.actions;
 
 export const selectRequestUrl = (state: RootState) =>
