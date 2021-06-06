@@ -7,9 +7,9 @@
 Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](https://marketplace.visualstudio.com/VSCode) that can be used to create and test simple and complex HTTP/s requests, as well as view responses. You can find the extension available [here](https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode).
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/42040329/120814564-a3317780-c56c-11eb-9445-ab0699688fac.gif"/>
+  <img src="https://user-images.githubusercontent.com/42040329/120920378-0c83c880-c6dc-11eb-814a-e667563eed95.gif"/>
   <br/>
-  <sup>Latest Release: 1.2.0</sup>
+  <sup>Latest Release: 1.3.0</sup>
 </div>
 
 ## Highlighted Features
