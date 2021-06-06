@@ -38,7 +38,7 @@ const initialState: RequestBodyState = {
   formdata: [],
   urlencoded: [],
   options: { raw: { language: "json" } },
-  graphql: { query: "", variables: "" },
+  graphql: { query: "", variables: "{}" },
 };
 
 const requestBodySlice = createSlice({
