@@ -12,6 +12,11 @@ Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](h
   <sup>Latest Release: 1.2.0</sup>
 </div>
 
+## Highlighted Features
+- **Intuitive UI/UX** similar to Postman fitting seamlessly with any VSCode theme
+- Supports **GraphQL** requests
+- Supports **code snippet generation** from requests
+
 ## Quick start
 
 **Step 1.** Install the Postcode extension for Visual Studio Code  
