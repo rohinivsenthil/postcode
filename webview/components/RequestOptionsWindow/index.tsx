@@ -3,6 +3,7 @@ import { RequestQueryParams } from "../../features/requestUrl/RequestQueryParams
 import { RequestAuth } from "../../features/requestAuth/RequestAuth";
 import { Body } from "../../features/requestBody/RequestBody";
 import { Headers } from "../../features/requestHeader/HeadersWindow";
+import { CodeSnippet } from "../../features/codeGen/CodeSnippet";
 import * as propTypes from "prop-types";
 import "./styles.css";
 
@@ -18,6 +19,8 @@ export const RequestOptionsWindow = (props) => {
         <Body />
       ) : selected === "headers" ? (
         <Headers />
+      ) : selected === "code" ? (
+        <CodeSnippet />
       ) : null}
     </div>
   );

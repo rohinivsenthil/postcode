@@ -61,13 +61,13 @@ export const Body = () => {
       <div className="request-body-window-wrapper">
         {bodyMode === "none" ? (
           <None />
-        ) : bodyMode === "form-data" ? (
+        ) : bodyMode === "formdata" ? (
           <FormData />
-        ) : bodyMode === "x-www-form-urlencoded" ? (
+        ) : bodyMode === "urlencoded" ? (
           <UrlEncoded />
         ) : bodyMode === "raw" ? (
           <Raw />
-        ) : bodyMode === "binary" ? (
+        ) : bodyMode === "file" ? (
           <Binary />
         ) : bodyMode === "graphql" ? (
           <GraphQL />

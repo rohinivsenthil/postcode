@@ -4,10 +4,10 @@ import { RootState } from "../../redux/store";
 
 export const requestBodyModes = [
   { name: "none", value: "none" },
-  { name: "form-data", value: "form-data" },
-  { name: "x-www-form-urlencoded", value: "x-www-form-urlencoded" },
+  { name: "form-data", value: "formdata" },
+  { name: "x-www-form-urlencoded", value: "urlencoded" },
   { name: "raw", value: "raw" },
-  { name: "binary", value: "binary" },
+  { name: "binary", value: "file" },
   { name: "GraphQL", value: "graphql" },
 ];
 
@@ -38,7 +38,7 @@ const initialState: RequestBodyState = {
   formdata: [],
   urlencoded: [],
   options: { raw: { language: "json" } },
-  graphql: { query: "", variables: "" },
+  graphql: { query: "", variables: "{}" },
 };
 
 const requestBodySlice = createSlice({

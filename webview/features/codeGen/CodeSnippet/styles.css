@@ -1,0 +1,40 @@
+.code-gen-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-gen-options {
+  display: flex;
+  align-items: center;
+}
+
+.code-display {
+  height: 95%;
+  border-top: var(--default-border-size) solid var(--border);
+  margin-top: 15px;
+}
+
+.code-gen-editor {
+  height: 100%;
+}
+
+.select-code-option {
+  padding: 4px;
+  margin-right: 8px;
+  display: inline-block;
+  font-weight: 600;
+  outline: none;
+  border: var(--default-border-size) solid var(--border);
+  border-radius: 2px;
+  background-color: var(--background);
+  color: var(--default-text-light);
+  cursor: pointer;
+  font-size: var(--default-font-size);
+}
+.select-code-option:hover {
+  color: var(--default-text);
+}
+.select-code-option:focus {
+  outline: none;
+}

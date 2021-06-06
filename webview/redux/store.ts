@@ -5,6 +5,7 @@ import requestHeaderReducer from "../features/requestHeader/requestHeaderSlice";
 import requestMethodReducer from "../features/requestMethod/requestMethodSlice";
 import requestUrlReducer from "../features/requestUrl/requestUrlSlice";
 import responseReducer from "../features/response/responseSlice";
+import codeGenOptionsReducer from "../features/codeGen/codeGenSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     requestMethod: requestMethodReducer,
     requestUrl: requestUrlReducer,
     response: responseReducer,
+    codeGenOptions: codeGenOptionsReducer,
   },
 });
 
