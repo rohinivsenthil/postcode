@@ -7,8 +7,11 @@ import {
   codeGenVariantUpdated,
   selectCodeGenEditorLanguage,
   selectCodeGenLanguage,
+  selectCodeGenLanguageKey,
   selectCodeGenVariant,
+  selectRequest,
 } from "../codeGenSlice";
+import * as codegen from "postman-code-generators";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 export const CodeSnippet = () => {
@@ -17,7 +20,16 @@ export const CodeSnippet = () => {
   const language = useAppSelector(selectCodeGenLanguage);
   const variant = useAppSelector(selectCodeGenVariant);
   const editorLanguage = useAppSelector(selectCodeGenEditorLanguage);
+  const languageKey = useAppSelector(selectCodeGenLanguageKey);
   const dispatch = useAppDispatch();
+
+  const request = useAppSelector(selectRequest);
+
+  React.useEffect(() => {
+    codegen.convert(languageKey, variant, request, {}, (err, snippet) => {
+      setCode(snippet);
+    });
+  }, [languageKey, variant, request]);
 
   return (
     <div className="code-gen-wrapper">
@@ -52,7 +64,7 @@ export const CodeSnippet = () => {
           className="code-gen-editor"
           value={code}
           language={editorLanguage}
-          onChange={(data) => setCode(data)}
+          readOnly
         />
       </div>
     </div>

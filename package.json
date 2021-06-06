@@ -23,7 +23,13 @@
   "categories": [
     "Programming Languages"
   ],
-  "keywords": ["api-client", "postman", "REST", "graphql", "http"],
+  "keywords": [
+    "api-client",
+    "postman",
+    "REST",
+    "graphql",
+    "http"
+  ],
   "activationEvents": [
     "onCommand:postcode.createRequest"
   ],
@@ -106,6 +112,7 @@
     "buffer": "^6.0.3",
     "monaco-editor": "^0.24.0",
     "path-browserify": "^1.0.1",
+    "postman-code-generators": "^1.1.5",
     "postman-collection": "^3.6.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

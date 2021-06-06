@@ -106,17 +106,14 @@ const webviewConfig = (webpackEnv) => {
     plugins: [
       new MonacoWebpackPlugin({
         languages: [
-          "html",
-          "xml",
-          "json",
-          "graphql",
-          "c",
           "csharp",
-          "bash",
           "dart",
           "go",
+          "graphql",
+          "html",
           "java",
-          "javascript",
+          "typescript",
+          "json",
           "objective-c",
           "php",
           "powershell",
@@ -124,10 +121,12 @@ const webviewConfig = (webpackEnv) => {
           "ruby",
           "shell",
           "swift",
+          "xml",
         ],
       }),
       new webpack.ProvidePlugin({
         Buffer: ["buffer", "Buffer"],
+        process: "process/browser",
       }),
     ],
   };

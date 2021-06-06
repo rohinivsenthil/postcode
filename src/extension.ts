@@ -76,7 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
           });
 
           let data = "";
-          if (body.mode === "form-data") {
+          if (body.mode === "formdata") {
             const dataObj = new URLSearchParams();
             body.formdata.forEach(({ key, value, disabled }) => {
               if (!disabled) {
@@ -85,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
             });
             data = dataObj.toString();
             headersObj["Content-Type"] = "multipart/form-data";
-          } else if (body.mode === "x-www-form-urlencoded") {
+          } else if (body.mode === "urlencoded") {
             const dataObj = new URLSearchParams();
             body.urlencoded.forEach(({ key, value, disabled }) => {
               if (!disabled) {
@@ -102,7 +102,7 @@ export function activate(context: vscode.ExtensionContext) {
               xml: "text/xml",
               text: "text/plain",
             }[body.options.raw.language];
-          } else if (body.mode === "binary") {
+          } else if (body.mode === "file") {
             data = body.fileData;
             headersObj["Content-Type"] = "application/octet-stream";
           } else if (body.mode === "graphql") {
