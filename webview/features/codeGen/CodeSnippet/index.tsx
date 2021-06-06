@@ -5,6 +5,7 @@ import {
   codeGenLanguageUpdated,
   codeGenOptions,
   codeGenVariantUpdated,
+  selectCodeGenEditorLanguage,
   selectCodeGenLanguage,
   selectCodeGenVariant,
 } from "../codeGenSlice";
@@ -15,6 +16,7 @@ export const CodeSnippet = () => {
 
   const language = useAppSelector(selectCodeGenLanguage);
   const variant = useAppSelector(selectCodeGenVariant);
+  const editorLanguage = useAppSelector(selectCodeGenEditorLanguage);
   const dispatch = useAppDispatch();
 
   return (
@@ -49,7 +51,7 @@ export const CodeSnippet = () => {
         <Editor
           className="code-gen-editor"
           value={code}
-          language="json"
+          language={editorLanguage}
           onChange={(data) => setCode(data)}
         />
       </div>
