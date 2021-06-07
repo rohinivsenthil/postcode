@@ -13,6 +13,7 @@ Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](h
 </div>
 
 ## Highlighted Features
+
 - **Intuitive UI/UX** similar to Postman fitting seamlessly with any VSCode theme
 - Supports **GraphQL** requests
 - Supports **code snippet generation** from requests
