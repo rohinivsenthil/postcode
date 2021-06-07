@@ -63,7 +63,7 @@ export const Editor = (props) => {
   }, [value, language, editor, format]);
 
   return (
-    <div className={`${className} monaco-editor`} ref={divEl}>
+    <div className={`${className} postcode-editor`} ref={divEl}>
       {copyButton && (
         <button
           onClick={() => {

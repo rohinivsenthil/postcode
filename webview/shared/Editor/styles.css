@@ -1,7 +1,9 @@
 .monaco-editor {
-  position: relative;
   border: var(--default-border-size) solid var(--border);
-  height: 100%;
+}
+
+.postcode-editor {
+  position: relative;
 }
 
 .copy-button {
@@ -22,7 +24,7 @@
   visibility: hidden;
 }
 
-.monaco-editor:hover .copy-button {
+.postcode-editor:hover .copy-button {
   opacity: 1;
   visibility: visible;
 }
