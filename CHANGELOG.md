@@ -4,6 +4,10 @@ All notable changes to the "postcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## 1.3.0
+
+- Add copy button to code editor
+
 ### 1.3.0
 
 - Support code-snippet generation
