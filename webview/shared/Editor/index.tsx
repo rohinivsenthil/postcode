@@ -4,10 +4,12 @@ import * as propTypes from "prop-types";
 import "./styles.css";
 
 export const Editor = (props) => {
-  const { value, language, onChange, readOnly, className, format } = props;
+  const { value, language, onChange, readOnly, className, copyButton, format } =
+    props;
 
   const divEl = React.useRef<HTMLDivElement>(null);
   const [editor, setEditor] = React.useState(undefined);
+  const [copy, setCopy] = React.useState("Copy");
 
   React.useEffect(() => {
     if (divEl.current) {
@@ -60,7 +62,23 @@ export const Editor = (props) => {
     }
   }, [value, language, editor, format]);
 
-  return <div className={className} ref={divEl}></div>;
+  return (
+    <div className={`${className} monaco-editor`} ref={divEl}>
+      {copyButton && (
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(value).then(() => {
+              setCopy("Copied");
+              setTimeout(() => setCopy("Copy"), 1000);
+            });
+          }}
+          className="copy-button"
+        >
+          {copy}
+        </button>
+      )}
+    </div>
+  );
 };
 
 Editor.propTypes = {
@@ -69,5 +87,6 @@ Editor.propTypes = {
   onChange: propTypes.func,
   className: propTypes.string,
   readOnly: propTypes.bool,
+  copyButton: propTypes.bool,
   format: propTypes.bool,
 };

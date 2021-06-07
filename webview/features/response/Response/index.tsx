@@ -68,6 +68,7 @@ export const Response = () => {
           value={response.data || ""}
           language={view === "raw" ? "text" : language}
           readOnly
+          copyButton
           format
         />
       </div>

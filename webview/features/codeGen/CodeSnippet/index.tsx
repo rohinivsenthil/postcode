@@ -65,6 +65,7 @@ export const CodeSnippet = () => {
           value={code}
           language={editorLanguage}
           readOnly
+          copyButton
         />
       </div>
     </div>

@@ -1,3 +1,28 @@
 .monaco-editor {
+  position: relative;
   border: var(--default-border-size) solid var(--border);
+  height: 100%;
+}
+
+.copy-button {
+  font-size: var(--default-font-size);
+  background-color: rgb(51, 51, 51);
+  border: none;
+  color: #fff;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  outline: none;
+  padding: 0.4rem 0.5rem;
+  position: absolute;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 10;
+  right: 0.5rem;
+  top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.monaco-editor:hover .copy-button {
+  opacity: 1;
+  visibility: visible;
 }
