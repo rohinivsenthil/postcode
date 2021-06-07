@@ -2,13 +2,47 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import axios from "axios";
+import { Provider } from "react-redux";
+import * as React from "react";
+import { renderToString } from "react-dom/server";
+
+import App from "../webview/App";
+import { store } from "../webview/redux/store";
+
+function getWebviewContent() {
+  const html = renderToString(
+    React.createElement(Provider, { store }, React.createElement(App))
+  );
+
+  const preloadedState = store.getState();
+
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="styleUri" rel="stylesheet" type="text/css"/>
+      </head>
+      <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">${html}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+            /</g,
+            "\\u003c"
+          )}
+        </script>
+    		<script src="scriptUri"></script>
+      </body>
+    </html>
+  `;
+}
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "postcode" is now active!');
+  const webviewContent = getWebviewContent();
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
@@ -28,29 +62,28 @@ export function activate(context: vscode.ExtensionContext) {
         { enableScripts: true, retainContextWhenHidden: true }
       );
 
-      const scriptUri = panel.webview.asWebviewUri(
-        vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
-      );
-
-      const iconUri = vscode.Uri.joinPath(
+      panel.iconPath = vscode.Uri.joinPath(
         context.extensionUri,
         "icons/icon.png"
       );
-      panel.iconPath = iconUri;
 
-      panel.webview.html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-		<script src="${scriptUri}"></script>
-  </body>
-</html>`;
+      panel.webview.html = webviewContent
+        .replace(
+          "styleUri",
+          panel.webview
+            .asWebviewUri(
+              vscode.Uri.joinPath(context.extensionUri, "dist/main.css")
+            )
+            .toString()
+        )
+        .replace(
+          "scriptUri",
+          panel.webview
+            .asWebviewUri(
+              vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
+            )
+            .toString()
+        );
 
       panel.webview.onDidReceiveMessage(
         ({ method, url, headers, body, auth }) => {

@@ -7,6 +7,12 @@ import requestUrlReducer from "../features/requestUrl/requestUrlSlice";
 import responseReducer from "../features/response/responseSlice";
 import codeGenOptionsReducer from "../features/codeGen/codeGenSlice";
 
+let preloadedState;
+if (typeof window !== "undefined") {
+  preloadedState = (window as any).__PRELOADED_STATE__;
+  delete (window as any).__PRELOADED_STATE__;
+}
+
 export const store = configureStore({
   reducer: {
     requestAuth: requestAuthReducer,
@@ -17,6 +23,7 @@ export const store = configureStore({
     response: responseReducer,
     codeGenOptions: codeGenOptionsReducer,
   },
+  preloadedState,
 });
 
 export type AppDispatch = typeof store.dispatch;
