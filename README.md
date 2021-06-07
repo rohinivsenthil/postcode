@@ -9,7 +9,7 @@ Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](h
 <div align="center">
   <img src="https://user-images.githubusercontent.com/42040329/120920378-0c83c880-c6dc-11eb-814a-e667563eed95.gif"/>
   <br/>
-  <sup>Latest Release: 1.3.0</sup>
+  <sup>Latest Release: 1.3.1</sup>
 </div>
 
 ## Highlighted Features
@@ -65,4 +65,6 @@ Contributions are always welcome!
 
 ## Related
 
-Read the [launch blog](https://rohinivsenthil.medium.com/postcode-vs-code-extension-alternative-to-postman-384816d4cf07) post on Medium.
+- Read the [launch blog](https://rohinivsenthil.medium.com/postcode-vs-code-extension-alternative-to-postman-384816d4cf07) post on Medium
+- Featured #11 Product of the day on [Product Hunt](https://www.producthunt.com/posts/postcode)
+- Featured in **Trending this week** on Visual Studio Code Marketplace
