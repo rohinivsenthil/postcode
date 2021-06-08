@@ -1,15 +1,21 @@
 <h1 align="center">Postcode</h1>
 <div align="center">
-  <strong> API client for VS code 📦</strong>
+  <strong> API client for VS code 📦</strong>  
+  <br/> <br/>
+  <img src="https://img.shields.io/visual-studio-marketplace/i/rohinivsenthil.postcode" />
+<!--   <img src="https://img.shields.io/visual-studio-marketplace/d/rohinivsenthil.postcode" /> -->
+  <img src="https://img.shields.io/visual-studio-marketplace/v/rohinivsenthil.postcode" />
+  <img src="https://img.shields.io/visual-studio-marketplace/r/rohinivsenthil.postcode" />
 </div>
 <br />
 
 Postcode is a [Visual Studio Code](https://code.visualstudio.com/) [extension](https://marketplace.visualstudio.com/VSCode) that can be used to create and test simple and complex HTTP/s requests, as well as view responses. You can find the extension available [here](https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode).
 
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/42040329/120920378-0c83c880-c6dc-11eb-814a-e667563eed95.gif"/>
   <br/>
-  <sup>Latest Release: 1.3.1</sup>
+  <sup>Release: 1.3.3</sup>
 </div>
 
 ## Highlighted Features
