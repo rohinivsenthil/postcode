@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
-import App from "../webview/App";
-import { store } from "../webview/redux/store";
+import App from "./App";
+import { store } from "./redux/store";
 
 export default () => {
   const html = renderToString(

@@ -146,10 +146,10 @@ const prerenderConfig = (webpackEnv) => {
   return {
     ...config,
     target: "node",
-    entry: "./src/webviewContent.tsx",
+    entry: "./webview/prerender.tsx",
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "webviewContent.js",
+      filename: "prerender.js",
       libraryTarget: "commonjs2",
     },
     plugins: [
