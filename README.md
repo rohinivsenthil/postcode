@@ -2,10 +2,10 @@
 <div align="center">
   <strong> API client for VS code 📦</strong>  
   <br/> <br/>
-  <img src="https://img.shields.io/visual-studio-marketplace/i/rohinivsenthil.postcode" />
+  <a href="https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode&ssr=false#overview"><img src="https://img.shields.io/visual-studio-marketplace/i/rohinivsenthil.postcode" /></a>
 <!--   <img src="https://img.shields.io/visual-studio-marketplace/d/rohinivsenthil.postcode" /> -->
-  <img src="https://img.shields.io/visual-studio-marketplace/v/rohinivsenthil.postcode" />
-  <img src="https://img.shields.io/visual-studio-marketplace/r/rohinivsenthil.postcode" />
+  <a href="https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode&ssr=false#version-history"><img src="https://img.shields.io/visual-studio-marketplace/v/rohinivsenthil.postcode" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/rohinivsenthil.postcode" /></a>
 </div>
 <br />
 
