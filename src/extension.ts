@@ -1,14 +1,29 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
+import * as fs from "fs";
 import axios from "axios";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "postcode" is now active!');
+  const webviewContent = fs
+    .readFileSync(
+      vscode.Uri.joinPath(context.extensionUri, "dist/index.html").fsPath,
+      { encoding: "utf-8" }
+    )
+    .replace(
+      "styleUri",
+      vscode.Uri.joinPath(context.extensionUri, "/dist/main.css")
+        .with({ scheme: "vscode-resource" })
+        .toString()
+    )
+    .replace(
+      "scriptUri",
+      vscode.Uri.joinPath(context.extensionUri, "/dist/webview.js")
+        .with({ scheme: "vscode-resource" })
+        .toString()
+    );
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
@@ -25,32 +40,20 @@ export function activate(context: vscode.ExtensionContext) {
         "postcode",
         "Postcode",
         vscode.ViewColumn.One,
-        { enableScripts: true, retainContextWhenHidden: true }
+        {
+          enableScripts: true,
+          retainContextWhenHidden: true,
+          localResourceRoots: [
+            vscode.Uri.joinPath(context.extensionUri, "dist"),
+          ],
+        }
       );
 
-      const scriptUri = panel.webview.asWebviewUri(
-        vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
-      );
-
-      const iconUri = vscode.Uri.joinPath(
+      panel.webview.html = webviewContent;
+      panel.iconPath = vscode.Uri.joinPath(
         context.extensionUri,
         "icons/icon.png"
       );
-      panel.iconPath = iconUri;
-
-      panel.webview.html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-		<script src="${scriptUri}"></script>
-  </body>
-</html>`;
 
       panel.webview.onDidReceiveMessage(
         ({ method, url, headers, body, auth }) => {

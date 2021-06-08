@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Editor } from "../../../shared/Editor";
 import "./styles.css";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
@@ -8,6 +7,8 @@ import {
   selectRequestBodyRawLanguage,
 } from "../requestBodySlice";
 
+const Editor = React.lazy(() => import("../../../shared/Editor"));
+
 export const Raw = () => {
   const raw = useAppSelector(selectRequestBodyRaw);
   const language = useAppSelector(selectRequestBodyRawLanguage);
@@ -15,12 +16,14 @@ export const Raw = () => {
 
   return (
     <div className="raw-wrapper">
-      <Editor
-        className="raw-editor"
-        value={raw}
-        language={language}
-        onChange={(data) => dispatch(requestBodyRawUpdated(data))}
-      />
+      <React.Suspense fallback={<div>loading</div>}>
+        <Editor
+          className="raw-editor"
+          value={raw}
+          language={language}
+          onChange={(data) => dispatch(requestBodyRawUpdated(data))}
+        />
+      </React.Suspense>
     </div>
   );
 };

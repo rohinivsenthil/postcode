@@ -1,6 +1,5 @@
 import * as React from "react";
 import "./styles.css";
-import { Editor } from "../../../shared/Editor";
 import {
   codeGenLanguageUpdated,
   codeGenOptions,
@@ -13,6 +12,8 @@ import {
 } from "../codeGenSlice";
 import * as codegen from "postman-code-generators";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+
+const Editor = React.lazy(() => import("../../../shared/Editor"));
 
 export const CodeSnippet = () => {
   const [code, setCode] = React.useState("");
@@ -60,13 +61,15 @@ export const CodeSnippet = () => {
         </select>
       </div>
       <div className="code-display">
-        <Editor
-          className="code-gen-editor"
-          value={code}
-          language={editorLanguage}
-          readOnly
-          copyButton
-        />
+        <React.Suspense fallback={<div>loading</div>}>
+          <Editor
+            className="code-gen-editor"
+            value={code}
+            language={editorLanguage}
+            readOnly
+            copyButton
+          />
+        </React.Suspense>
       </div>
     </div>
   );

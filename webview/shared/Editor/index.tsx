@@ -3,7 +3,7 @@ import * as monaco from "monaco-editor";
 import * as propTypes from "prop-types";
 import "./styles.css";
 
-export const Editor = (props) => {
+const Editor = (props) => {
   const { value, language, onChange, readOnly, className, copyButton, format } =
     props;
 
@@ -90,3 +90,5 @@ Editor.propTypes = {
   copyButton: propTypes.bool,
   format: propTypes.bool,
 };
+
+export default Editor;

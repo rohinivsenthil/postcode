@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Editor } from "../../../shared/Editor";
 import "./styles.css";
 import { responseViews } from "../../../constants/response-views";
 import { supportedLangs } from "../../../constants/supported-langs";
@@ -7,6 +6,8 @@ import { Default } from "../Default";
 import { ErrorResponse } from "../ErrorResponse";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectResponse } from "../responseSlice";
+
+const Editor = React.lazy(() => import("../../../shared/Editor"));
 
 export const Response = () => {
   const response = useAppSelector(selectResponse);
@@ -63,14 +64,16 @@ export const Response = () => {
             <div className="text-response-status">{`${response.status} ${response.statusText}`}</div>
           </div>
         </div>
-        <Editor
-          className="response-editor"
-          value={response.data || ""}
-          language={view === "raw" ? "text" : language}
-          readOnly
-          copyButton
-          format
-        />
+        <React.Suspense fallback={<div>loading</div>}>
+          <Editor
+            className="response-editor"
+            value={response.data || ""}
+            language={view === "raw" ? "text" : language}
+            readOnly
+            copyButton
+            format
+          />
+        </React.Suspense>
       </div>
     );
   }

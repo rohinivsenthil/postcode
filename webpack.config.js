@@ -6,6 +6,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StaticSiteGeneratorPlugin = require("static-site-generator-webpack-plugin");
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
@@ -56,7 +58,7 @@ const baseConfig = (webpackEnv) => {
             {
               test: /\.css$/,
               use: [
-                require.resolve("style-loader"),
+                MiniCssExtractPlugin.loader,
                 {
                   loader: require.resolve("css-loader"),
                   options: {
@@ -78,6 +80,11 @@ const baseConfig = (webpackEnv) => {
         },
       ],
     },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "ignore.css",
+      }),
+    ],
   };
 };
 
@@ -104,6 +111,7 @@ const webviewConfig = (webpackEnv) => {
       filename: "webview.js",
     },
     plugins: [
+      new MiniCssExtractPlugin(),
       new MonacoWebpackPlugin({
         languages: [
           "csharp",
@@ -132,4 +140,31 @@ const webviewConfig = (webpackEnv) => {
   };
 };
 
-module.exports = [extensionConfig, webviewConfig];
+const prerenderConfig = (webpackEnv) => {
+  const config = baseConfig(webpackEnv);
+
+  return {
+    ...config,
+    target: "node",
+    entry: "./webview/prerender.tsx",
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: "prerender.js",
+      libraryTarget: "commonjs2",
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "ignore.css",
+      }),
+      new StaticSiteGeneratorPlugin({
+        paths: ["/"],
+      }),
+      new webpack.ProvidePlugin({
+        Buffer: ["buffer", "Buffer"],
+        process: "process/browser",
+      }),
+    ],
+  };
+};
+
+module.exports = [extensionConfig, webviewConfig, prerenderConfig];
