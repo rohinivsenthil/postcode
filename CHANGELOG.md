@@ -4,6 +4,13 @@ All notable changes to the "postcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 1.3.3
+
+- Improve load time by pre-rendering
+### 1.3.2
+
+- Remove excess scroll
+
 ### 1.3.1
 
 - Add copy button to code editor
