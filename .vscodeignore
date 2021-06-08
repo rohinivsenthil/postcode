@@ -10,3 +10,6 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
+dist/webviewContent.js
+dist/*.webviewContent.js
+dist/*.webviewContent.js.*

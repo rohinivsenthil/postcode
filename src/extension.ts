@@ -1,48 +1,29 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
+import * as fs from "fs";
 import axios from "axios";
-import { Provider } from "react-redux";
-import * as React from "react";
-import { renderToString } from "react-dom/server";
-
-import App from "../webview/App";
-import { store } from "../webview/redux/store";
-
-function getWebviewContent() {
-  const html = renderToString(
-    React.createElement(Provider, { store }, React.createElement(App))
-  );
-
-  const preloadedState = store.getState();
-
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="styleUri" rel="stylesheet" type="text/css"/>
-      </head>
-      <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root">${html}</div>
-        <script>
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
-            /</g,
-            "\\u003c"
-          )}
-        </script>
-    		<script src="scriptUri"></script>
-      </body>
-    </html>
-  `;
-}
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  const webviewContent = getWebviewContent();
+  const webviewContent = fs
+    .readFileSync(
+      vscode.Uri.joinPath(context.extensionUri, "dist/index.html").fsPath,
+      { encoding: "utf-8" }
+    )
+    .replace(
+      "styleUri",
+      vscode.Uri.joinPath(context.extensionUri, "/dist/main.css")
+        .with({ scheme: "vscode-resource" })
+        .toString()
+    )
+    .replace(
+      "scriptUri",
+      vscode.Uri.joinPath(context.extensionUri, "/dist/webview.js")
+        .with({ scheme: "vscode-resource" })
+        .toString()
+    );
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
@@ -59,31 +40,20 @@ export function activate(context: vscode.ExtensionContext) {
         "postcode",
         "Postcode",
         vscode.ViewColumn.One,
-        { enableScripts: true, retainContextWhenHidden: true }
+        {
+          enableScripts: true,
+          retainContextWhenHidden: true,
+          localResourceRoots: [
+            vscode.Uri.joinPath(context.extensionUri, "dist"),
+          ],
+        }
       );
 
+      panel.webview.html = webviewContent;
       panel.iconPath = vscode.Uri.joinPath(
         context.extensionUri,
         "icons/icon.png"
       );
-
-      panel.webview.html = webviewContent
-        .replace(
-          "styleUri",
-          panel.webview
-            .asWebviewUri(
-              vscode.Uri.joinPath(context.extensionUri, "dist/main.css")
-            )
-            .toString()
-        )
-        .replace(
-          "scriptUri",
-          panel.webview
-            .asWebviewUri(
-              vscode.Uri.joinPath(context.extensionUri, "dist/webview.js")
-            )
-            .toString()
-        );
 
       panel.webview.onDidReceiveMessage(
         ({ method, url, headers, body, auth }) => {

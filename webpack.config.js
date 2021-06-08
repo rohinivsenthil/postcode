@@ -7,6 +7,7 @@ const path = require("path");
 const webpack = require("webpack");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StaticSiteGeneratorPlugin = require("static-site-generator-webpack-plugin");
 
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000"
@@ -139,4 +140,31 @@ const webviewConfig = (webpackEnv) => {
   };
 };
 
-module.exports = [extensionConfig, webviewConfig];
+const prerenderConfig = (webpackEnv) => {
+  const config = baseConfig(webpackEnv);
+
+  return {
+    ...config,
+    target: "node",
+    entry: "./src/webviewContent.tsx",
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: "webviewContent.js",
+      libraryTarget: "commonjs2",
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "ignore.css",
+      }),
+      new StaticSiteGeneratorPlugin({
+        paths: ["/"],
+      }),
+      new webpack.ProvidePlugin({
+        Buffer: ["buffer", "Buffer"],
+        process: "process/browser",
+      }),
+    ],
+  };
+};
+
+module.exports = [extensionConfig, webviewConfig, prerenderConfig];
