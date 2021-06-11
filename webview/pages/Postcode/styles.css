@@ -7,11 +7,11 @@
 .request-options-wrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-height: 50%;
 }
 
 .response-wrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 50%;
 }

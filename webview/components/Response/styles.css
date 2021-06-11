@@ -1,76 +1,51 @@
-.response-window {
-  border-top: var(--default-border-size) solid var(--border);
+.response-body-wrapper {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  padding: 5px 20px 10px 20px;
-}
-
-.response-header {
-  margin: 10px 0;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.response-view-options {
-  display: flex;
-  align-items: center;
-}
-
-.response-status {
   font-size: var(--default-font-size);
+  border-top: var(--default-border-size) solid var(--border);
+}
+
+.error-response-wrapper {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  font-size: var(--default-font-size);
+  border-top: var(--default-border-size) solid var(--border);
 }
 
-.response-editor {
-  height: 85%;
+.img-error-response {
+  margin: 15px;
+  fill: var(--logo-color);
+  width: 20%;
+  height: 20%;
 }
 
-.text-response-status {
-  color: var(--tab-info);
-  margin-left: 5px;
+.error-message {
+  margin: 10px;
+  color: var(--error-message);
 }
 
-.button-response-view {
+.initial-response-wrapper {
+  border-top: var(--default-border-size) solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--default-text-light);
   font-size: var(--default-font-size);
-  padding: 5px;
-  cursor: pointer;
-  background-color: var(--input-field);
-  border: 0;
-  outline: none;
-}
-.button-response-view:hover {
-  color: var(--default-text);
-  outline: none;
-}
-.button-response-view:focus {
-  outline: none;
+  flex: 1;
 }
 
-.button-response-view-selected {
-  color: var(--default-text);
+.img-initial-response {
+  fill: var(--logo-color);
+  width: 20%;
+  height: 20%;
 }
 
-.select-res-lang {
-  margin-left: 10px;
-  padding: 4px;
-  display: inline-block;
-  font-weight: 600;
-  outline: none;
-  border: var(--default-border-size) solid var(--border);
-  border-radius: 2px;
-  background-color: var(--background);
-  color: var(--default-text-light);
-  cursor: pointer;
-  font-size: var(--small-font-size);
-}
-.select-res-lang:hover {
-  color: var(--default-text);
-}
-.select-res-lang:focus {
-  outline: none;
+.initial-text {
+  padding: 10px;
 }
 
 .loader-wrapper {

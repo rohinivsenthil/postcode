@@ -4,7 +4,7 @@ import "./styles.css";
 import { RequestBar } from "../../components/RequestBar";
 import { RequestOptionsTab } from "../../components/RequestOptionsBar";
 import { RequestOptionsWindow } from "../../components/RequestOptionsWindow";
-import { Response } from "../../features/response/Response";
+import { Response } from "../../components/Response";
 import { requestOptions } from "../../constants/request-options";
 
 export const Postcode = () => {
