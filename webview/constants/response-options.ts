@@ -4,10 +4,6 @@ export const responseOptions = [
     value: "body",
   },
   {
-    name: "Cookies",
-    value: "cookies",
-  },
-  {
     name: "Headers",
     value: "headers",
   },

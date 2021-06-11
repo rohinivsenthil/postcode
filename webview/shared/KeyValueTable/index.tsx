@@ -136,9 +136,9 @@ export const KeyValueTable = (props) => {
 KeyValueTable.propTypes = {
   data: propTypes.array.isRequired,
   fixed: propTypes.bool,
-  onRowDelete: propTypes.func.isRequired,
-  onRowAdd: propTypes.func.isRequired,
-  onRowUpdate: propTypes.func.isRequired,
+  onRowDelete: propTypes.func,
+  onRowAdd: propTypes.func,
+  onRowUpdate: propTypes.func,
 };
 
 KeyValueRow.propTypes = {
