@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px 0 20px;
+  padding: 15px 20px 5px 20px;
 }
 
 .response-options {
@@ -26,10 +26,9 @@
   color: var(--default-text);
 }
 
-/* .response-option-selected {
+.response-option-selected {
   color: var(--default-text);
-  border-bottom: 3px solid var(--primary);
-} */
+}
 
 .response-options-header-length {
   margin-left: 4px;
