@@ -133,6 +133,7 @@ export function activate(context: vscode.ExtensionContext) {
                 data: resp.data,
                 status: resp.status,
                 statusText: resp.statusText,
+                headers: resp.headers,
               })
             )
             .catch((err) => {
