@@ -1,0 +1,13 @@
+.response-window {
+  height: 100%;
+}
+
+.response-status {
+  font-size: var(--default-font-size);
+  display: flex;
+  align-items: center;
+}
+
+.response-editor {
+  height: 85%;
+}
