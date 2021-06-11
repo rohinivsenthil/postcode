@@ -18,8 +18,8 @@
 .img-error-response {
   margin: 15px;
   fill: var(--logo-color);
-  width: 30%;
-  height: 30%;
+  width: 20%;
+  height: 20%;
 }
 
 .error-message {
@@ -35,12 +35,13 @@
   align-items: center;
   color: var(--default-text-light);
   font-size: var(--default-font-size);
+  flex: 1;
 }
 
 .img-initial-response {
   fill: var(--logo-color);
-  width: 30%;
-  height: 30%;
+  width: 20%;
+  height: 20%;
 }
 
 .initial-text {
