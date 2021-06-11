@@ -1,3 +1,11 @@
+.response-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: var(--default-font-size);
+  border-top: var(--default-border-size) solid var(--border);
+}
+
 .error-response-wrapper {
   display: flex;
   flex-direction: column;

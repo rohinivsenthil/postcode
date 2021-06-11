@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ResponseTab } from "../../features/response/ResponseTabs";
+import { ResponseTab } from "../../features/response/ResponseTab";
 import { ResponseWindow } from "../../features/response/ResponseWindow";
 import { ReactComponent as PackageIcon } from "../../icons/package.svg";
 import "./styles.css";
@@ -36,7 +36,7 @@ export const Response = () => {
     );
   } else {
     return (
-      <div>
+      <div className="response-body-wrapper">
         <ResponseTab
           selected={selected}
           setSelected={setSelected}
