@@ -11,7 +11,7 @@ export const RequestOptionsTab = (props) => {
 
   return (
     <div className="request-options-tab-wrapper">
-      <div className="request-options">
+      <div className="request-options-left">
         {requestOptions.map((option) => (
           <button
             key={option.value}
@@ -37,14 +37,23 @@ export const RequestOptionsTab = (props) => {
           </button>
         ))}
       </div>
-      <button
-        id="request-code"
-        name="request-code"
-        className="button-request-code"
-        onClick={() => setSelected("code")}
-      >
-        Code
-      </button>
+      <div className="request-options-right">
+        <button
+          id="request-code"
+          name="request-code"
+          className="button-request"
+          onClick={() => setSelected("code")}
+        >
+          Code
+        </button>
+        <button
+          id="request-beautify"
+          name="request-beautify"
+          className="button-request"
+        >
+          Beautify
+        </button>
+      </div>
     </div>
   );
 };
