@@ -4,11 +4,17 @@ import * as propTypes from "prop-types";
 import { requestOptions } from "../../constants/request-options";
 import { useAppSelector } from "../../redux/hooks";
 import { selectRequestHeaders } from "../../features/requestHeader/requestHeaderSlice";
+import {
+  selectRequestBodyMode,
+  selectRequestBodyRawLanguage,
+} from "../../features/requestBody/requestBodySlice";
 
 export const RequestOptionsTab = (props) => {
   const { selected, setSelected } = props;
   const header = useAppSelector(selectRequestHeaders);
-
+  const body = useAppSelector(selectRequestBodyMode);
+  const language = useAppSelector(selectRequestBodyRawLanguage);
+  const hideBeautifyButton = body === "raw" && language === "json";
   return (
     <div className="request-options-tab-wrapper">
       <div className="request-options-left">
@@ -49,7 +55,9 @@ export const RequestOptionsTab = (props) => {
         <button
           id="request-beautify"
           name="request-beautify"
-          className="button-request"
+          className={
+            hideBeautifyButton ? "button-request" : "button-request hidden"
+          }
         >
           Beautify
         </button>
