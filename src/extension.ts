@@ -122,7 +122,7 @@ export function activate(context: vscode.ExtensionContext) {
             baseURL: "",
             data: data,
             headers: headersObj,
-            auth: auth.type === "basic-auth" ? auth.basic : undefined,
+            auth: auth.type === "basic" ? auth.basic : undefined,
             transformResponse: [(data) => data],
             responseType: "text",
             validateStatus: () => true,
