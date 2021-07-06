@@ -4,6 +4,10 @@ All notable changes to the "postcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 1.3.5
+
+- fix basic auth functionality
+
 ### 1.3.4
 
 - Add headers tab for response
