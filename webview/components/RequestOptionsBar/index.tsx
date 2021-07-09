@@ -40,7 +40,7 @@ export const RequestOptionsTab = (props) => {
       <button
         id="request-code"
         name="request-code"
-        className="button-request-code"
+        className="button-request"
         onClick={() => setSelected("code")}
       >
         Code

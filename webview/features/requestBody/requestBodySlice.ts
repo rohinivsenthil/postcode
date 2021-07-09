@@ -28,10 +28,12 @@ export interface RequestBodyState {
   urlencoded: { key: string; value: string; description: string }[];
   options: any;
   graphql: { query: string; variables: string };
+  format: boolean;
 }
 
 const initialState: RequestBodyState = {
   disabled: true,
+  format: false,
   raw: "",
   file: "",
   fileData: "",
@@ -66,6 +68,9 @@ const requestBodySlice = createSlice({
     requestBodyRawUpdated(state, action: PayloadAction<string>) {
       state.raw = action.payload;
     },
+    requestBodyRawFormatUpdated(state, action: PayloadAction<boolean>) {
+      state.format = action.payload;
+    },
     requestBodyRawLanguageUpdated(state, action: PayloadAction<string>) {
       state.options.raw.language = action.payload;
     },
@@ -98,6 +103,7 @@ export const {
   requestBodyFormDataItemUpdated,
   requestBodyModeUpdated,
   requestBodyRawUpdated,
+  requestBodyRawFormatUpdated,
   requestBodyRawLanguageUpdated,
   requestBodyUrlEncodedItemAdded,
   requestBodyUrlEncodedItemDeleted,
@@ -124,5 +130,7 @@ export const selectRequestBodyGraphqlQuery = (state: RootState) =>
   state.requestBody.graphql.query;
 export const selectRequestBodyGraphqlVariables = (state: RootState) =>
   state.requestBody.graphql.variables;
+export const selectRequestBodyRawFormat = (state: RootState) =>
+  state.requestBody.format;
 
 export default requestBodySlice.reducer;

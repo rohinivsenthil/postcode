@@ -2,6 +2,8 @@ import * as React from "react";
 import * as monaco from "monaco-editor";
 import * as propTypes from "prop-types";
 import "./styles.css";
+import { useAppDispatch } from "../../redux/hooks";
+import { requestBodyRawFormatUpdated } from "../../features/requestBody/requestBodySlice";
 
 const Editor = (props) => {
   const { value, language, onChange, readOnly, className, copyButton, format } =
@@ -10,6 +12,7 @@ const Editor = (props) => {
   const divEl = React.useRef<HTMLDivElement>(null);
   const [editor, setEditor] = React.useState(undefined);
   const [copy, setCopy] = React.useState("Copy");
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     if (divEl.current) {
@@ -56,6 +59,7 @@ const Editor = (props) => {
             .run()
             .then(() => {
               editor.updateOptions({ readOnly });
+              dispatch(requestBodyRawFormatUpdated(false));
             });
         }, 300);
       }

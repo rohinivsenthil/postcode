@@ -35,7 +35,7 @@
   color: var(--tab-info);
 }
 
-.button-request-code {
+.button-request {
   display: inline-block;
   cursor: pointer;
   background-color: transparent;
@@ -46,6 +46,11 @@
   font-weight: 500;
   font-size: 12px;
 }
-.button-request-code:hover {
+
+.button-request:hover {
   color: var(--primary-dark);
+}
+
+.hidden {
+  display: none; 
 }
