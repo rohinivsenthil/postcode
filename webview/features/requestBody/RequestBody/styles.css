@@ -58,3 +58,7 @@
 .select-raw-lang:focus {
   outline: none;
 }
+
+#request-beautify {
+  margin-left: 10px;
+}
