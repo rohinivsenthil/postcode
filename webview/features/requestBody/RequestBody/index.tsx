@@ -12,6 +12,7 @@ import {
   requestBodyModeUpdated,
   selectRequestBodyMode,
   selectRequestBodyRawLanguage,
+  requestBodyRawFormatUpdated,
 } from "../requestBodySlice";
 import "./styles.css";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
@@ -19,6 +20,7 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 export const Body = () => {
   const bodyMode = useAppSelector(selectRequestBodyMode);
   const language = useAppSelector(selectRequestBodyRawLanguage);
+  const hideBeautifyButton = bodyMode === "raw" && language === "json";
   const dispatch = useAppDispatch();
 
   return (
@@ -57,6 +59,18 @@ export const Body = () => {
             ))}
           </select>
         ) : null}
+        <button
+          id="request-beautify"
+          name="request-beautify"
+          className={
+            hideBeautifyButton ? "button-request" : "button-request hidden"
+          }
+          onClick={() => {
+            dispatch(requestBodyRawFormatUpdated(true));
+          }}
+        >
+          Beautify
+        </button>
       </div>
       <div className="request-body-window-wrapper">
         {bodyMode === "none" ? (
