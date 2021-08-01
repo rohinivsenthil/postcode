@@ -15,11 +15,11 @@ export const requestOptionsList = [
 ]
 
 export interface RequestOptions {
-    strictSSL: boolean
+    strictSSL: string
 }
 
 const initialState = {
-    strictSSL: true
+    strictSSL: "yes"
 };
 
 const requestOptionsSlice = createSlice({

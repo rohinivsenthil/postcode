@@ -20,7 +20,7 @@ export const RequestOptions = () => {
                                     <select
                                         onChange={(e) => dispatch(requestOptionsUpdated({
                                             ...requestOptions,
-                                            [value]: e.target.value === "yes"
+                                            [value]: e.target.value
                                         }))}
                                         defaultValue={optionDetails.default}
                                         className="req-option-switch"
