@@ -20,7 +20,7 @@ export const RequestOptions = () => {
                                     <select
                                         onChange={(e) => dispatch(requestOptionsUpdated({
                                             ...requestOptions,
-                                            strictSSL: e.target.value === "yes"
+                                            [value]: e.target.value === "yes"
                                         }))}
                                         defaultValue={optionDetails.default}
                                         className="req-option-switch"
@@ -30,6 +30,8 @@ export const RequestOptions = () => {
                                         ))}
                                     </select>
                                 ) : null
+                                // Note: Augment this switch later with different renderers for 
+                                // different types of options
                             }
                         </React.Fragment>
                     ))
