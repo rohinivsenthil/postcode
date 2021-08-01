@@ -1,0 +1,27 @@
+.req-options-wrapper {
+    margin-top: 15px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.req-option-label {
+    font-size: var(--default-font-size);
+    color: var(--default-text);
+    padding-right: 12px;
+}
+
+.req-option-switch {
+    padding: 4px;
+    display: inline-block;
+    font-weight: 600;
+    outline: none;
+    border: var(--default-border-size) solid var(--border);
+    border-radius: 2px;
+    background-color: var(--background);
+    color: var(--default-text-light);
+    cursor: pointer;
+    font-size: var(--default-font-size);
+  }

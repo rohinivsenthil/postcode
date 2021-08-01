@@ -15,4 +15,8 @@ export const requestOptions = [
     name: "Body",
     value: "body",
   },
+  {
+    name: "Options",
+    value: "options",
+  },
 ];

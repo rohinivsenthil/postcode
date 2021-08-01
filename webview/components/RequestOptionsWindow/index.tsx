@@ -4,6 +4,7 @@ import { RequestAuth } from "../../features/requestAuth/RequestAuth";
 import { Body } from "../../features/requestBody/RequestBody";
 import { Headers } from "../../features/requestHeader/HeadersWindow";
 import { CodeSnippet } from "../../features/codeGen/CodeSnippet";
+import { RequestOptions } from "../../features/requestOptions/RequestOptions";
 import * as propTypes from "prop-types";
 import "./styles.css";
 
@@ -21,6 +22,8 @@ export const RequestOptionsWindow = (props) => {
         <Headers />
       ) : selected === "code" ? (
         <CodeSnippet />
+      ) : selected === "options" ? (
+        <RequestOptions />
       ) : null}
     </div>
   );
