@@ -8,6 +8,7 @@ import { selectRequestBody } from "../../features/requestBody/requestBodySlice";
 import { selectRequestHeaders } from "../../features/requestHeader/requestHeaderSlice";
 import { selectRequestUrl } from "../../features/requestUrl/requestUrlSlice";
 import { selectRequestMethod } from "../../features/requestMethod/requestMethodSlice";
+import { selectRequestOptions } from "../../features/requestOptions/requestOptionsSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import "./styles.css";
 
@@ -19,6 +20,7 @@ export const RequestBar = () => {
   const requestBody = useAppSelector(selectRequestBody);
   const requestUrl = useAppSelector(selectRequestUrl);
   const requestAuth = useAppSelector(selectRequestAuth);
+  const requestOptions = useAppSelector(selectRequestOptions);
 
   return (
     <form
@@ -31,6 +33,7 @@ export const RequestBar = () => {
           body: requestBody,
           headers: requestHeaders,
           url: requestUrl,
+          options: requestOptions
         });
         e.preventDefault();
       }}
