@@ -61,6 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
         ({ method, url, headers, body, auth, options }) => {
           // Options Section
           const requestOptions = options as RequestOptions;
+          let requestStartedAt, responseDuration;
 
           if (!url) {
             panel.webview.postMessage({
@@ -125,6 +126,16 @@ export function activate(context: vscode.ExtensionContext) {
           https.globalAgent.options.rejectUnauthorized =
             requestOptions.strictSSL === "yes";
 
+          axios.interceptors.request.use((config) => {
+            requestStartedAt = new Date().getTime();
+            return config;
+          });
+
+          axios.interceptors.response.use((config) => {
+            responseDuration = new Date().getTime() - requestStartedAt;
+            return config;
+          });
+
           axios({
             method,
             url,
@@ -143,6 +154,7 @@ export function activate(context: vscode.ExtensionContext) {
                 status: resp.status,
                 statusText: resp.statusText,
                 headers: resp.headers,
+                duration: responseDuration,
               })
             )
             .catch((err) => {
