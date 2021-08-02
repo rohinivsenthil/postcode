@@ -6,7 +6,7 @@ import requestMethodReducer from "../features/requestMethod/requestMethodSlice";
 import requestUrlReducer from "../features/requestUrl/requestUrlSlice";
 import responseReducer from "../features/response/responseSlice";
 import codeGenOptionsReducer from "../features/codeGen/codeGenSlice";
-import requestOptionsReducer from '../features/requestOptions/requestOptionsSlice';
+import requestOptionsReducer from "../features/requestOptions/requestOptionsSlice";
 
 let preloadedState;
 if (typeof window !== "undefined") {
@@ -23,7 +23,7 @@ export const store = configureStore({
     requestUrl: requestUrlReducer,
     response: responseReducer,
     codeGenOptions: codeGenOptionsReducer,
-    requestOptions: requestOptionsReducer
+    requestOptions: requestOptionsReducer,
   },
   preloadedState,
 });
