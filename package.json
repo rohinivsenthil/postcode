@@ -74,7 +74,7 @@
     "test-watch": "tsc -watch -p ./",
     "pretest": "yarn run test-compile && yarn run lint",
     "lint": "eslint src webview --ext .ts,.tsx",
-    "lint:fix": "eslint --fix src webview --ext ts",
+    "lint:fix": "eslint --fix src webview --ext .ts,.tsx",
     "test": "node ./out/test/runTest.js",
     "prepare": "husky install"
   },
