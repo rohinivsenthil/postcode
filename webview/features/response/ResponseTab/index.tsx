@@ -6,6 +6,15 @@ import { supportedLangs } from "../../../constants/supported-langs";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectResponse } from "../responseSlice";
 
+const ResponseInfo = ({ responseTitle, info }) => {
+  return (
+    <>
+      <div>{responseTitle}</div>
+      <div className="text-response-info">{info}</div>
+    </>
+  );
+};
+
 export const ResponseTab = (props) => {
   const { selected, setSelected, language, setLanguage } = props;
   const response = useAppSelector(selectResponse);
@@ -41,11 +50,22 @@ export const ResponseTab = (props) => {
         ) : null}
       </div>
       <div className="response-status">
-        <div>Status:</div>
-        <div className="text-response-status">{`${response.status} ${response.statusText}`}</div>
+        <ResponseInfo
+          responseTitle="Status:"
+          info={`${response.status} ${response.statusText}`}
+        />
+        <ResponseInfo
+          responseTitle="Duration:"
+          info={`${response.duration} ms`}
+        />
       </div>
     </div>
   );
+};
+
+ResponseInfo.propTypes = {
+  responseTitle: propTypes.string.isRequired,
+  info: propTypes.string.isRequired,
 };
 
 ResponseTab.propTypes = {

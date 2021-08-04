@@ -41,9 +41,10 @@
   align-items: center;
 }
 
-.text-response-status {
+.text-response-info {
   color: var(--tab-info);
   margin-left: 5px;
+  margin-right: 5px;
 }
 
 .select-res-lang {

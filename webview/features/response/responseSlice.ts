@@ -9,6 +9,7 @@ export interface ResponseState {
   error?: Error;
   loading?: boolean;
   headers?: { key: string; value: string }[];
+  duration?: number;
 }
 
 const initialState: ResponseState = { initial: true };

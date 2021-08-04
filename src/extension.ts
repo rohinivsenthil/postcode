@@ -3,7 +3,7 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import axios from "axios";
-import * as https from 'https';
+import * as https from "https";
 import { RequestOptions } from "../webview/features/requestOptions/requestOptionsSlice";
 
 // this method is called when your extension is activated
@@ -59,6 +59,10 @@ export function activate(context: vscode.ExtensionContext) {
 
       panel.webview.onDidReceiveMessage(
         ({ method, url, headers, body, auth, options }) => {
+          // Options Section
+          const requestOptions = options as RequestOptions;
+          let requestStartedAt, responseDuration;
+
           if (!url) {
             panel.webview.postMessage({
               type: "response",
@@ -118,11 +122,19 @@ export function activate(context: vscode.ExtensionContext) {
             headersObj["Content-Type"] = "application/json";
           }
 
-          // Options Section
-          let requestOptions = options as RequestOptions;
-
           // Option 1. StrictSSL
-          https.globalAgent.options.rejectUnauthorized = (requestOptions.strictSSL === "yes");
+          https.globalAgent.options.rejectUnauthorized =
+            requestOptions.strictSSL === "yes";
+
+          axios.interceptors.request.use((config) => {
+            requestStartedAt = new Date().getTime();
+            return config;
+          });
+
+          axios.interceptors.response.use((config) => {
+            responseDuration = new Date().getTime() - requestStartedAt;
+            return config;
+          });
 
           axios({
             method,
@@ -142,6 +154,7 @@ export function activate(context: vscode.ExtensionContext) {
                 status: resp.status,
                 statusText: resp.statusText,
                 headers: resp.headers,
+                duration: responseDuration,
               })
             )
             .catch((err) => {
