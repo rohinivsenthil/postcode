@@ -33,7 +33,7 @@ export const RequestBar = () => {
           body: requestBody,
           headers: requestHeaders,
           url: requestUrl,
-          options: requestOptions
+          options: requestOptions,
         });
         e.preventDefault();
       }}
