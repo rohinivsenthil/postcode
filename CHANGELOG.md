@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### 1.3.7
 
+- display response time in response window
+
+### 1.3.7
+
 - add request options for strict ssl 
 
 ### 1.3.6
