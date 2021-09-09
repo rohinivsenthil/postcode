@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Url } from "postman-collection";
 import vscode from "../../vscode";
 import { RequestMethodSelector } from "../../features/requestMethod/RequestMethodSelector";
 import { RequestUrl } from "../../features/requestUrl/RequestUrl";
@@ -27,12 +28,13 @@ export const RequestBar = () => {
       className="request-bar"
       onSubmit={(e) => {
         dispatch(responseLoadingStarted());
+        const { protocol } = Url.parse(requestUrl);
         vscode.postMessage({
           method: requestMethod,
           auth: requestAuth,
           body: requestBody,
           headers: requestHeaders,
-          url: requestUrl,
+          url: protocol ? requestUrl : `http://${requestUrl}`,
           options: requestOptions,
         });
         e.preventDefault();
