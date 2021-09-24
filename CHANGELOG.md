@@ -4,6 +4,11 @@ All notable changes to the "postcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### 1.3.9
+
+- automattically use http protocol if none is specified
+- make font size relative to vscode editor font size
+
 ### 1.3.8
 
 - display response time in response window

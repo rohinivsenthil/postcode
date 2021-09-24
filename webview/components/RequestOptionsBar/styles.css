@@ -44,7 +44,7 @@
   border: 3px solid transparent;
   border-radius: 0;
   font-weight: 500;
-  font-size: 12px;
+  font-size: var(--default-font-size);
 }
 
 .button-request:hover {

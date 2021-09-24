@@ -20,8 +20,8 @@ body {
   --tab-info: #259c47;
   --logo-color: var(--vscode-tree-tableColumnsBorder);
   --error-message: var(--vscode-errorForeground);
-  --default-font-size: 11px;
-  --small-font-size: 8px;
+  --default-font-size: var(--vscode-editor-font-size);
+  --small-font-size: width: calc(var(--vscode-editor-font-size) * 0.727);;
   --default-border-size: 0.1px;
 }
 
