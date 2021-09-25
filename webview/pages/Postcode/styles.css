@@ -7,11 +7,13 @@
 .request-options-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 50%;
+  height: inherit;
+  resize: vertical;
+  overflow: auto;
 }
 
 .response-wrapper {
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: inherit;
 }
