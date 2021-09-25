@@ -20,6 +20,7 @@ const Editor = (props) => {
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
         theme: "vs-dark",
+        automaticLayout: true,
         value,
         language,
         readOnly,
