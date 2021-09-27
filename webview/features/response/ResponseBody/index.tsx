@@ -14,6 +14,7 @@ export const ResponseBody = (props) => {
     <div className="response-window">
       <React.Suspense fallback={<div>loading</div>}>
         <Editor
+          automaticLayout={true}
           className="response-editor"
           value={response.data || ""}
           language={language}

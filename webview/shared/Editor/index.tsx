@@ -6,8 +6,16 @@ import { useAppDispatch } from "../../redux/hooks";
 import { requestBodyRawFormatUpdated } from "../../features/requestBody/requestBodySlice";
 
 const Editor = (props) => {
-  const { value, language, onChange, readOnly, className, copyButton, format } =
-    props;
+  const {
+    value,
+    language,
+    onChange,
+    readOnly,
+    className,
+    copyButton,
+    format,
+    automaticLayout,
+  } = props;
 
   const divEl = React.useRef<HTMLDivElement>(null);
   const [editor, setEditor] = React.useState(undefined);
@@ -20,6 +28,7 @@ const Editor = (props) => {
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
         theme: "vs-dark",
+        automaticLayout,
         value,
         language,
         readOnly,
@@ -93,6 +102,7 @@ Editor.propTypes = {
   readOnly: propTypes.bool,
   copyButton: propTypes.bool,
   format: propTypes.bool,
+  automaticLayout: propTypes.bool,
 };
 
 export default Editor;
